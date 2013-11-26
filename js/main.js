@@ -52,6 +52,27 @@ function showItem(urlObj, options) {
 		//$content.find("#map > p").html('<a href="https://maps.google.at/maps?q='+item.lat+'+'+item.lng+'" target="_blank">Google Maps</a>');
 		//$content.find("#map > p").html('<div id="map_canvas" class="map"></div>');
 
+		$content.find("#map > p").html('<a href="https://maps.google.at/maps?q='+item.lat+','+item.lng+'('+item.name.split(' ').join('+')+')&num=1&z=17" rel="external" target="_blank">Google Map</a>');
+
+		//$content.find("#prices > tbody").html('');
+
+		var price = 'Erwachsene: '+item.adult_price+' &euro; '+item.adult_info+'<br />'+
+					'Kinder: '+item.kids_price+' &euro; '+item.kids_info+'<br />'+
+					'Auto: '+item.car_price+' &euro; '+item.car_info+'<br />'+
+					'Wohnanhänger: '+item.camper_price+' &euro; '+item.camper_info+'<br />'+
+					'Wohnmobil: '+item.caravan_price+' &euro; '+item.caravan_info+'<br />'+
+					'großes Zelt: '+item.marquee_price+' &euro; '+item.marquee_info+'<br />'+
+					'Zelt: '+item.tent_price+' &euro; '+item.tent_info+'<br />'+
+					'Motorrad: '+item.motorbike_price+' &euro; '+item.motorbike_info+'<br />'+
+					'Hunde: '+item.dogs_price+' &euro; '+item.dogs_info+'<br />'+
+					'Strom: '+item.electricity_price+' &euro; '+item.electricity_info+'<br />'
+					;
+
+		$content.find("#col-price > p").html(price);
+		//$("#col-price > p > table").html("<tr><td>row content</td></tr>");
+
+
+
 		$content.find("#images > p").html("");
 		$.each( item.impressions, function( key, val ) {
 			//li ='<div class="ui-block-'+(key%2==0?'a':'b')+'"><a href="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'"><img src="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'" /></a></div>';
@@ -116,7 +137,7 @@ $(document).bind("pagebeforechange", function (e, data) {
 		var u = $.mobile.path.parseUrl(data.toPage);
 		var re = /^#campingplaetzedetails-page$/;
 
-		console.log(u.hash.search(re));
+		//console.log(u.hash.search(re));
 
 		if (u.hash.search(re) !== -1) {
 			$.mobile.navigate("");
@@ -125,7 +146,6 @@ $(document).bind("pagebeforechange", function (e, data) {
 		var u = $.mobile.path.parseUrl(data.toPage);
 		var re = /^#campingplaetzedetails-page/;
 
-		console.log(u.hash.search(re));
 
 		if (u.hash.search(re) !== -1) {
 
@@ -184,7 +204,6 @@ $(document).ready(function () {
 	
 	// Tabs
 	$('[data-role="navbar"] a').bind('click', function () {
-		console.log("clicked");
 		//$('[data-role="navbar"] a').removeClass("ui-btn-active");
 		$('.tab-content').children().hide();
 		//console.log($('.tab-content').html());
