@@ -1,6 +1,6 @@
 
 <!DOCTYPE html> 
-<html manifest="cache.manifest">
+<html>
 
 <head>
 	<meta charset="utf-8">
@@ -14,6 +14,8 @@
 	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script-->
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.mobile-1.3.2.min.js"></script>
+
+	<script src="js/main.js"></script>
 	
 
 </head> 
@@ -28,7 +30,7 @@
 			<h2>Campingpl&auml;tze</h2>
 		</div>
 		<div data-role="content">
-			<ul data-role="listview" data-filter="true" id="campingplatzelist" data-theme="a" data-inset="true">
+			<ul data-role="listview" data-filter="true" id="campingplatzelist" data-theme="a">
 			</ul>
 		</div>
 		<footer data-role="footer" data-position="fixed" data-theme="b">
@@ -54,8 +56,8 @@
 			<div data-role="navbar">
 				<ul>
 					<li><a data-tab="info" class="ui-btn-active">Information</a></li>
-					<li><a data-tab="map">Anfahrt</a></li>
 					<li><a data-tab="images">Bilder</a></li>
+					<li><a data-tab="map">Anfahrt</a></li>
 				</ul>
 			</div>
 
@@ -76,37 +78,15 @@
 						</div>
 					</div>
 				</div>
-				<div id="map" style="display:none;">
-					<p><div id="map_canvas" class="map"></div></p>
-				</div>
 				<div id="images" style="display:none;">
 					<p>
 						
 					</p>
 				</div>
+				<div id="map" style="display:none;">
+					<p></p>
+				</div>
 			</div>
-		</div>
-		<footer data-role="footer" data-position="fixed" data-theme="b">
-			<nav data-role="navbar" data-iconpos="left">
-				<ul>
-					<li><a href="#home" data-icon="home">Home</a></li>
-					<li><a href="#services-page" data-icon="info">Service</a></li>
-				</ul>
-			</nav>
-		</footer>
-	</div>
-
-
-
-	<!-- ////////////// Maps /////////////////////////////////////////////////////////////////// -->
-
-	<div data-role="page" id="map-page" data-theme="b">
-		<div data-role="header">
-			<h2>Map</h2>
-			<a href="#home" data-icon="back" data-iconpos="left" class="ui-btn-right" rel="external">Back</a>
-		</div>
-		<div data-role="content">
-			
 		</div>
 		<footer data-role="footer" data-position="fixed" data-theme="b">
 			<nav data-role="navbar" data-iconpos="left">
@@ -125,7 +105,7 @@
 	<div data-role="page" id="services-page" data-theme="b">
 		<div data-role="header">
 			<h2>Service</h2>
-			<a href="#home" data-icon="back" data-iconpos="left" class="ui-btn-right" rel="external">Back</a>
+			<a href="#home" data-icon="back" class="ui-btn-right" rel="external" data-iconpos="notext" style="background: #848274;">Back</a>
 		</div>
 		<div data-role="content">
 			<div data-role="collapsible-set" data-inset="false">
@@ -199,26 +179,6 @@
 				</ul>
 			</nav>
 		</footer>
-	</div>
-
-
-	<!-- ////////////// Dialog // LocalStorageError /////////////////////////////////////////////////////////////////// -->
-
-	<a href="#storageerror-dialog" data-role="button" data-inline="true" data-rel="dialog" data-transition="pop" data-corners="true" data-shadow="true" data-iconshadow="true" id="storageerror-link"></a>
-
-	<div data-role="dialog" id="storageerror-dialog" data-theme="b">
-	
-		<div data-role="header" data-theme="d">
-			<h1>Dialog</h1>
-
-		</div>
-
-		<div data-role="content" data-theme="c">
-			<h1>Delete page?</h1>
-			<p>This is a regular page, styled as a dialog. To create a dialog, just link to a normal page and include a transition and <code>data-rel="dialog"</code> attribute.</p>
-			<a href="dialog/index.html" data-role="button" data-rel="back" data-theme="b">Sounds good</a>       
-			<a href="dialog/index.html" data-role="button" data-rel="back" data-theme="c">Cancel</a>    
-		</div>
 	</div>
 
 </body>

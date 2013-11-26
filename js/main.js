@@ -52,15 +52,6 @@ function showItem(urlObj, options) {
 		//$content.find("#map > p").html('<a href="https://maps.google.at/maps?q='+item.lat+'+'+item.lng+'" target="_blank">Google Maps</a>');
 		//$content.find("#map > p").html('<div id="map_canvas" class="map"></div>');
 
-		var height = ($(window).height() - $header.height() - $page.find('[data-role="footer"]').outerHeight());
-		
-		$('#map_canvas').height(($(window).outerHeight()-$(pageSelector).children(":jqmData(role=header)").outerHeight()-$(pageSelector).find('[data-role="footer"]').outerHeight()));
-		$('#map_canvas').gmap().bind('init', function(ev, map) {
-			$('#map_canvas').gmap('addMarker', {'position': '57.7973333,12.0502107', 'bounds': true}).click(function() {
-				$('#map_canvas').gmap('openInfoWindow', {'content': 'Hello World!'}, this);
-			});
-		});
-
 		$content.find("#images > p").html("");
 		$.each( item.impressions, function( key, val ) {
 			//li ='<div class="ui-block-'+(key%2==0?'a':'b')+'"><a href="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'"><img src="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'" /></a></div>';
@@ -179,12 +170,12 @@ $(document).ready(function () {
 		showList();
 	}
 
-	// Check localstorage
+	/* Check localstorage
 	if (Modernizr.localstorage) {
 		//$( "#storageerror-link" ).trigger( "click" );
 	} else {
 		//$( "#popupLocalStorage" ).popup( "open" );
-	}
+	}*/
 
 
 
@@ -202,10 +193,10 @@ $(document).ready(function () {
 			scrollTop: 0
 		}, 500);
 		$(this).addClass("ui-btn-active");
-		var height = ($(window).height() - $header.height() - $(pageSelector).find('[data-role="footer"]').outerHeight());
-		console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
-		console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
-		console.log("height: "+($(window).outerHeight()-$(pageSelector).children(":jqmData(role=header)").outerHeight()-$(pageSelector).find('[data-role="footer"]').outerHeight()));
+		//var height = ($(window).height() - $(pageSelector).find('[data-role="header"]').height() - $(pageSelector).find('[data-role="footer"]').outerHeight());
+		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
+		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
+		//console.log("height: "+($(window).outerHeight()-$(pageSelector).children(":jqmData(role=header)").outerHeight()-$(pageSelector).find('[data-role="footer"]').outerHeight()));
 	});
 
 	$('a[data-tab][class="ui-btn-active"]').trigger("click");
