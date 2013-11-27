@@ -1,13 +1,130 @@
+var Items = null;
+var Data = null;
+
+
+function gotFSW(fileSystem) {
+    fileSystem.root.getFile("data.json", {create: true, exclusive: false}, gotFileEntryW, fail);
+}
+
+function gotFileEntryW(fileEntry) {
+    fileEntry.createWriter(gotFileWriter, fail);
+}
+
+function gotFileWriter(writer) {
+    writer.write(JSON.stringify();
+}
+
+function fail(error) {
+    console.log(error.code);
+}
+
+
+
+function gotFSR(fileSystem) {
+    fileSystem.root.getFile("data.json", null, gotFileEntryR, fail);
+}
+
+function gotFileEntryR(fileEntry) {
+    fileEntry.file(gotFileR, fail);
+}
+
+function gotFileR(file){
+    //readDataUrl(file);
+    readAsText(file);
+}
+
+function readDataUrl(file) {
+    var reader = new FileReader();
+    reader.onloadend = function(evt) {
+        console.log("Read as data URL");
+        console.log(evt.target.result);
+    };
+    reader.readAsDataURL(file);
+}
+
+function readAsText(file) {
+    var reader = new FileReader();
+    reader.onloadend = function(evt) {
+        //console.log("Read as text");
+        //console.log(evt.target.result);
+        Items =  jQuery.parseJSON(evt.target.result);
+    };
+    reader.readAsText(file);
+}
+
+
+$(document).ready(function () {
+
+
+	if (navigator.onLine) {
+		// Online
+		var jqxhr = $.getJSON("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1", function (data) {
+			//localStorage.clear();
+			//localStorage.setItem("campingplaete", JSON.stringify(data));
+			Data = data;
+
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSW, fail);
+
+			//console.log( jQuery.parseJSON(localStorage.getItem("campingplaete")) );
+			showList();
+
+		})
+			.fail(function () {
+				console.log("error json load");
+			});
+
+	} else {
+		showList();
+	}
+
+	/* Check localstorage
+	if (Modernizr.localstorage) {
+		//$( "#storageerror-link" ).trigger( "click" );
+	} else {
+		//$( "#popupLocalStorage" ).popup( "open" );
+	}*/
+
+
+
+
+	// Tabs
+	$('[data-role="navbar"] a').bind('click', function () {
+		//$('[data-role="navbar"] a').removeClass("ui-btn-active");
+		$('.tab-content').children().hide();
+		//console.log($('.tab-content').html());
+		$('#' + $(this).attr('data-tab')).show();
+		$("html,body").animate({
+			scrollTop: 0
+		}, 500);
+		$(this).addClass("ui-btn-active");
+		//var height = ($(window).height() - $(pageSelector).find('[data-role="header"]').height() - $(pageSelector).find('[data-role="footer"]').outerHeight());
+		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
+		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
+		//console.log("height: "+($(window).outerHeight()-$(pageSelector).children(":jqmData(role=header)").outerHeight()-$(pageSelector).find('[data-role="footer"]').outerHeight()));
+	});
+
+	$('a[data-tab][class="ui-btn-active"]').trigger("click");
+
+	// Set the variable $width to the width of our wrapper on page load
+
+
+
+});
+
+
 //var jsonString = '[   {      "name":"Camping Bungalows Adler",      "adresse":"Lidostraße 14",      "image":"http://www.campingsuedtirol.com/uploads/tx_wccamping/Camping_Via_Claudia_Augusta.jpg"   },   {      "name":"Camping Caravan Park Sexten",      "adresse":"St.-Josef-Str. 54<br\/>39030<br\/>Sexten\/Moos<br\/>Italy",      "image":"http://www.campingsuedtirol.com/uploads/tx_wccamping/Alpinfitness_Waldcamping_02.jpg"   }]';
 //var json = jQuery.parseJSON( jsonString );
 //var json = JSON.parse(jsonString);
 //localStorage.setItem("campingplaete", JSON.stringify(json));
+
+
+
 // Load the data for a specific category, based on
 // the URL passed in. Generate markup for the items in the
 // category, inject it into an embedded page, and then make
 // that page the current active page.
 function showItem(urlObj, options) {
-	Items = jQuery.parseJSON(localStorage.getItem("campingplaete"));
+	//Items = jQuery.parseJSON(localStorage.getItem("campingplaete"));
 	var itemID = urlObj.hash.replace(/.*id=/, "");
 
 	// Get the object that represents the category we
@@ -22,7 +139,7 @@ function showItem(urlObj, options) {
 	pageSelector = urlObj.hash.replace(/\?.*$/, "");
 
 	if (item) {
-		
+
 		// Get the page we are going to dump our content into.
 		var $page = $(pageSelector);
 
@@ -38,12 +155,12 @@ function showItem(urlObj, options) {
 		$content.find("h2").html(item.name);
 
 		// Kontakt
-		var col = '<b>'+item.name+'</b><br/>'+item.address+'<br/>'+item.zip+'<br/>'+item.country+'<br/><br/>'+
-		'Tel. <a href="tel:'+item.phone+'">'+item.phone+'</a><br/>Fax. '+item.fax+'<br/>e-Mail <a href="mailto:'+item.email+'">'+item.email+'</a><br/><a href="'+item.www+'">'+item.www+'</a>';
+		var col = '<b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.country + '<br/><br/>' +
+			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/>Fax. ' + item.fax + '<br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><a href="' + item.www + '">' + item.www + '</a>';
 		$content.find("#col-kontakt > p").html(col);
 
 		// ausstattung
-		$content.find("#col-equipment > p").html(item.equipment.join( " " ));
+		$content.find("#col-equipment > p").html(item.equipment.join(" "));
 
 		$content.find("#col-note > p").html(item.description);
 
@@ -52,21 +169,20 @@ function showItem(urlObj, options) {
 		//$content.find("#map > p").html('<a href="https://maps.google.at/maps?q='+item.lat+'+'+item.lng+'" target="_blank">Google Maps</a>');
 		//$content.find("#map > p").html('<div id="map_canvas" class="map"></div>');
 
-		$content.find("#map > p").html('<a href="https://maps.google.at/maps?q='+item.lat+','+item.lng+'('+item.name.split(' ').join('+')+')&num=1&z=17" rel="external" target="_blank">Google Map</a>');
+		$content.find("#map > p").html('<a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Google Map</a>');
 
 		//$content.find("#prices > tbody").html('');
 
-		var price = 'Erwachsene: '+item.adult_price+' &euro; '+item.adult_info+'<br />'+
-					'Kinder: '+item.kids_price+' &euro; '+item.kids_info+'<br />'+
-					'Auto: '+item.car_price+' &euro; '+item.car_info+'<br />'+
-					'Wohnanhänger: '+item.camper_price+' &euro; '+item.camper_info+'<br />'+
-					'Wohnmobil: '+item.caravan_price+' &euro; '+item.caravan_info+'<br />'+
-					'großes Zelt: '+item.marquee_price+' &euro; '+item.marquee_info+'<br />'+
-					'Zelt: '+item.tent_price+' &euro; '+item.tent_info+'<br />'+
-					'Motorrad: '+item.motorbike_price+' &euro; '+item.motorbike_info+'<br />'+
-					'Hunde: '+item.dogs_price+' &euro; '+item.dogs_info+'<br />'+
-					'Strom: '+item.electricity_price+' &euro; '+item.electricity_info+'<br />'
-					;
+		var price = 'Erwachsene: ' + item.adult_price + ' &euro; ' + item.adult_info + '<br />' +
+			'Kinder: ' + item.kids_price + ' &euro; ' + item.kids_info + '<br />' +
+			'Auto: ' + item.car_price + ' &euro; ' + item.car_info + '<br />' +
+			'Wohnanhänger: ' + item.camper_price + ' &euro; ' + item.camper_info + '<br />' +
+			'Wohnmobil: ' + item.caravan_price + ' &euro; ' + item.caravan_info + '<br />' +
+			'großes Zelt: ' + item.marquee_price + ' &euro; ' + item.marquee_info + '<br />' +
+			'Zelt: ' + item.tent_price + ' &euro; ' + item.tent_info + '<br />' +
+			'Motorrad: ' + item.motorbike_price + ' &euro; ' + item.motorbike_info + '<br />' +
+			'Hunde: ' + item.dogs_price + ' &euro; ' + item.dogs_info + '<br />' +
+			'Strom: ' + item.electricity_price + ' &euro; ' + item.electricity_info + '<br />';
 
 		$content.find("#col-price > p").html(price);
 		//$("#col-price > p > table").html("<tr><td>row content</td></tr>");
@@ -74,9 +190,9 @@ function showItem(urlObj, options) {
 
 
 		$content.find("#images > p").html("");
-		$.each( item.impressions, function( key, val ) {
+		$.each(item.impressions, function (key, val) {
 			//li ='<div class="ui-block-'+(key%2==0?'a':'b')+'"><a href="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'"><img src="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'" /></a></div>';
-			li ='<img width="100%" src="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'" /><br />';
+			li = '<img width="100%" src="data:image/jpg;base64,' + val + '" /><br />';
 			$content.find("#images > p").append(li);
 		});
 
@@ -111,12 +227,13 @@ function showItem(urlObj, options) {
 
 function showList() {
 	var json = jQuery.parseJSON(localStorage.getItem("campingplaete"));
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSR, fail);
 	//console.log( localStorage.getItem("campingplaete") );
 	//console.log( jQuery.parseJSON(localStorage.getItem("campingplaete")) );
 
 	$.each(json, function (i, item) {
 		//console.log(i + " - " + item.name);
-		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '">' + item.image + '<h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
+		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
 	});
 	$("#campingplatzelist").listview("refresh");
 
@@ -167,63 +284,6 @@ $('#home').bind("pageinit", function (e, data) {
 });
 */
 
-$(document).ready(function () {
 
-
-	if (navigator.onLine) {
-		// Online
-		
-
-		var jqxhr = $.getJSON("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1", function (data) {
-			localStorage.clear();
-			localStorage.setItem("campingplaete", JSON.stringify(data));
-			//console.log( jQuery.parseJSON(localStorage.getItem("campingplaete")) );
-			showList();
-			
-		})
-		.fail(function () {
-			console.log("error json load");
-		});
-
-	}
-	else {
-		showList();
-	}
-
-	/* Check localstorage
-	if (Modernizr.localstorage) {
-		//$( "#storageerror-link" ).trigger( "click" );
-	} else {
-		//$( "#popupLocalStorage" ).popup( "open" );
-	}*/
-
-
-
-
-	
-	
-	// Tabs
-	$('[data-role="navbar"] a').bind('click', function () {
-		//$('[data-role="navbar"] a').removeClass("ui-btn-active");
-		$('.tab-content').children().hide();
-		//console.log($('.tab-content').html());
-		$('#' + $(this).attr('data-tab')).show();
-		$("html,body").animate({
-			scrollTop: 0
-		}, 500);
-		$(this).addClass("ui-btn-active");
-		//var height = ($(window).height() - $(pageSelector).find('[data-role="header"]').height() - $(pageSelector).find('[data-role="footer"]').outerHeight());
-		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
-		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
-		//console.log("height: "+($(window).outerHeight()-$(pageSelector).children(":jqmData(role=header)").outerHeight()-$(pageSelector).find('[data-role="footer"]').outerHeight()));
-	});
-
-	$('a[data-tab][class="ui-btn-active"]').trigger("click");
-
-	// Set the variable $width to the width of our wrapper on page load
-	
-
-
-});
 
 // Google Map
