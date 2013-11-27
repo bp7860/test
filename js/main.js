@@ -11,7 +11,7 @@ function gotFileEntryW(fileEntry) {
 }
 
 function gotFileWriter(writer) {
-    writer.write(JSON.stringify();
+    writer.write(JSON.stringify());
 }
 
 function fail(error) {
