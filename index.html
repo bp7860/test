@@ -14,6 +14,7 @@
         <dl id="definitions">
  
         </dl>
+        <input value="Read" onclick="return readText();" />
     </body>
     <script src="phonegap.js"></script>
     <script src="cordova.js"></script>
@@ -81,6 +82,7 @@
         }
  
         function readText() {
+            $('definitions').innerHTML = '';
             if (file.entry) {
                 file.entry.file(function (dbFile) {
                     var reader = new FileReader();
