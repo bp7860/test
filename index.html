@@ -1,103 +1,37 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <form onsubmit="return saveText()">
-            <label for="name">Name</label><br>
-            <input id="name" /><br>
- 
-            <label for="desc">Description</label><br>
-            <input id="desc" /><br>
- 
-            <input type="submit" value="Save" />
-        </form>
- 
- 
-        <dl id="definitions">
- 
-        </dl>
-        <input value="Read" onclick="return readText();" type="button" />
-    </body>
-    <script src="phonegap.js"></script>
-    <script src="cordova.js"></script>
-    <script>
-        var FILENAME = 'database.db',
-            $ = function (id) {
-                return document.getElementById(id);
-            },
-            failCB = function (msg) {
-                return function () {
-                    alert('[FAIL] ' + msg);
-                }
-            },
-            file = {
-                writer: { available: false },
-                reader: { available: false }
-            },
-            dbEntries = [];
- 
-        document.addEventListener('deviceready', function () {
-            var fail = failCB('requestFileSystem');
-            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-        }, false);
- 
-        function gotFS(fs) {
-            var fail = failCB('getFile');
-            fs.root.getFile(FILENAME, {create: true, exclusive: false},
-                            gotFileEntry, fail);
-        }
- 
-        function gotFileEntry(fileEntry) {
-            var fail = failCB('createWriter');
-            file.entry = fileEntry;
- 
-            fileEntry.createWriter(gotFileWriter, fail);
-            readText();
-        }
- 
-        function gotFileWriter(fileWriter) {
-            file.writer.available = true;
-            file.writer.object = fileWriter;
-        }
- 
-        function saveText(e) {
-            var name = $('name').value,
-                desc = $('desc').value,
-                fail;
- 
-            dbEntries.push('<dt>' + name + '</dt><dd>' + desc + '</dd>')
-            $('name').value = '';
-            $('desc').value = '';
- 
-            $('definitions').innerHTML = dbEntries.join('');
- 
-            if (file.writer.available) {
-                file.writer.available = false;
-                file.writer.object.onwriteend = function (evt) {
-                    file.writer.available = true;
-                    file.writer.object.seek(0);
-                }
-                file.writer.object.write(dbEntries.join("\n"));
-            }
- 
-            return false;
-        }
- 
-        function readText() {
-            $('definitions').innerHTML = '';
-            if (file.entry) {
-                file.entry.file(function (dbFile) {
-                    var reader = new FileReader();
-                    reader.onloadend = function (evt) {
-                        var textArray = evt.target.result.split("\n");
- 
-                        dbEntries = textArray.concat(dbEntries);
- 
-                        $('definitions').innerHTML = dbEntries.join('');
-                    }
-                    reader.readAsText(dbFile);
-                }, failCB("FileReader"));
-            }
- 
-            return false;
-        }
-    </script>
+	<head>
+		<title>File Sample</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta charset="utf-8">
+		<link href="styles/main.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="scripts/fileHelper.js"></script>
+		<script type="text/javascript" charset="utf-8" src="scripts/main.js"></script>
+	</head>
+	<body>
+		<header class="header">
+			<h1>File Sample</h1>
+		</header>
+		<div class="content">
+            <div class="input-area ch30">
+                <input class="inputBox" id="fileNameInput" placeholder="File name"/>
+			    <input class="inputBox" id="textInput" placeholder="Text"/>
+            </div>
+			<div class="action-area ch30">
+                <button class="button" id="writeFileButton">Write</button>
+				<button class="button" id="readFileButton">Read</button>
+				<button class="button" id="deleteFileButton">Delete</button>
+			</div>
+			<div class="result-area ch40">
+				<div class="results">
+                    <div id="result" class="desc"></div>
+                </div>
+                <div class="separator"></div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div>Cordova API Samples</div>
+		</footer>
+	</body>
 </html>
