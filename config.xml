@@ -49,8 +49,7 @@
     <gap:platform name="android" />
 
     <!-- Plugins can also be added here. -->
-    <plugin name="File" value="org.apache.cordova.FileUtils" />
-    <plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />
+    <feature name="http://api.phonegap.com/1.0/file"/>
     <!--
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
