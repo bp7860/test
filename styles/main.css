@@ -182,7 +182,7 @@ body
 }
 .footer:before
 {
-	content: url(img/logo.png);
+	content: url(img/logo.jpg);
 	position: relative;
 	left: 12px;
     top:2px;
