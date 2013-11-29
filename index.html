@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>File Sample</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<meta charset="utf-8">
-		<link href="styles/main.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-		<script type="text/javascript" charset="utf-8" src="scripts/fileHelper.js"></script>
-		<script type="text/javascript" charset="utf-8" src="scripts/main.js"></script>
-	</head>
-	<body>
-		<header class="header">
-			<h1>File Sample</h1>
-		</header>
-		<div class="content">
-            <div class="input-area ch30">
-                <input class="inputBox" id="fileNameInput" placeholder="File name"/>
-			    <input class="inputBox" id="textInput" placeholder="Text"/>
-            </div>
-			<div class="action-area ch30">
-                <button class="button" id="writeFileButton">Write</button>
-				<button class="button" id="readFileButton">Read</button>
-				<button class="button" id="deleteFileButton">Delete</button>
-			</div>
-			<div class="result-area ch40">
-				<div class="results">
-                    <div id="result" class="desc"></div>
-                </div>
-                <div class="separator"></div>
-			</div>
+<head>
+	<title>File Sample</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta charset="utf-8">
+
+	<link href="styles/main.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/fileHelper.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/jquery.mobile-1.3.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/main.js"></script>
+
+</head>
+<body>
+	<!-- ////////////// Campingplaetze Liste /////////////////////////////////////////////////////////////////// -->
+
+	<div data-role="page" id="home" data-theme="b">
+		<div data-role="header">
+			<h2>Campingpl&auml;tze</h2>
 		</div>
-		<footer class="footer">
-			<div>Cordova API Samples</div>
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true" id="campingplatzelist" data-theme="a">
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed" data-theme="b">
+			<nav data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#services-page" data-icon="info">Service</a></li>
+				</ul>
+			</nav>
 		</footer>
-	</body>
+	</div>
+</body>
 </html>
