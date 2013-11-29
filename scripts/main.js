@@ -7,27 +7,24 @@ var fileName = 'camp.data';
 var Items = null;
 
 function onDeviceReady() {
-	var fileApp = new FileApp();
-
-	fileApp._readTextFromFile();
 	
 	$.ajax({
 		dataType: "json",
 		url: "res/full.json",
-			beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
-			complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
+			//beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
+			//complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
 			success: function(data) {
 				Data = data;
-
+				Items = jQuery.parseJSON(data);
 				//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSW, fail);
-				fileSystemHelper.writeLine(fileName, data, function() {}, function() {})
+				//fileSystemHelper.writeLine(fileName, data, function() {}, function() {})
 
 			//console.log( jQuery.parseJSON(localStorage.getItem("campingplaete")) );
 			showList();
 		}
 	});
 
-	navigator.splashscreen.hide();
+	//navigator.splashscreen.hide();
 }
 
 function showList() {
@@ -36,11 +33,6 @@ function showList() {
 	//console.log( localStorage.getItem("campingplaete") );
 	//console.log( jQuery.parseJSON(localStorage.getItem("campingplaete")) );
 
-	fileSystemHelper.readTextFromFile(fileName, 
-	function(value) {
-		Items = value;
-	},
-	 function() {} );
 
 	$.each(Items, function (i, item) {
 		//console.log(i + " - " + item.name);
@@ -49,3 +41,5 @@ function showList() {
 	$("#campingplatzelist").listview("refresh");
 
 }
+
+onDeviceReady();
