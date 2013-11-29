@@ -8,26 +8,11 @@ var Items = null;
 
 function onDeviceReady() {
 	
-	$.ajax({
-		dataType: "json",
-		url: "res/full.json",
-			//beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
-			//complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
-			success: function(data) {
-				Data = data;
-				Items = jQuery.parseJSON(data);
-				//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSW, fail);
-				//fileSystemHelper.writeLine(fileName, data, function() {}, function() {})
+	showList();
 
-			//console.log( jQuery.parseJSON(localStorage.getItem("campingplaete")) );
-			showList();
-		}
-	});
 
-	//navigator.splashscreen.hide();
-}
 
-function showList() {
+	function showList() {
 	//var json = jQuery.parseJSON(localStorage.getItem("campingplaete"));
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSR, fail);
 	//console.log( localStorage.getItem("campingplaete") );
