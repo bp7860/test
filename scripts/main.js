@@ -4,8 +4,27 @@ document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
-    navigator.splashscreen.hide();
 	var fileApp = new FileApp();
+
+	fileApp._readTextFromFile();
+	
+	$.ajax({
+		dataType: "json",
+		url: "res/full.json",
+		beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
+		complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
+		success: function(data) {
+			Data = data;
+
+			window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSW, fail);
+
+		//console.log( jQuery.parseJSON(localStorage.getItem("campingplaete")) );
+		showList();
+		}
+	});
+
+    navigator.splashscreen.hide();
+	
 	fileApp.run();
 }
 
@@ -16,6 +35,7 @@ FileApp.prototype = {
 	fileSystemHelper: null,
 	fileNameField: null,
 	textField: null,
+	fileName: null,
      
 	run: function() {
 		var that = this,
