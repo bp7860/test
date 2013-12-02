@@ -34,7 +34,7 @@ function _onSuccessW(value) {
 
 }
 function _onSuccessR(value) {
-	$('#status').html('value');
+	$('#status').html(value);
 	Items = jQuery.parseJSON(value);
 	
 }
