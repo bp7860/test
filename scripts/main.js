@@ -27,11 +27,6 @@ function onDeviceReady() {
 	} else {
 		showList();
 	}
-
-	
-    
-	
-
 	
 }
 
