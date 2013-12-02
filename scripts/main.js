@@ -34,14 +34,16 @@ function _onSuccessW(value) {
 
 }
 function _onSuccessR(value) {
-	Items = jQuery.parseJSON(value);
 	$('#status').html('value');
+	Items = jQuery.parseJSON(value);
+	
 }
 function _onError(error) {
 
 }
 
 function showList() {
+	$('#status').html('value1');
 	fileSystemHelper = new FileSystemHelper();
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 
