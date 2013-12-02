@@ -19,6 +19,7 @@ function onDeviceReady() {
 			beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
 			complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
 			success: function(data) {
+				$.mobile.hidePageLoadingMsg();
 				Data = data;
 				fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
 				showList();
@@ -28,9 +29,6 @@ function onDeviceReady() {
 	} else {
 		showList();
 	}
-
-	
-    navigator.splashscreen.hide();
 	
 
 	
