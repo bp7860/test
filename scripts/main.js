@@ -47,10 +47,6 @@ function _onError(error) {
 function showList() {
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 
-	$.each(Items, function (i, item) {
-		//console.log(i + " - " + item.name);
-		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
-	});
-	$("#campingplatzelist").listview("refresh");
+	$('#status').html('showlist');
 
 }
