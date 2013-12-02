@@ -10,7 +10,7 @@ function onDeviceReady() {
 		var notificationBox = document.getElementById("result");
 		notificationBox.innerText = value;
 	}
-	, that._onError);
+	, function(error) {});
 	var fileApp = new FileApp();
 	fileApp.run();
 }
