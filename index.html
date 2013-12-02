@@ -16,7 +16,123 @@
 
 	<!-- ////////////// Campingplaetze Liste /////////////////////////////////////////////////////////////////// -->
 
-	<div id="status"></div>
+	<div data-role="page" id="home" data-theme="b">
+		<div data-role="header">
+			<h2>Campingpl&auml;tze</h2>
+		</div>
+		<div data-role="content">
+			<ul data-role="listview" data-filter="true" id="campingplatzelist" data-theme="a">
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed" data-theme="b">
+			<nav data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#services-page" data-icon="info">Service</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</div>
+
+	<!-- ////////////// Details /////////////////////////////////////////////////////////////////// -->
+
+	<div data-role="page" id="campingplaetzedetails-page" data-theme="b">
+		<div data-role="header">
+			<h1>Details</h1>
+			<a href="#home" data-icon="home" class="ui-btn-right" rel="external" data-iconpos="notext" style="background: #848274;">Home</a>
+		</div>
+		<div data-role="content">
+			<h2></h2>
+			<div data-role="navbar">
+				<ul>
+					<li><a data-tab="info" class="ui-btn-active">Information</a></li>
+					<li><a data-tab="images">Impressionen</a></li>
+					<li><a data-tab="map">Anfahrt</a></li>
+				</ul>
+			</div>
+
+			<div class="tab-content">
+				<div id="info">
+					<div data-role="collapsible-set">
+						<div data-role="collapsible" data-mini="true" id="col-kontakt">
+							<h3>Kontakt</h3>
+							<p></p>
+						</div>
+						<div data-role="collapsible" data-mini="true" id="col-equipment">
+							<h3>Ausstattung</h3>
+							<p></p>
+						</div>
+						<div data-role="collapsible" data-mini="true" id="col-note">
+							<h3>Anmerkung</h3>
+							<p></p>
+						</div>
+						<div data-role="collapsible" data-mini="true" id="col-price">
+							<h3>Preise</h3>
+							<p>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div id="images" style="display:none;">
+					<p>
+						
+					</p>
+				</div>
+				<div id="map" style="display:none;">
+					<p></p>
+				</div>
+			</div>
+		</div>
+		<footer data-role="footer" data-position="fixed" data-theme="b">
+			<nav data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#services-page" data-icon="info">Service</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</div>
+
+
+	<!-- ////////////// Services /////////////////////////////////////////////////////////////////// -->
+
+	<div data-role="page" id="services-page" data-theme="b">
+		<div data-role="header">
+			<h2>Service</h2>
+			<a href="#home" data-icon="back" class="ui-btn-right" rel="external" data-iconpos="notext" style="background: #848274;">Back</a>
+		</div>
+		<div data-role="content">
+			<div data-role="collapsible-set" data-inset="false">
+				<div data-role="collapsible" data-expanded-icon="info">
+					<h2>Impressum</h2>
+					<p>
+						<h3>VCS Vereinigung der Campingplatzbetreiber Südtirols</h3>
+						MwSt.Nr und Steuernr. / Cod. Fisc. + Part. IVA : 01701300210<br />
+						info@campingsuedtirol.com<br />
+						I-39100 Bozen/Bolzano<br />
+						Moritzinger Weg 83/Via S. Maurizio 83
+					</p>
+				</div>
+				<div data-role="collapsible" data-expanded-icon="info">
+					<h2>Partner</h2>
+					<p>
+						<ul data-role="listview">
+							<li data-mini="true"><a rel="external" href="http://www.derfreistaat.de/" target="_blank">www.derfreistaat.de</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.glueck-freizeitmarkt.de/" target="_blank">www.glueck-freizeitmarkt.de</a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+		<footer data-role="footer" data-position="fixed" data-theme="b">
+			<nav data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#services-page" class="ui-btn-active ui-state-persist" data-icon="info">Service</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</div>
 
 	<script type="text/javascript" charset="utf-8" src="scripts/fileHelper.js"></script>
 	<script type="text/javascript" charset="utf-8" src="scripts/jquery.js"></script>
