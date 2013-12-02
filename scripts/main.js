@@ -6,11 +6,21 @@ document.addEventListener("touchstart", function() {}, false);
 function onDeviceReady() {
    fileSystemHelper.writeLine('readme.txt', 'text1', 
    	function() {$('status').html('Geschrieben')}, function() {});
-   alert('test');
+
+   navigator.notification.alert(
+        'test',  // message
+        alertDismissed,         // callback
+    );
 }
 
 function FileApp() {
 }
+
+// alert dialog dismissed
+function alertDismissed() {
+    // do something
+}
+
 
 FileApp.prototype = {
 	fileSystemHelper: null,
