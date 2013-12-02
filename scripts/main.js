@@ -5,13 +5,8 @@ document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
     navigator.splashscreen.hide();
-    fileSystemHelper.writeLine(document.getElementById("fileNameInput").value, 'TEST1',
-    	function(value) {
-		var notificationBox = document.getElementById("result");
-		notificationBox.innerText = value;
-	}
-	, function(error) {});
 	var fileApp = new FileApp();
+	fileSystemHelper.writeLine(document.getElementById("fileNameInput").value, 'TEST1',fileApp._onSuccess(),fileApp._onError() );
 	fileApp.run();
 }
 
