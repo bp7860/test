@@ -7,7 +7,7 @@ function onDeviceReady() {
 	fileSystemHelper = new FileSystemHelper();
     navigator.splashscreen.hide();
 	var fileApp = new FileApp();
-	fileSystemHelper.writeLine(document.getElementById("fileNameInput").value, document.getElementById("textInput").value,fileApp._onSuccess(),fileApp._onError() );
+	fileSystemHelper.writeLine(document.getElementById("fileNameInput").value, 'test',fileApp._onSuccess(),fileApp._onError() );
 	fileApp.run();
 }
 
