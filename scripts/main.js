@@ -8,7 +8,6 @@ document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
 
-	var fileSystemHelper = new FileSystemHelper();
 
 
 	if (navigator.onLine) {
@@ -21,6 +20,7 @@ function onDeviceReady() {
 			success: function(data) {
 				$.mobile.hidePageLoadingMsg();
 				Data = data;
+				fileSystemHelper = new FileSystemHelper();
 				fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
 				showList();
 			}
@@ -45,6 +45,7 @@ function _onError(error) {
 }
 
 function showList() {
+	fileSystemHelper = new FileSystemHelper();
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 
 	$('#status').html('showlist');
