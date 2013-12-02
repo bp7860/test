@@ -6,6 +6,7 @@ document.addEventListener("touchstart", function() {}, false);
 function onDeviceReady() {
    fileSystemHelper.writeLine('readme.txt', 'text1', 
    	function() {$('status').html('Geschrieben')}, function() {});
+   alert('test');
 }
 
 function FileApp() {
