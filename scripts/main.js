@@ -6,110 +6,13 @@ document.addEventListener("touchstart", function() {}, false);
 function onDeviceReady() {
 	fileSystemHelper = new FileSystemHelper();
     navigator.splashscreen.hide();
-	var fileApp = new FileApp();
-	fileSystemHelper.writeLine(document.getElementById("fileNameInput").value, 'test',fileApp._onSuccess,fileApp._onError );
-	fileApp.run();
+	fileSystemHelper.writeLine( document.getElementById("fileNameInput").value, 'test', _onSuccess, _onError );
 }
 
-function FileApp() {
+function _onSuccess(value) {
+	var notificationBox = document.getElementById("result");
+	notificationBox.innerText = value;
 }
+function _onError(error) {
 
-FileApp.prototype = {
-	fileSystemHelper: null,
-	fileNameField: null,
-	textField: null,
-     
-	run: function() {
-		var that = this,
-    		writeFileButton = document.getElementById("writeFileButton"),
-    		readFileButton = document.getElementById("readFileButton"),
-    		deleteFileButton = document.getElementById("deleteFileButton");
-        
-		that.fileNameField = document.getElementById("fileNameInput");
-		that.textField = document.getElementById("textInput");
-
-		//that._writeTextToFile.call(that); 
-        
-		writeFileButton.addEventListener("click",
-										 function() { 
-											 that._writeTextToFile.call(that); 
-										 });
-        
-		readFileButton.addEventListener("click",
-										function() {
-											that._readTextFromFile.call(that);
-										});
-        
-		deleteFileButton.addEventListener("click",
-										  function() {
-											  that._deleteFile.call(that)
-										  });
-        
-		
-	},
-    
-	_deleteFile: function () {
-		var that = this,
-		    fileName = that.fileNameField.value;
-        
-		if (that._isValidFileName(fileName)) {
-			fileSystemHelper.deleteFile(fileName, that._onSuccess, that._onError);
-		}
-		else {
-			var error = { code: 44, message: "Invalid filename"};
-			that._onError(error);
-		}
-	},
-    
-	_readTextFromFile: function() {
-		var that = this,
-		    fileName = that.fileNameField.value;
-        
-		if (that._isValidFileName(fileName)) {
-			fileSystemHelper.readTextFromFile(fileName, that._onSuccess, that._onError);
-		}
-		else {
-			var error = { code: 44, message: "Invalid filename"};
-			that._onError(error);
-		}
-	},
-    
-	_writeTextToFile: function() {
-		var that = this,
-    		fileName = that.fileNameField.value,
-    		text = that.textField.value;
-
-		if (that._isValidFileName(fileName)) {
-			fileSystemHelper.writeLine(fileName, text, that._onSuccess, that._onError)
-		}
-		else {
-			var error = { code: 44, message: "Invalid filename"};
-			that._onError(error);
-		}
-	},
-    
-	_onSuccess: function(value) {
-		var notificationBox = document.getElementById("result");
-		notificationBox.innerText = value;
-	},
-    
-	_onError: function(error) {
-
-		var errorCodeDiv = document.createElement("div"),
-    		errorMessageDiv = document.createElement("div"),
-    		notificationBox = document.getElementById("result");
-
-		errorCodeDiv.innerText = "Error code: " + error.code;
-		errorMessageDiv.innerText = "Message: " + error.message;
-        
-		notificationBox.innerHTML = "";
-		notificationBox.appendChild(errorCodeDiv);
-		notificationBox.appendChild(errorMessageDiv);
-	},
-    
-	_isValidFileName: function(fileName) {
-		//var patternFileName = /^[\w]+\.[\w]{1,5}$/;
-
-		return fileName.length > 2;
-	}
 }
