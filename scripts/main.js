@@ -1,87 +1,110 @@
-// Wait for Cordova to load
-//
+//NOTE: Cordova File api has some issues with file reading in iOS 6
 document.addEventListener("deviceready", onDeviceReady, false);
+//Activate :active state
+document.addEventListener("touchstart", function() {}, false);
 
-// Cordova is ready
-//
 function onDeviceReady() {
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+   fileSystemHelper.writeLine('readme.txt', 'text1', 
+   	function() {$('status').html('Geschrieben')}, function() {});
 }
 
-function gotFS(fileSystem) {
-	fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+function FileApp() {
 }
 
-function gotFileEntry(fileEntry) {
-	fileEntry.createWriter(gotFileWriter, fail);
-}
+FileApp.prototype = {
+	fileSystemHelper: null,
+	fileNameField: null,
+	textField: null,
+     
+	run: function() {
+		var that = this,
+    		writeFileButton = document.getElementById("writeFileButton"),
+    		readFileButton = document.getElementById("readFileButton"),
+    		deleteFileButton = document.getElementById("deleteFileButton");
+        
+		that.fileNameField = document.getElementById("fileNameInput");
+		that.textField = document.getElementById("textInput");
+        
+		writeFileButton.addEventListener("click",
+										 function() { 
+											 that._writeTextToFile.call(that); 
+										 });
+        
+		readFileButton.addEventListener("click",
+										function() {
+											that._readTextFromFile.call(that);
+										});
+        
+		deleteFileButton.addEventListener("click",
+										  function() {
+											  that._deleteFile.call(that)
+										  });
+        
+		fileSystemHelper = new FileSystemHelper();
+	},
+    
+	_deleteFile: function () {
+		var that = this,
+		    fileName = that.fileNameField.value;
+        
+		if (that._isValidFileName(fileName)) {
+			fileSystemHelper.deleteFile(fileName, that._onSuccess, that._onError);
+		}
+		else {
+			var error = { code: 44, message: "Invalid filename"};
+			that._onError(error);
+		}
+	},
+    
+	_readTextFromFile: function() {
+		var that = this,
+		    fileName = that.fileNameField.value;
+        
+		if (that._isValidFileName(fileName)) {
+			fileSystemHelper.readTextFromFile(fileName, that._onSuccess, that._onError);
+		}
+		else {
+			var error = { code: 44, message: "Invalid filename"};
+			that._onError(error);
+		}
+	},
+    
+	_writeTextToFile: function() {
+		var that = this,
+    		fileName = that.fileNameField.value,
+    		text = that.textField.value;
 
-function gotFileWriter(writer) {
-	writer.onwriteend = function(evt) {
-		console.log("contents of file now 'some sample text'");
-		writer.truncate(11);  
-		writer.onwriteend = function(evt) {
-			console.log("contents of file now 'some sample'");
-			writer.seek(4);
-			writer.write(" different text");
-			writer.onwriteend = function(evt){
-				console.log("contents of file now 'some different text'");
-			}
-		};
-	};
-	writer.write("some sample text");
-}
+		if (that._isValidFileName(fileName)) {
+			
+		}
+		else {
+			var error = { code: 44, message: "Invalid filename"};
+			that._onError(error);
+		}
+	},
+    
+	_onSuccess: function(value) {
+		var notificationBox = document.getElementById("result");
+		notificationBox.innerText = value;
+	},
+    
+	_onError: function(error) {
 
-function fail(error) {
-	console.log(error.code);
-}
+		var errorCodeDiv = document.createElement("div"),
+    		errorMessageDiv = document.createElement("div"),
+    		notificationBox = document.getElementById("result");
 
+		errorCodeDiv.innerText = "Error code: " + error.code;
+		errorMessageDiv.innerText = "Message: " + error.message;
+        
+		notificationBox.innerHTML = "";
+		notificationBox.appendChild(errorCodeDiv);
+		notificationBox.appendChild(errorMessageDiv);
+	},
+    
+	_isValidFileName: function(fileName) {
+		//var patternFileName = /^[\w]+\.[\w]{1,5}$/;
 
-
-
-// Wait for Cordova to load
-//
-function onLoad() {
-	document.addEventListener("deviceready", onDeviceReady, false);
-}
-
-// Cordova is ready
-//
-function onDeviceReady() {
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-}
-
-function gotFS(fileSystem) {
-	fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
-}
-
-function gotFileEntry(fileEntry) {
-	fileEntry.file(gotFile, fail);
-}
-
-function gotFile(file){
-	readDataUrl(file);
-	readAsText(file);
-}
-
-function readDataUrl(file) {
-	var reader = new FileReader();
-	reader.onloadend = function(evt) {
-		console.log("Read as data URL");
-		console.log(evt.target.result);
-	};
-	reader.readAsDataURL(file);
-}
-
-function readAsText(file) {
-	var reader = new FileReader();
-	reader.onloadend = function(evt) {
-		console.log("Read as text");
-		console.log(evt.target.result);
-	};
-	reader.readAsText(file);
-}
-
-function fail(evt) {
-	console.log(evt.target.error.code);
+		return fileName.length > 2;
+	}
 }
