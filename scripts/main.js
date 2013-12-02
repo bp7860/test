@@ -18,7 +18,7 @@ function onDeviceReady() {
 			complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
 			success: function(data) {
 				fileSystemHelper = new FileSystemHelper();
-				fileSystemHelper.writeLine( 'json.txt', JSON.stringify(data), _onSuccessW, _onError );
+				fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
 				$.mobile.hidePageLoadingMsg();
 				showList();
 			}
