@@ -7,6 +7,8 @@ function onDeviceReady() {
 	fileSystemHelper = new FileSystemHelper();
     navigator.splashscreen.hide();
 	fileSystemHelper.writeLine( document.getElementById("fileNameInput").value, 'test', _onSuccess, _onError );
+
+	fileSystemHelper.readTextFromFile( document.getElementById("fileNameInput").value, _onSuccess, _onError);
 }
 
 function _onSuccess(value) {
