@@ -4,9 +4,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
+	fileSystemHelper = new FileSystemHelper();
     navigator.splashscreen.hide();
 	var fileApp = new FileApp();
-	//fileSystemHelper.writeLine(document.getElementById("fileNameInput").value, document.getElementById("textInput").value,fileApp._onSuccess(),fileApp._onError() );
+	fileSystemHelper.writeLine(document.getElementById("fileNameInput").value, document.getElementById("textInput").value,fileApp._onSuccess(),fileApp._onError() );
 	fileApp.run();
 }
 
@@ -27,7 +28,7 @@ FileApp.prototype = {
 		that.fileNameField = document.getElementById("fileNameInput");
 		that.textField = document.getElementById("textInput");
 
-		that._writeTextToFile.call(that); 
+		//that._writeTextToFile.call(that); 
         
 		writeFileButton.addEventListener("click",
 										 function() { 
@@ -44,7 +45,7 @@ FileApp.prototype = {
 											  that._deleteFile.call(that)
 										  });
         
-		fileSystemHelper = new FileSystemHelper();
+		
 	},
     
 	_deleteFile: function () {
