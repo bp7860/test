@@ -20,6 +20,7 @@ function onDeviceReady() {
 				Data = data;
 				fileSystemHelper = new FileSystemHelper();
 				fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
+				$.mobile.hidePageLoadingMsg();
 				showList();
 			}
 		});
@@ -40,6 +41,11 @@ function _onSuccessW(value) {
 }
 function _onSuccessR(value) {
 	Items = jQuery.parseJSON(value);
+	$.each(Items, function (i, item) {
+		//console.log(i + " - " + item.name);
+		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
+	});
+	$("#campingplatzelist").listview("refresh");
 }
 function _onError(error) {
 
@@ -48,11 +54,5 @@ function _onError(error) {
 function showList() {
 	fileSystemHelper = new FileSystemHelper();
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
-
-	$.each(Items, function (i, item) {
-		//console.log(i + " - " + item.name);
-		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
-	});
-	$("#campingplatzelist").listview("refresh");
 
 }
