@@ -4,6 +4,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
+	$('status2').html('Ready');
    fileSystemHelper.writeLine('readme.txt', 'text1', 
    	function() {$('status').html('Geschrieben');}, function() {});
 
@@ -29,111 +30,4 @@ function onDeviceReady() {
        }, function (error) {
                alert(error.code);
        });
-}
-
-function FileApp() {
-}
-
-// alert dialog dismissed
-function alertDismissed() {
-    // do something
-}
-
-
-FileApp.prototype = {
-	fileSystemHelper: null,
-	fileNameField: null,
-	textField: null,
-     
-	run: function() {
-		var that = this,
-    		writeFileButton = document.getElementById("writeFileButton"),
-    		readFileButton = document.getElementById("readFileButton"),
-    		deleteFileButton = document.getElementById("deleteFileButton");
-        
-		that.fileNameField = document.getElementById("fileNameInput");
-		that.textField = document.getElementById("textInput");
-        
-		writeFileButton.addEventListener("click",
-										 function() { 
-											 that._writeTextToFile.call(that); 
-										 });
-        
-		readFileButton.addEventListener("click",
-										function() {
-											that._readTextFromFile.call(that);
-										});
-        
-		deleteFileButton.addEventListener("click",
-										  function() {
-											  that._deleteFile.call(that)
-										  });
-        
-		fileSystemHelper = new FileSystemHelper();
-	},
-    
-	_deleteFile: function () {
-		var that = this,
-		    fileName = that.fileNameField.value;
-        
-		if (that._isValidFileName(fileName)) {
-			fileSystemHelper.deleteFile(fileName, that._onSuccess, that._onError);
-		}
-		else {
-			var error = { code: 44, message: "Invalid filename"};
-			that._onError(error);
-		}
-	},
-    
-	_readTextFromFile: function() {
-		var that = this,
-		    fileName = that.fileNameField.value;
-        
-		if (that._isValidFileName(fileName)) {
-			fileSystemHelper.readTextFromFile(fileName, that._onSuccess, that._onError);
-		}
-		else {
-			var error = { code: 44, message: "Invalid filename"};
-			that._onError(error);
-		}
-	},
-    
-	_writeTextToFile: function() {
-		var that = this,
-    		fileName = that.fileNameField.value,
-    		text = that.textField.value;
-
-		if (that._isValidFileName(fileName)) {
-			
-		}
-		else {
-			var error = { code: 44, message: "Invalid filename"};
-			that._onError(error);
-		}
-	},
-    
-	_onSuccess: function(value) {
-		var notificationBox = document.getElementById("result");
-		notificationBox.innerText = value;
-	},
-    
-	_onError: function(error) {
-
-		var errorCodeDiv = document.createElement("div"),
-    		errorMessageDiv = document.createElement("div"),
-    		notificationBox = document.getElementById("result");
-
-		errorCodeDiv.innerText = "Error code: " + error.code;
-		errorMessageDiv.innerText = "Message: " + error.message;
-        
-		notificationBox.innerHTML = "";
-		notificationBox.appendChild(errorCodeDiv);
-		notificationBox.appendChild(errorMessageDiv);
-	},
-    
-	_isValidFileName: function(fileName) {
-		//var patternFileName = /^[\w]+\.[\w]{1,5}$/;
-
-		return fileName.length > 2;
-	}
 }
