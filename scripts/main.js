@@ -39,7 +39,7 @@ function _onSuccessR(value) {
 	
 }
 function _onError(error) {
-
+	$('#status').html('error: '+error);
 }
 
 function showList() {
