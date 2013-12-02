@@ -35,11 +35,7 @@ function _onSuccessW(value) {
 }
 function _onSuccessR(value) {
 	Items = jQuery.parseJSON(value);
-	$.each(Items, function (i, item) {
-		//console.log(i + " - " + item.name);
-		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
-	});
-	$("#campingplatzelist").listview("refresh");
+	$('#status').html(value);
 }
 function _onError(error) {
 
