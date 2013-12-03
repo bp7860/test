@@ -8,6 +8,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
+	readFileButton.addEventListener("click",
+		function() {
+			fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
+		});
 		// Online
 		$.ajax({
 			dataType: "json",
@@ -25,7 +29,7 @@ function onDeviceReady() {
 function _onSuccessAjax(data) {
 	
 	fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
-	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
+	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
 	$.mobile.hidePageLoadingMsg();
 	showList();
 }	
@@ -49,3 +53,5 @@ function showList() {
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 
 }
+
+
