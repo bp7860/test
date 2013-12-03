@@ -30,7 +30,7 @@ function _onSuccessAjax(data) {
 	}
 
 function _onSuccessW(value) {
-
+	$('#status').html(value);
 }
 function _onSuccessR(value) {
 	$('#status').html(value);
