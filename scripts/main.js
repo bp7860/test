@@ -11,7 +11,7 @@ function onDeviceReady() {
 		dataType: "json",
 		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
 		success: function(data) {
-			fileSystemHelper.deleteFile('json.txt', _onSuccess, _onError);
+			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
 			console.log('_onSuccessAjax');
 			fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
 			showList();
@@ -21,6 +21,9 @@ function onDeviceReady() {
 
 
 function _onSuccessW(value) {
+	console.log('_onSuccessW'+value);
+}
+function _onSuccessD(value) {
 	console.log('_onSuccessW'+value);
 }
 
