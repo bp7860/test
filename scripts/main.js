@@ -13,7 +13,7 @@ function onDeviceReady() {
 		success: function(data) {
 			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
 			console.log('_onSuccessAjax');
-			fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
+			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(data), _onSuccessW, _onError );
 			showList();
 		}
 	});
