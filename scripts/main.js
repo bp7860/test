@@ -1,5 +1,6 @@
 
 var Items = null;
+var fileSystemHelper = new FileSystemHelper();
 
 //NOTE: Cordova File api has some issues with file reading in iOS 6
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -7,9 +8,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
-
-
-	if (navigator.onLine) {
 		// Online
 		$.ajax({
 			dataType: "json",
@@ -17,18 +15,19 @@ function onDeviceReady() {
 			beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
 			complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
 			success: function(data) {
-				fileSystemHelper = new FileSystemHelper();
-				fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
-				$.mobile.hidePageLoadingMsg();
-				showList();
+				_onSuccessAjax(data);
 			}
 		});
 
-	} else {
-		showList();
-	}
 	
 }
+
+function _onSuccessAjax(data) {
+	
+	fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
+	$.mobile.hidePageLoadingMsg();
+	showList();
+	}
 
 function _onSuccessW(value) {
 
@@ -44,7 +43,6 @@ function _onError(error) {
 
 function showList() {
 	$('#status').html('value1');
-	fileSystemHelper = new FileSystemHelper();
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 
 }
