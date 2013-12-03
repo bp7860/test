@@ -28,11 +28,12 @@ function onDeviceReady() {
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
 }
 
-function _onSuccessRF(value) { 
+function _onSuccessRF(value) {
 	//console.log('_onSuccessW'+value);
+	showList();
 }
 
-function _onErrorRF(value) { 
+function _onErrorRF(value) {
 	$.ajax({
 		dataType: "json",
 		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
