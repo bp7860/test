@@ -29,15 +29,10 @@ function onDeviceReady() {
 function _onSuccessAjax(data) {
 	
 	fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
-	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
-	$.mobile.hidePageLoadingMsg();
-	showList();
 }	
 
 function _onSuccessW(value) {
 	console.log('_onSuccessW'+value);
-	$('#status').html('write');
-	$('#status').html(value);
 }
 function _onSuccessR(value) {
 	//$('#status').html('read');
