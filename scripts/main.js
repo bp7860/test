@@ -8,6 +8,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
+	console.log('onDeviceReady');
 	readFileButton.addEventListener("click",
 		function() {
 			fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
@@ -19,6 +20,7 @@ function onDeviceReady() {
 			beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
 			complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
 			success: function(data) {
+				console.log('_onSuccessAjax');
 				_onSuccessAjax(data);
 			}
 		});
@@ -35,17 +37,20 @@ function _onSuccessAjax(data) {
 }	
 
 function _onSuccessW(value) {
+	console.log('_onSuccessW'+value);
 	$('#status').html('write');
 	$('#status').html(value);
 }
 function _onSuccessR(value) {
 	//$('#status').html('read');
-	$('#status').html(value);
+	//$('#status').html(value);
+	console.log('_onSuccessR'+value);
 	//Items = jQuery.parseJSON(value);
 	
 }
 function _onError(error) {
-	$('#status').html('error: '+error);
+	//$('#status').html('error: '+error);
+	console.log('_onError'+error);
 }
 
 function showList() {
