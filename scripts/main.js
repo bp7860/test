@@ -33,7 +33,7 @@ function _onSuccessR(value) {
 
 function _onError(error) {
 	//$('#status').html('error: '+error);
-	console.log('_onError'+error);
+	console.log('_onError');
 }
 
 function showList() {
