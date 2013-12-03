@@ -36,12 +36,12 @@ function _onSuccessW(value) {
 }
 function _onSuccessR(value) {
 	$('#status').html('read');
-	$('#status').html(value);
+	//$('#status').html(value);
 	//Items = jQuery.parseJSON(value);
 	
 }
 function _onError(error) {
-	$('#status').html('error: '+error);
+	//$('#status').html('error: '+error);
 }
 
 function showList() {
