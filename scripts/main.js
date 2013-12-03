@@ -55,6 +55,9 @@ function showList() {
 
 }
 
+
+
+
 // Listen for any attempts to call changePage().
 $(document).bind("pagebeforechange", function (e, data) {
 
@@ -84,7 +87,8 @@ $(document).bind("pagebeforechange", function (e, data) {
 			// We're being asked to display the items for a specific category.
 			// Call our internal method that builds the content for the category
 			// on the fly based on our in-memory category data structure.
-			showItem(u, data.options);
+			//showItem(u, data.options);
+			console.log('showitem');
 
 			// Make sure to tell changePage() we've handled this call so it doesn't
 			// have to do anything.
