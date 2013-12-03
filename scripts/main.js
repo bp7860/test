@@ -155,10 +155,10 @@ function showItem(urlObj, options) {
 
 		// ausstattung
 		var tmp = null;
-		$.each(item.impressions, function (key, val) {
-			tmp+='<img width="100%" src="data:image/jpg;base64,' + val + '" /> ';
+		$.each(item.equipment, function (key, val) {
+			tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
 		});
-		$content.find("#col-equipment > p").html(item.equipment.join(" "));
+		$content.find("#col-equipment > p").html(tmp);
 
 		$content.find("#col-note > p").html(item.description);
 
