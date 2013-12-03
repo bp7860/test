@@ -13,15 +13,7 @@ function onDeviceReady() {
 		function() {
 			fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
 		});
-		// Online
-		$.ajax({
-			dataType: "json",
-			url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
-			success: function(data) {
-				console.log('_onSuccessAjax');
-				_onSuccessAjax(data);
-			}
-		});
+		fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
 
 	
 }
