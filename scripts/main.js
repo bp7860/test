@@ -9,7 +9,8 @@ document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
 	console.log('onDeviceReady');
-		fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
+	$('#status').html('ready');
+	fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
 }
 
 function _onSuccessAjax(data) {
