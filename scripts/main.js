@@ -7,18 +7,6 @@ function init() {
 }
 
 function onDeviceReady() {
-	$.ajax({
-		dataType: "json",
-		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
-		beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
-		complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
-		success: function(data) {
-			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
-			console.log('_onSuccessAjax');
-			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(data), _onSuccessW, _onError );
-			showList();
-		}
-	});
 	// Tabs
 	$('[data-role="navbar"] a').bind('click', function () {
 		//$('[data-role="navbar"] a').removeClass("ui-btn-active");
@@ -36,6 +24,20 @@ function onDeviceReady() {
 	});
 
 	$('a[data-tab][class="ui-btn-active"]').trigger("click");
+
+	$.ajax({
+		dataType: "json",
+		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
+		beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
+		complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
+		success: function(data) {
+			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
+			console.log('_onSuccessAjax');
+			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(data), _onSuccessW, _onError );
+			showList();
+		}
+	});
+
 }
 
 
@@ -152,6 +154,10 @@ function showItem(urlObj, options) {
 		$content.find("#col-kontakt > p").html(col);
 
 		// ausstattung
+		var tmp = null;
+		$.each(item.impressions, function (key, val) {
+			tmp+='<img width="100%" src="data:image/jpg;base64,' + val + '" /> ';
+		});
 		$content.find("#col-equipment > p").html(item.equipment.join(" "));
 
 		$content.find("#col-note > p").html(item.description);
