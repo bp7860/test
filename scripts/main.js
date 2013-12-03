@@ -25,6 +25,14 @@ function onDeviceReady() {
 
 	$('a[data-tab][class="ui-btn-active"]').trigger("click");
 
+	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
+}
+
+function _onSuccessRF(value) { 
+	//console.log('_onSuccessW'+value);
+}
+
+function _onErrorRF(value) { 
 	$.ajax({
 		dataType: "json",
 		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
@@ -37,7 +45,6 @@ function onDeviceReady() {
 			showList();
 		}
 	});
-
 }
 
 
