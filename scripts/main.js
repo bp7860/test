@@ -45,12 +45,12 @@ function _onSuccessR(value) {
 	
 }
 function _onError(error) {
-	//$('#status').html('error: '+error);
+	$('#status').html('error: '+error);
 }
 
 function showList() {
 	//$('#status').html('value1');
-	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
+	//fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 
 }
 
