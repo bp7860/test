@@ -20,7 +20,7 @@ function onDeviceReady() {
 }
 
 
-function _onSuccessW(value) {
+function _onSuccessW(value) { 
 	console.log('_onSuccessW'+value);
 }
 function _onSuccessD(value) {
