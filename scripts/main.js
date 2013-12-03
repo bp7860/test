@@ -19,6 +19,23 @@ function onDeviceReady() {
 			showList();
 		}
 	});
+	// Tabs
+	$('[data-role="navbar"] a').bind('click', function () {
+		//$('[data-role="navbar"] a').removeClass("ui-btn-active");
+		$('.tab-content').children().hide();
+		//console.log($('.tab-content').html());
+		$('#' + $(this).attr('data-tab')).show();
+		$("html,body").animate({
+			scrollTop: 0
+		}, 500);
+		$(this).addClass("ui-btn-active");
+		//var height = ($(window).height() - $(pageSelector).find('[data-role="header"]').height() - $(pageSelector).find('[data-role="footer"]').outerHeight());
+		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
+		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
+		//console.log("height: "+($(window).outerHeight()-$(pageSelector).children(":jqmData(role=header)").outerHeight()-$(pageSelector).find('[data-role="footer"]').outerHeight()));
+	});
+
+	$('a[data-tab][class="ui-btn-active"]').trigger("click");
 }
 
 
