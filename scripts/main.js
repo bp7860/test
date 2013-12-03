@@ -9,33 +9,27 @@ document.addEventListener("touchstart", function() {}, false);
 
 function onDeviceReady() {
 	console.log('onDeviceReady');
-	readFileButton.addEventListener("click",
-		function() {
-			fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
-		});
 		fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
-
-	
 }
 
 function _onSuccessAjax(data) {
 	
 	fileSystemHelper.writeLine( 'json.txt', 'test', _onSuccessW, _onError );
-}	
+}
 
 function _onSuccessW(value) {
-	console.log('_onSuccessW'+value);
+	console.log('_onSuccessW');
 }
 function _onSuccessR(value) {
 	//$('#status').html('read');
 	//$('#status').html(value);
-	console.log('_onSuccessR'+value);
+	console.log('_onSuccessR');
 	//Items = jQuery.parseJSON(value);
 	
 }
 function _onError(error) {
 	//$('#status').html('error: '+error);
-	console.log('_onError'+error);
+	console.log('_onError');
 }
 
 function showList() {
