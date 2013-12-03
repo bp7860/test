@@ -31,9 +31,11 @@ function _onSuccessAjax(data) {
 }	
 
 function _onSuccessW(value) {
+	$('#status').html('write');
 	$('#status').html(value);
 }
 function _onSuccessR(value) {
+	$('#status').html('read');
 	$('#status').html(value);
 	//Items = jQuery.parseJSON(value);
 	
@@ -43,7 +45,7 @@ function _onError(error) {
 }
 
 function showList() {
-	$('#status').html('value1');
+	//$('#status').html('value1');
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 
 }
