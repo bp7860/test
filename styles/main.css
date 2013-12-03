@@ -12,5 +12,17 @@
 	background-repeat: repeat-x;
 	height: 109px;
 	width: 100%;
+	margin-bottom: 20px;
+}
+.header img {
 	margin: auto;
+	display: block;
+	padding-top: 10px;
+}
+
+.header_text {
+	color: #1d4d8e;
+	margin-bottom: 20px;
+	margin-left: 20%;
+	border-bottom: 3px #f5b113 solid;
 }
