@@ -9,18 +9,12 @@ function init() {
 function onDeviceReady() {
 	// Tabs
 	$('[data-role="navbar"] a').bind('click', function () {
-		//$('[data-role="navbar"] a').removeClass("ui-btn-active");
 		$('.tab-content').children().hide();
-		//console.log($('.tab-content').html());
 		$('#' + $(this).attr('data-tab')).show();
 		$("html,body").animate({
 			scrollTop: 0
 		}, 500);
 		$(this).addClass("ui-btn-active");
-		//var height = ($(window).height() - $(pageSelector).find('[data-role="header"]').height() - $(pageSelector).find('[data-role="footer"]').outerHeight());
-		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
-		//console.log("height: "+$(window).height()+"header:"+$(pageSelector).children(":jqmData(role=header)").height()+"footer:"+$(pageSelector).find('[data-role="footer"]').height());
-		//console.log("height: "+($(window).outerHeight()-$(pageSelector).children(":jqmData(role=header)").outerHeight()-$(pageSelector).find('[data-role="footer"]').outerHeight()));
 	});
 
 	$('a[data-tab][class="ui-btn-active"]').trigger("click");
@@ -34,18 +28,16 @@ function updateData(){
 		dataType: "json",
 		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
 		beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
-		complete: function() { $.mobile.hidePageLoadingMsg() }, //Hide spinner
+		complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
 		success: function(data) {
 			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
 			console.log('_onSuccessAjax');
 			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(data), _onSuccessW, _onError );
-			showList();
 		}
 	});
 }
 
 function _onSuccessRF(value) {
-	//console.log('_onSuccessW'+value);
 	showList();
 }
 
@@ -54,38 +46,29 @@ function _onErrorRF(value) {
 }
 
 
-function _onSuccessW(value) { 
-	//console.log('_onSuccessW'+value);
+function _onSuccessW(value) {
+	showList();
 }
 function _onSuccessD(value) {
 	console.log('_onSuccessD'+value);
 }
 
 function _onSuccessR(value) {
-	//$('#status').html('read');
-	//$('#status').html(value);
-	//console.log('_onSuccessR'+value);
+
 	Items = jQuery.parseJSON(value);
 	$('#campingplatzelist').empty();
 	$.each(Items, function (i, item) {
-		//console.log(i + " - " + item.name);
 		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
 	});
 	$("#campingplatzelist").listview("refresh");
-	
-	
 }
 
 function _onError(error) {
-	//$('#status').html('error: '+error);
 	console.log('_onError');
 }
 
 function showList() {
-	//$('#status').html('value1');
-	//fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError);
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
-
 }
 
 
@@ -120,7 +103,6 @@ $(document).bind("pagebeforechange", function (e, data) {
 			// We're being asked to display the items for a specific category.
 			// Call our internal method that builds the content for the category
 			// on the fly based on our in-memory category data structure.
-			console.log('showitem');
 			showItem(u, data.options);
 			
 
@@ -136,19 +118,13 @@ $('#update').bind( "click", function(event, ui) {
 });
 
 function showItem(urlObj, options) {
-	//Items = jQuery.parseJSON(localStorage.getItem("campingplaete"));
-	$('a[data-tab][class="ui-btn-active"]').trigger("click");
+
+	
+
 	var itemID = urlObj.hash.replace(/.*id=/, "");
 
-	// Get the object that represents the category we
-	// are interested in. Note, that at this point we could
-	// instead fire off an ajax request to fetch the data, but
-	// for the purposes of this sample, it's already in memory.
-	item = Items[itemID];
 
-	// The pages we use to display our content are already in
-	// the DOM. The id of the page we are going to write our
-	// content into is specified in the hash before the '?'.
+	item = Items[itemID];
 	pageSelector = urlObj.hash.replace(/\?.*$/, "");
 
 	if (item) {
@@ -182,10 +158,6 @@ function showItem(urlObj, options) {
 		$content.find("#col-note > p").html(item.description);
 
 
-		// ausstattung
-		//$content.find("#map > p").html('<a href="https://maps.google.at/maps?q='+item.lat+'+'+item.lng+'" target="_blank">Google Maps</a>');
-		//$content.find("#map > p").html('<div id="map_canvas" class="map"></div>');
-
 		$content.find("#map > p").html('<a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Google Map</a>');
 
 		//$content.find("#prices > tbody").html('');
@@ -202,7 +174,6 @@ function showItem(urlObj, options) {
 			'Strom: ' + item.electricity_price + ' &euro; ' + item.electricity_info + '<br />';
 
 		$content.find("#col-price > p").html(price);
-		//$("#col-price > p > table").html("<tr><td>row content</td></tr>");
 
 
 
@@ -213,31 +184,9 @@ function showItem(urlObj, options) {
 			$content.find("#images > p").append(li);
 		});
 
-		//$content.find("#gallery").append();
-		//$("#gallery a").photoSwipe(); //- See more at: http://www.photoswipe.com/#sthash.7HILKRne.dpuf
-		//photoSwipeInstance = $("ul#gallery a").photoSwipe({});
+		$('a[data-tab][class="ui-btn-active"]').trigger("click");
 
-		// Inject the category items markup into the content element.
-		//$content.html(markup);
-
-		// Pages are lazily enhanced. We call page() on the page
-		// element to make sure it is always enhanced before we
-		// attempt to enhance the listview markup we just injected.
-		// Subsequent calls to page() are ignored since a page/widget
-		// can only be enhanced once.
-		//$page.page();
-
-		// Enhance the listview we just injected.
-		//$content.find(":jqmData(role=listview)").listview();
-
-		// We don't want the data-url of the page we just modified
-		// to be the url that shows up in the browser's location field,
-		// so set the dataUrl option to the URL for the category
-		// we just loaded.
 		options.dataUrl = urlObj.href;
-
-		// Now call changePage() and tell it to switch to
-		// the page we just modified.
 		$.mobile.changePage($page, options);
 	}
 }
