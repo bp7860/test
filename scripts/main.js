@@ -182,7 +182,8 @@ function showItem(urlObj, options) {
 			$content.find("#images > p").append(li);
 		});
 
-		$('a[data-tab][class="ui-btn-active"]').trigger("click");
+		//$('a[data-tab][class="ui-btn-active"]').trigger("click");
+		$('#info_tab').trigger("click");
 		console.log('navi trigger');
 
 		options.dataUrl = urlObj.href;
