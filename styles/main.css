@@ -1,3 +1,6 @@
+html {
+	font-size: 0.8rem;
+}
 .header {
 	background: rgb(255,92,16); /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
