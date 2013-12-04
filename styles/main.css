@@ -26,3 +26,10 @@
 	margin-left: 20%;
 	border-bottom: 3px #f5b113 solid;
 }
+
+img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+}

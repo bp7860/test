@@ -184,7 +184,6 @@ function showItem(urlObj, options) {
 
 		//$('a[data-tab][class="ui-btn-active"]').trigger("click");
 		$('#info_tab').trigger("click");
-		console.log('navi trigger');
 
 		options.dataUrl = urlObj.href;
 		$.mobile.changePage($page, options);
