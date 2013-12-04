@@ -29,6 +29,7 @@ function onDeviceReady() {
 }
 
 function updateData(){
+	console.log('updateData');
 	$.ajax({
 		dataType: "json",
 		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
