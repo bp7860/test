@@ -122,6 +122,7 @@ $(document).bind("pagebeforechange", function (e, data) {
 			// on the fly based on our in-memory category data structure.
 			console.log('showitem');
 			showItem(u, data.options);
+			$('a[data-tab][class="ui-btn-active"]').trigger("click");
 			
 
 			// Make sure to tell changePage() we've handled this call so it doesn't
