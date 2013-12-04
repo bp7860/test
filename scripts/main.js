@@ -160,16 +160,19 @@ function showItem(urlObj, options) {
 
 		//$content.find("#prices > tbody").html('');
 
-		var price = 'Erwachsene: ' + item.adult_price + ' &euro; ' + item.adult_info + '<br />' +
-			'Kinder: ' + item.kids_price + ' &euro; ' + item.kids_info + '<br />' +
-			'Auto: ' + item.car_price + ' &euro; ' + item.car_info + '<br />' +
-			'Wohnanhänger: ' + item.camper_price + ' &euro; ' + item.camper_info + '<br />' +
-			'Wohnmobil: ' + item.caravan_price + ' &euro; ' + item.caravan_info + '<br />' +
-			'großes Zelt: ' + item.marquee_price + ' &euro; ' + item.marquee_info + '<br />' +
-			'Zelt: ' + item.tent_price + ' &euro; ' + item.tent_info + '<br />' +
-			'Motorrad: ' + item.motorbike_price + ' &euro; ' + item.motorbike_info + '<br />' +
-			'Hunde: ' + item.dogs_price + ' &euro; ' + item.dogs_info + '<br />' +
-			'Strom: ' + item.electricity_price + ' &euro; ' + item.electricity_info + '<br />';
+		var price = '
+		<table>
+			<tr><td>Erwachsene:</td><td>' + item.adult_price + ' &euro;</td><td>' + item.adult_info + '</td><td></tr>
+			<tr><td>Kinder: ' + item.kids_price + ' &euro;</td><td>' + item.kids_info + '</td><td></tr>
+			<tr><td>Auto: ' + item.car_price + ' &euro;</td><td>' + item.car_info + '</td><td></tr>
+			<tr><td>Wohnanhänger: ' + item.camper_price + ' &euro;</td><td>' + item.camper_info + '</td><td></tr>
+			<tr><td>Wohnmobil: ' + item.caravan_price + ' &euro;</td><td>' + item.caravan_info + '</td><td></tr>
+			<tr><td>großes Zelt: ' + item.marquee_price + ' &euro;</td><td>' + item.marquee_info + '</td><td></tr>
+			<tr><td>Zelt: ' + item.tent_price + ' &euro; ' + item.tent_info + '</td><td></tr>
+			<tr><td>Motorrad: ' + item.motorbike_price + ' &euro;</td><td>' + item.motorbike_info + '</td><td></tr>
+			<tr><td>Hunde: ' + item.dogs_price + ' &euro;</td><td>' + item.dogs_info + '</td><td></tr>
+			<tr><td>Strom: ' + item.electricity_price + ' &euro;</td><td>' + item.electricity_info + '</td><td></tr>
+		</table>';
 
 		$content.find("#col-price > p").html(price);
 
