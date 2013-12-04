@@ -193,5 +193,5 @@ function showItem(urlObj, options) {
 }
 
 function outputString(val) {
-	return typeof val === 'undefined' ? '' : val;
+	return (typeof val === 'undefined') ? '' : val;
 }
