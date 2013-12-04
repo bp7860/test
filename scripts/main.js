@@ -189,5 +189,6 @@ function showItem(urlObj, options) {
 
 		options.dataUrl = urlObj.href;
 		$.mobile.changePage($page, options);
+		console.log('item select');
 	}
 }
