@@ -162,15 +162,15 @@ function showItem(urlObj, options) {
 
 		var price = '<table>'+
 			'<tr><td>Erwachsene:</td><td>' + item.adult_price + ' &euro;</td><td>' + item.adult_info + '</td></tr>'+
-			'<tr><td>Kinder: ' + item.kids_price + ' &euro;</td><td>' + item.kids_info + '</td></tr>'+
-			'<tr><td>Auto: ' + item.car_price + ' &euro;</td><td>' + item.car_info + '</td></tr>'+
-			'<tr><td>Wohnanhänger: ' + item.camper_price + ' &euro;</td><td>' + item.camper_info + '</td></tr>'+
-			'<tr><td>Wohnmobil: ' + item.caravan_price + ' &euro;</td><td>' + item.caravan_info + '</td></tr>'+
-			'<tr><td>großes Zelt: ' + item.marquee_price + ' &euro;</td><td>' + item.marquee_info + '</td></tr>'+
-			'<tr><td>Zelt: ' + item.tent_price + ' &euro; ' + item.tent_info + '</td></tr>'+
-			'<tr><td>Motorrad: ' + item.motorbike_price + ' &euro;</td><td>' + item.motorbike_info + '</td></tr>'+
-			'<tr><td>Hunde: ' + item.dogs_price + ' &euro;</td><td>' + item.dogs_info + '</td></tr>'+
-			'<tr><td>Strom: ' + item.electricity_price + ' &euro;</td><td>' + item.electricity_info + '</td></tr>'+
+			'<tr><td>Kinder:</td><td>' + item.kids_price + ' &euro;</td><td>' + item.kids_info + '</td></tr>'+
+			'<tr><td>Auto:</td><td>' + item.car_price + ' &euro;</td><td>' + item.car_info + '</td></tr>'+
+			'<tr><td>Wohnanhänger:</td><td>' + item.camper_price + ' &euro;</td><td>' + item.camper_info + '</td></tr>'+
+			'<tr><td>Wohnmobil:</td><td>' + item.caravan_price + ' &euro;</td><td>' + item.caravan_info + '</td></tr>'+
+			'<tr><td>großes Zelt:</td><td>' + item.marquee_price + ' &euro;</td><td>' + item.marquee_info + '</td></tr>'+
+			'<tr><td>Zelt:</td><td>' + item.tent_price + ' &euro; ' + item.tent_info + '</td></tr>'+
+			'<tr><td>Motorrad:</td><td>' + item.motorbike_price + ' &euro;</td><td>' + item.motorbike_info + '</td></tr>'+
+			'<tr><td>Hunde:</td><td>' + item.dogs_price + ' &euro;</td><td>' + item.dogs_info + '</td></tr>'+
+			'<tr><td>Strom:</td><td>' + item.electricity_price + ' &euro;</td><td>' + item.electricity_info + '</td></tr>'+
 		'</table>';
 
 		$content.find("#col-price > p").html(price);
