@@ -7,18 +7,6 @@ function init() {
 }
 
 function onDeviceReady() {
-	// Tabs
-	$('[data-role="navbar"] a').bind('click', function () {
-		$('.tab-content').children().hide();
-		$('#' + $(this).attr('data-tab')).show();
-		$("html,body").animate({
-			scrollTop: 0
-		}, 500);
-		$(this).addClass("ui-btn-active");
-	});
-
-	$('a[data-tab][class="ui-btn-active"]').trigger("click");
-
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
 }
 
@@ -115,6 +103,16 @@ $(document).bind("pagebeforechange", function (e, data) {
 
 $('#update').bind( "click", function(event, ui) {
 	updateData();
+});
+
+// Tabs
+$('[data-role="navbar"] a').bind('click', function () {
+	$('.tab-content').children().hide();
+	$('#' + $(this).attr('data-tab')).show();
+	$("html,body").animate({
+		scrollTop: 0
+	}, 500);
+	$(this).addClass("ui-btn-active");
 });
 
 function showItem(urlObj, options) {
