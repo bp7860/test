@@ -122,7 +122,6 @@ $(document).bind("pagebeforechange", function (e, data) {
 			// on the fly based on our in-memory category data structure.
 			console.log('showitem');
 			showItem(u, data.options);
-			$('a[data-tab][class="ui-btn-active"]').trigger("click");
 			
 
 			// Make sure to tell changePage() we've handled this call so it doesn't
@@ -138,6 +137,7 @@ $('#update').bind( "click", function(event, ui) {
 
 function showItem(urlObj, options) {
 	//Items = jQuery.parseJSON(localStorage.getItem("campingplaete"));
+	$('a[data-tab][class="ui-btn-active"]').trigger("click");
 	var itemID = urlObj.hash.replace(/.*id=/, "");
 
 	// Get the object that represents the category we
