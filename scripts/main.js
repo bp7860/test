@@ -147,7 +147,46 @@ function showItem(urlObj, options) {
 		// Get the content area element for the page.
 		$content = $page.children(":jqmData(role=content)");
 
-		var inhalt = '<h2>'+item.name+'</h2>';
+		var inhalt = '<h2>'+item.name+'</h2>'+
+		'<div data-role="navbar">'+
+		'<ul>'+
+		'		<li><a data-tab="info" class="ui-btn-active" id="info_tab">Information</a></li>'+
+		'		<li><a data-tab="images">Impressionen</a></li>'+
+		'		<li id="anfahrt"><a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Anfahrt</a></li>'+
+		'	</ul>'+
+		'</div>'+
+		'<div class="tab-content">'+
+		'		<div id="info">'+
+		'			<div data-role="collapsible-set">'+
+		'				<div data-role="collapsible" data-mini="true" id="col-kontakt">'+
+		'					<h3>Kontakt</h3>'+
+		'					<p><b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.country + '<br/><br/>' +
+			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/>Fax. ' + item.fax + '<br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a></p>'+
+		'				</div>'+
+		'				<div data-role="collapsible" data-mini="true" id="col-equipment">'+
+		'					<h3>Ausstattung</h3>'+
+		'					<p></p>'+
+		'				</div>'+
+		'				<div data-role="collapsible" data-mini="true" id="col-note">'+
+		'					<h3>Anmerkung</h3>'+
+		'					<p></p>'+
+		'				</div>'+
+		'				<div data-role="collapsible" data-mini="true" id="col-price">'+
+		'					<h3>Preise</h3>'+
+		'					<p>'+
+		'					</p>'+
+		'				</div>'+
+		'			</div>'+
+		'		</div>'+
+		'		<div id="images" style="display:none;">'+
+		'			<p>'+
+		'				'+
+		'			</p>'+
+		'		</div>'+
+		'		<div id="map" style="display:none;">'+
+		'			<p></p>'+
+		'		</div>'+
+		'	</div>';
 		$content.empty().append(inhalt).trigger( "create" );
 
 
