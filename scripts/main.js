@@ -147,6 +147,19 @@ function showItem(urlObj, options) {
 		// Get the content area element for the page.
 		$content = $page.children(":jqmData(role=content)");
 
+		// ausstattung
+		var equipment_tmp = '';
+		$.each(item.equipment, function (key, val) {
+			equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
+		});
+
+		// bilder
+		var impressions_tmp = '';
+		$.each(item.impressions, function (key, val) {
+			//li ='<div class="ui-block-'+(key%2==0?'a':'b')+'"><a href="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'"><img src="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'" /></a></div>';
+			impressions_tmp+= '<img width="100%" src="data:image/jpg;base64,' + val + '" /><br />';
+		});
+
 		var inhalt = '<h2>'+item.name+'</h2>'+
 		'<div data-role="navbar">'+
 		'<ul>'+
@@ -165,26 +178,33 @@ function showItem(urlObj, options) {
 		'				</div>'+
 		'				<div data-role="collapsible" data-mini="true" id="col-equipment">'+
 		'					<h3>Ausstattung</h3>'+
-		'					<p></p>'+
+		'					<p>'+equipment_tmp+'</p>'+
 		'				</div>'+
 		'				<div data-role="collapsible" data-mini="true" id="col-note">'+
 		'					<h3>Anmerkung</h3>'+
-		'					<p></p>'+
+		'					<p>'+item.description+'</p>'+
 		'				</div>'+
 		'				<div data-role="collapsible" data-mini="true" id="col-price">'+
 		'					<h3>Preise</h3>'+
 		'					<p>'+
-		'					</p>'+
+		'						<table>'+
+		'							<tr><td>Erwachsene:</td><td>' + item.adult_price + 	'&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
+		'							<tr><td>Kinder:</td><td>' + item.kids_price + 			'&nbsp;&euro;'+ (item.kids_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.kids_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.kids_info + '</td></tr>'+
+		'							<tr><td>Auto:</td><td>' + item.car_price + 			'&nbsp;&euro;'+ (item.car_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.car_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.car_info + '</td></tr>'+
+		'							<tr><td>Wohnanhänger:</td><td>' + item.camper_price + 	'&nbsp;&euro;'+ (item.camper_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.camper_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.camper_info + '</td></tr>'+
+		'							<tr><td>Wohnmobil:</td><td>' + item.caravan_price + 	'&nbsp;&euro;'+ (item.caravan_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.caravan_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.caravan_info + '</td></tr>'+
+		'							<tr><td>großes Zelt:</td><td>' + item.marquee_price + 	'&nbsp;&euro;'+ (item.marquee_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.marquee_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.marquee_info + '</td></tr>'+
+		'							<tr><td>Zelt:</td><td>' + item.tent_price + 			'&nbsp;&euro;'+ (item.tent_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.tent_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.tent_info + '</td></tr>'+
+		'							<tr><td>Motorrad:</td><td>' + item.motorbike_price + 	'&nbsp;&euro;'+ (item.motorbike_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.motorbike_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.motorbike_info + '</td></tr>'+
+		'							<tr><td>Hunde:</td><td>' + item.dogs_price + 			'&nbsp;&euro;'+ (item.dogs_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.dogs_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.dogs_info + '</td></tr>'+
+		'							<tr><td>Strom:</td><td>' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
+		'						</table>'+
+							'</p>'+
 		'				</div>'+
 		'			</div>'+
 		'		</div>'+
 		'		<div id="images" style="display:none;">'+
-		'			<p>'+
-		'				'+
-		'			</p>'+
-		'		</div>'+
-		'		<div id="map" style="display:none;">'+
-		'			<p></p>'+
+		'			<p>'+impressions_tmp+'</p>'+
 		'		</div>'+
 		'	</div>';
 		$content.empty().append(inhalt).trigger( "create" );
