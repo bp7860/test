@@ -155,13 +155,12 @@ function showItem(urlObj, options) {
 
 		$content.find("#col-note > p").html(item.description);
 
-
 		$content.find("#map > p").html('<a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Google Map</a>');
 
-		//$content.find("#prices > tbody").html('');
+		$content.find("#col-price > p").html('');
 
 		var price = '<table>'+
-			'<tr><td>Erwachsene:</td><td>' + item.adult_price + '&nbsp;&euro;</td><td>' + item.adult_info + '</td></tr>'+
+			'<tr><td>Erwachsene:</td><td>' + item.adult_price + '&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
 			'<tr><td>Kinder:</td><td>' + item.kids_price + '&nbsp;&euro;</td><td>' + item.kids_info + '</td></tr>'+
 			'<tr><td>Auto:</td><td>' + item.car_price + '&nbsp;&euro;</td><td>' + item.car_info + '</td></tr>'+
 			'<tr><td>Wohnanhänger:</td><td>' + item.camper_price + '&nbsp;&euro;</td><td>' + item.camper_info + '</td></tr>'+
@@ -174,8 +173,6 @@ function showItem(urlObj, options) {
 		'</table>';
 
 		$content.find("#col-price > p").html(price);
-
-
 
 		$content.find("#images > p").html("");
 		$.each(item.impressions, function (key, val) {
