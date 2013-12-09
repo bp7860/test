@@ -162,13 +162,14 @@ function showItem(urlObj, options) {
 		$.each(item.equipment, function (key, val) {
 			tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
 		});
-		$content.find("#col-equipment > p").html(tmp);
+		$content.find("#col-equipment > p").html("");
+		//$content.find("#col-equipment > p").html(tmp);
 
 		$content.find("#col-note > p").html(item.description);
 
 		$content.find("#map > p").html('<a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Google Map</a>');
 
-		$content.find("#col-price > p").html('');
+		$content.find("#col-price > p").html("");
 
 		var price = '<table>'+
 			'<tr><td>Erwachsene:</td><td>' + item.adult_price + 	'&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
@@ -183,7 +184,7 @@ function showItem(urlObj, options) {
 			'<tr><td>Strom:</td><td>' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
 		'</table>';
 
-		$content.find("#col-price > p").html(price);
+		//$content.find("#col-price > p").html(price);
 
 		$content.find("#images > p").html("");
 		$.each(item.impressions, function (key, val) {
