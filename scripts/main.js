@@ -58,8 +58,8 @@ function _onSuccessR(value) {
 			var out = li.attr('region_name');
 			return out;
 		}
-	});
-	$("#campingplatzelist").listview("refresh");
+	}).listview("refresh");
+	console.log($('#campingplatzelist').html());
 }
 
 function _onError(error) {
