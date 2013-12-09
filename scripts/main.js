@@ -156,10 +156,13 @@ function showItem(urlObj, options) {
 		// Kontakt
 		var col = '<b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.country + '<br/><br/>' +
 			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/>Fax. ' + item.fax + '<br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a>';
-		$content.find("#col-kontakt > p").html("");
-		$content.find("#col-kontakt > p").html(col);
-		$content.find("#col-kontakt").trigger("create");
+		//$content.find("#col-kontakt > p").html("");
+		$content.find("#col-kontakt > p").empty();
+		//$content.find("#col-kontakt > p").html(col);
+		$content.find("#col-kontakt > p").append(col);
+		$content.find("#col-kontakt > p").trigger("create");
 
+		/*
 		// ausstattung
 		var tmp = '';
 		$.each(item.equipment, function (key, val) {
@@ -213,10 +216,10 @@ function showItem(urlObj, options) {
 
 		//$('a[data-tab][class="ui-btn-active"]').trigger("click");
 		$('#info_tab').trigger("click");
-
+		*/
 		options.dataUrl = urlObj.href;
 
-		$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
+		//$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
 
 
 		$.mobile.changePage($page, options);
