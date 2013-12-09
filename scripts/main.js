@@ -18,8 +18,8 @@ function updateData(){
 		beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
 		complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
 		success: function(data) {
-			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
 			console.log('_onSuccessAjax');
+			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
 			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(data), _onSuccessW, _onError );
 		},
 		error: function(error) {
