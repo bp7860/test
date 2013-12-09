@@ -46,7 +46,18 @@ function _onSuccessR(value) {
 	Items = jQuery.parseJSON(value);
 	$('#campingplatzelist').empty();
 	$.each(Items, function (i, item) {
-		$('#campingplatzelist').append('<li><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
+		$('#campingplatzelist').append('<li region_name="'+item.region_name+'"><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
+	});
+	$( "#campingplatzelist" ).listview({
+		autodividers: true,
+
+		// the selector function is passed a <li> element from the listview;
+		// it should return the appropriate divider text for that <li>
+		// element as a string
+		autodividersSelector: function ( li ) {
+			var out = li.attr('region_name');
+			return out;
+		}
 	});
 	$("#campingplatzelist").listview("refresh");
 }
@@ -160,16 +171,16 @@ function showItem(urlObj, options) {
 		$content.find("#col-price > p").html('');
 
 		var price = '<table>'+
-			'<tr><td>Erwachsene:</td><td>' + item.adult_price + '&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
-			'<tr><td>Kinder:</td><td>' + item.kids_price + '&nbsp;&euro;</td><td>' + item.kids_info + '</td></tr>'+
-			'<tr><td>Auto:</td><td>' + item.car_price + '&nbsp;&euro;</td><td>' + item.car_info + '</td></tr>'+
-			'<tr><td>Wohnanhänger:</td><td>' + item.camper_price + '&nbsp;&euro;</td><td>' + item.camper_info + '</td></tr>'+
-			'<tr><td>Wohnmobil:</td><td>' + item.caravan_price + '&nbsp;&euro;</td><td>' + item.caravan_info + '</td></tr>'+
-			'<tr><td>großes Zelt:</td><td>' + item.marquee_price + '&nbsp;&euro;</td><td>' + item.marquee_info + '</td></tr>'+
-			'<tr><td>Zelt:</td><td>' + item.tent_price + '&nbsp;&euro; ' + item.tent_info + '</td></tr>'+
-			'<tr><td>Motorrad:</td><td>' + item.motorbike_price + '&nbsp;&euro;</td><td>' + item.motorbike_info + '</td></tr>'+
-			'<tr><td>Hunde:</td><td>' + item.dogs_price + '&nbsp;&euro;</td><td>' + item.dogs_info + '</td></tr>'+
-			'<tr><td>Strom:</td><td>' + item.electricity_price + '&nbsp;&euro;</td><td>' + item.electricity_info + '</td></tr>'+
+			'<tr><td>Erwachsene:</td><td>' + item.adult_price + 	'&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
+			'<tr><td>Kinder:</td><td>' + item.kids_price + 			'&nbsp;&euro;'+ (item.kids_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.kids_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.kids_info + '</td></tr>'+
+			'<tr><td>Auto:</td><td>' + item.car_price + 			'&nbsp;&euro;'+ (item.car_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.car_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.car_info + '</td></tr>'+
+			'<tr><td>Wohnanhänger:</td><td>' + item.camper_price + 	'&nbsp;&euro;'+ (item.camper_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.camper_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.camper_info + '</td></tr>'+
+			'<tr><td>Wohnmobil:</td><td>' + item.caravan_price + 	'&nbsp;&euro;'+ (item.caravan_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.caravan_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.caravan_info + '</td></tr>'+
+			'<tr><td>großes Zelt:</td><td>' + item.marquee_price + 	'&nbsp;&euro;'+ (item.marquee_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.marquee_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.marquee_info + '</td></tr>'+
+			'<tr><td>Zelt:</td><td>' + item.tent_price + 			'&nbsp;&euro;'+ (item.tent_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.tent_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.tent_info + '</td></tr>'+
+			'<tr><td>Motorrad:</td><td>' + item.motorbike_price + 	'&nbsp;&euro;'+ (item.motorbike_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.motorbike_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.motorbike_info + '</td></tr>'+
+			'<tr><td>Hunde:</td><td>' + item.dogs_price + 			'&nbsp;&euro;'+ (item.dogs_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.dogs_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.dogs_info + '</td></tr>'+
+			'<tr><td>Strom:</td><td>' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
 		'</table>';
 
 		$content.find("#col-price > p").html(price);
