@@ -210,6 +210,9 @@ function showItem(urlObj, options) {
 		$content.empty().append(inhalt).trigger( "create" );
 
 
+		$('a[data-tab][class="ui-btn-active"]').trigger("click");
+
+
 
 
 		options.dataUrl = urlObj.href;
