@@ -207,8 +207,8 @@ function showItem(urlObj, options) {
 		$('#info_tab').trigger("click");
 
 		options.dataUrl = urlObj.href;
-		
-		$('#campingplaetzedetails-page').trigger('create');
+
+		$('[data-role="content"]').trigger('create');
 
 
 		$.mobile.changePage($page, options);
