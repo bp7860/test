@@ -148,7 +148,7 @@ function showItem(urlObj, options) {
 		$content = $page.children(":jqmData(role=content)");
 
 		var inhalt = '<h2>'+item.name+'</h2>';
-		$content.append(inhalt).trigger( "create" );
+		$content.empty().append(inhalt).trigger( "create" );
 
 
 
