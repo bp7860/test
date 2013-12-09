@@ -155,6 +155,7 @@ function showItem(urlObj, options) {
 		// Kontakt
 		var col = '<b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.country + '<br/><br/>' +
 			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/>Fax. ' + item.fax + '<br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a>';
+		$content.find("#col-kontakt > p").html("");
 		$content.find("#col-kontakt > p").html(col);
 
 		// ausstattung
@@ -163,12 +164,18 @@ function showItem(urlObj, options) {
 			tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
 		});
 		$content.find("#col-equipment > p").html("");
-		//$content.find("#col-equipment > p").html(tmp);
+		$content.find("#col-equipment > p").html(tmp);
+
+		// Beschreibung
 
 		$content.find("#col-note > p").html(item.description);
 
+		// Maps
+
 		$content.find("#map > p").html('<a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Google Map</a>');
 
+
+		// Preise
 		$content.find("#col-price > p").html("");
 
 		var price = '<table>'+
@@ -184,7 +191,9 @@ function showItem(urlObj, options) {
 			'<tr><td>Strom:</td><td>' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
 		'</table>';
 
-		//$content.find("#col-price > p").html(price);
+		$content.find("#col-price > p").html(price);
+
+		// Bilder
 
 		$content.find("#images > p").html("");
 		$.each(item.impressions, function (key, val) {
