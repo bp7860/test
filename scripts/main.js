@@ -147,6 +147,18 @@ function showItem(urlObj, options) {
 		// Get the content area element for the page.
 		$content = $page.children(":jqmData(role=content)");
 
+		var inhalt = '<h2>'+item.name+'</h2>';
+		$content.append(inhalt).trigger( "create" );
+
+
+
+
+		options.dataUrl = urlObj.href;
+		//$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
+		$.mobile.changePage($page, options);
+		
+
+/*
 		// The markup we are going to inject into the content
 		// area of the page.
 
@@ -162,7 +174,7 @@ function showItem(urlObj, options) {
 		$content.find("#col-kontakt > p").append(col);
 		$content.find("#col-kontakt > p").trigger("create");
 
-		/*
+		
 		// ausstattung
 		var tmp = '';
 		$.each(item.equipment, function (key, val) {
@@ -217,12 +229,6 @@ function showItem(urlObj, options) {
 		//$('a[data-tab][class="ui-btn-active"]').trigger("click");
 		$('#info_tab').trigger("click");
 		*/
-		options.dataUrl = urlObj.href;
-
-		//$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
-
-
-		$.mobile.changePage($page, options);
 		console.log('item select');
 	}
 }
