@@ -208,7 +208,7 @@ function showItem(urlObj, options) {
 
 		options.dataUrl = urlObj.href;
 
-		$('[data-role="content"]').trigger('create');
+		$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
 
 
 		$.mobile.changePage($page, options);
