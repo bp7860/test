@@ -203,6 +203,13 @@ function showItem(urlObj, options) {
 			$content.find("#images > p").append(li);
 		});
 
+		// Pages are lazily enhanced. We call page() on the page
+		// element to make sure it is always enhanced before we
+		// attempt to enhance the listview markup we just injected.
+		// Subsequent calls to page() are ignored since a page/widget
+		// can only be enhanced once.
+		$page.page();
+
 		//$('a[data-tab][class="ui-btn-active"]').trigger("click");
 		$('#info_tab').trigger("click");
 
