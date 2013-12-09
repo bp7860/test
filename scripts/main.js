@@ -208,7 +208,7 @@ function showItem(urlObj, options) {
 		// attempt to enhance the listview markup we just injected.
 		// Subsequent calls to page() are ignored since a page/widget
 		// can only be enhanced once.
-		$page.page();
+		$('#info').trigger('create');
 
 		//$('a[data-tab][class="ui-btn-active"]').trigger("click");
 		$('#info_tab').trigger("click");
