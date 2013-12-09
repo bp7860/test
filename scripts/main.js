@@ -59,7 +59,7 @@ function _onSuccessR(value) {
 			return out;
 		}
 	}).listview("refresh");
-	console.log($('#campingplatzelist').html());
+	//console.log($('#campingplatzelist').html());
 }
 
 function _onError(error) {
