@@ -21,6 +21,9 @@ function updateData(){
 			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
 			console.log('_onSuccessAjax');
 			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(data), _onSuccessW, _onError );
+		},
+		error: function(error) {
+			console.log('ajax error: '+error);
 		}
 	});
 }
