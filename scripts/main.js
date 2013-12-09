@@ -160,7 +160,7 @@ function showItem(urlObj, options) {
 		$content.find("#col-price > p").html('');
 
 		var price = '<table>'+
-			'<tr><td>Erwachsene:</td><td>' + item.adult_price + '&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
+			'<tr><td>Erwachsene:</td><td>' + item.adult_price + '&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
 			'<tr><td>Kinder:</td><td>' + item.kids_price + '&nbsp;&euro;</td><td>' + item.kids_info + '</td></tr>'+
 			'<tr><td>Auto:</td><td>' + item.car_price + '&nbsp;&euro;</td><td>' + item.car_info + '</td></tr>'+
 			'<tr><td>Wohnanhänger:</td><td>' + item.camper_price + '&nbsp;&euro;</td><td>' + item.camper_info + '</td></tr>'+
