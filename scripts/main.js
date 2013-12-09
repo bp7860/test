@@ -51,6 +51,7 @@ function _onSuccessR(value) {
 	$.each(Items, function (i, item) {
 		$('#campingplatzelist').append('<li region_name="'+item.region_name+'"><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
 	});
+	$.mobile.showPageLoadingMsg();
 	$( "#campingplatzelist" ).listview({
 		autodividers: true,
 
@@ -62,6 +63,7 @@ function _onSuccessR(value) {
 			return out;
 		}
 	}).listview("refresh");
+	$.mobile.hidePageLoadingMsg();
 	//console.log($('#campingplatzelist').html());
 }
 
