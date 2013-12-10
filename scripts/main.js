@@ -1,5 +1,6 @@
 var Items = null;
 var fileSystemHelper = new FileSystemHelper();
+var Lang = 0;
 
 
 function init() {
@@ -8,7 +9,13 @@ function init() {
 
 function onDeviceReady() {
 	language = navigator.language.split("-"); 
-    language_root = (language[0]); 
+    language_root = (language[0]);
+
+    if( language_root == "en" )
+    	Lang = 1;
+    else if( language_root == "it" )
+    	Lang = 3;
+
 	navigator.notification.alert(
             language_root,  // message
             function(){},         // callback
@@ -185,7 +192,7 @@ function showItem(urlObj, options) {
 		'	</div>'+
 		'	<div data-role="collapsible" data-mini="true" id="col-note">'+
 		'		<h3>Anmerkung</h3>'+
-		'		<p>'+item.description+'</p>'+
+		'		<p>'+item.description[Lang]+'</p>'+
 		'	</div>'+
 		'	<div data-role="collapsible" data-mini="true" id="col-price">'+
 		'		<h3>Preise</h3>'+
