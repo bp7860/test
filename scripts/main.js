@@ -7,6 +7,12 @@ function init() {
 }
 
 function onDeviceReady() {
+	navigator.notification.alert(
+            'You are the winner!',  // message
+            function(){},         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
 }
 
@@ -202,21 +208,6 @@ function showItem(urlObj, options) {
 		'	</div>'+
 		'</div>';
 		$content.empty().append(inhalt).trigger( "create" );
-
-
-		$('a[data-tab][class="ui-btn-active"]').trigger("click");
-
-
-		// Tabs
-		$('[data-role="navbar"] a').bind('click', function () {
-			$('.tab-content').children().hide();
-			$('#' + $(this).attr('data-tab')).show();
-			$("html,body").animate({
-				scrollTop: 0
-			}, 500);
-			$(this).addClass("ui-btn-active");
-			console.log('tab click');
-		});
 
 		options.dataUrl = urlObj.href;
 		//$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
