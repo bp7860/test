@@ -7,8 +7,10 @@ function init() {
 }
 
 function onDeviceReady() {
+	language = navigator.language.split("-"); 
+    language_root = (language[0]); 
 	navigator.notification.alert(
-            'You are the winner!',  // message
+            language_root,  // message
             function(){},         // callback
             'Game Over',            // title
             'Done'                  // buttonName
