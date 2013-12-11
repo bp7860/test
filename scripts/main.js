@@ -182,21 +182,21 @@ function showItem(urlObj, options) {
 		'		<li id="anfahrt"><a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Anfahrt</a></li>'+
 		'	</ul>'+
 		'</div>'+
-		'<div data-role="collapsible-set">'+
-		'	<div data-role="collapsible" data-mini="true" id="col-kontakt">'+
+		'<!--div data-role="collapsible-set"-->'+
+		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<h3>Kontakt</h3>'+
 		'		<p><b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.country + '<br/><br/>' +
 			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/>Fax. ' + item.fax + '<br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a></p>'+
-		'	</div>'+
-		'	<div data-role="collapsible" data-mini="true" id="col-equipment">'+
+		'	<!--/div-->'+
+		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
 		'		<h3>Ausstattung</h3>'+
-		'		<p>'+equipment_tmp+'</p>'+
-		'	</div>'+
-		'	<div data-role="collapsible" data-mini="true" id="col-note">'+
+		'		<p>'+equipment_tmp+'<br /><a href="#legende-page" data-icon="home">Legende</a></p>'+
+		'	<!--/div-->'+
+		'	<!--div data-role="collapsible" data-mini="true" id="col-note"-->'+
 		'		<h3>Anmerkung</h3>'+
 		'		<p>'+item.description[Lang]+'</p>'+
-		'	</div>'+
-		'	<div data-role="collapsible" data-mini="true" id="col-price">'+
+		'	<!--/div-->'+
+		'	<!--div data-role="collapsible" data-mini="true" id="col-price"-->'+
 		'		<h3>Preise</h3>'+
 		'		<p>'+
 		'			<table>'+
@@ -212,12 +212,12 @@ function showItem(urlObj, options) {
 		'				<tr><td>Strom:</td><td>' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
 		'			</table>'+
 		'		</p>'+
-		'	</div>'+
-		'	<div data-role="collapsible" data-mini="true" id="col-kontakt">'+
+		'	<!--/div-->'+
+		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<h3>Impressionen</h3>'+
 		'		<p>'+impressions_tmp+'</p>'+
-		'	</div>'+
-		'</div>';
+		'	<!--/div-->'+
+		'<!--/div-->';
 		$content.empty().append(inhalt).trigger( "create" );
 
 		options.dataUrl = urlObj.href;
