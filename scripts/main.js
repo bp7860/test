@@ -85,7 +85,7 @@ function _onSuccessR(value) {
 }
 
 function _onError(error) {
-	console.log('_onError');
+	console.log('_onError'+error);
 }
 
 function showList() {
