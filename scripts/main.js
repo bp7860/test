@@ -184,20 +184,20 @@ function showItem(urlObj, options) {
 		'</div>'+
 		'<!--div data-role="collapsible-set"-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
-		'		<h1>Kontakt</h1>'+
+		'		<div class="header_text">>Kontakt</div>>'+
 		'		<p><b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.country + '<br/><br/>' +
 			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/>Fax. ' + item.fax + '<br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
-		'		<h1>Ausstattung</h1>'+
+		'		<div class="header_text">>Ausstattung</div>>'+
 		'		<p>'+equipment_tmp+'<br /><a href="#legende-page" data-icon="home">Legende</a></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-note"-->'+
-		'		<h1>Anmerkung</h1>'+
+		'		<div class="header_text">>Anmerkung</div>>'+
 		'		<p>'+item.description[Lang]+'</p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-price"-->'+
-		'		<h1>Preise</h1>'+
+		'		<div class="header_text">>Preise</div>>'+
 		'		<p>'+
 		'			<table>'+
 		'				<tr><td>Erwachsene:</td><td>' + item.adult_price + 	'&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
@@ -214,7 +214,7 @@ function showItem(urlObj, options) {
 		'		</p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
-		'		<h1>Impressionen</h1>'+
+		'		<div class="header_text">>Impressionen</div>>'+
 		'		<p>'+impressions_tmp+'</p>'+
 		'	<!--/div-->'+
 		'<!--/div-->';
