@@ -32,8 +32,8 @@ function updateData(){
 	$.ajax({
 		dataType: "json",
 		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
-		//beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
-		//complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
+		beforeSend: function() { $.mobile.showPageLoadingMsg(); }, //Show spinner
+		complete: function() { $.mobile.hidePageLoadingMsg(); }, //Hide spinner
 		success: function(data) {
 			console.log('_onSuccessAjax');
 			fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
