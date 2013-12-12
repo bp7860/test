@@ -2,6 +2,16 @@ var Items = null;
 var fileSystemHelper = new FileSystemHelper();
 var Lang = 0;
 
+var _l = new Array(
+		new Array( "Information", "Kontakt", "Ausstattung", "Anmerkung", "Preise", "Impressionen", "Erwachsene", "Kinder", "Auto", "Wohnanhänger", "Wohnmobil", "großes Zelt", "Zelt",
+					"Motorrad", "Hunde", "Strom", "Home", "Service", "Details", "Impressum", "Partner", "Weitere Services", "Update", "Anfahrt" ),
+		new Array( "Information", "Contact", "Equipment", "Description", "Prices", "Impressions", "Adults", "Kids", "Car", "Caravan", "Camper", "Marquee", "Tent",
+					"Motorbike", "Dog", "Electricity", "Home", "Service", "Details", "Imprint", "Partners", "More Services", "Update", "Map" ),
+		new Array(),
+		new Array( "Informazioni", "Contatto", "Attrezzatura", "Annotazione", "Prezzi", "Impressioni", "Adulti", "Bambini", "Macchina", "Caravan", "Camper", "Grande tenda", "Tenda",
+					"Moto", "Cani", "Corrente", "Home", "Servizio", "Dettagli", "Informazioni legali", "Partner", "altri servizi", "Aggiornamento", "Arrivo" )
+	);
+
 
 function init() {
 	document.addEventListener("deviceready", onDeviceReady, true);
@@ -177,44 +187,44 @@ function showItem(urlObj, options) {
 		var inhalt = '<h2>'+item.name+'</h2>'+
 		'<div data-role="navbar">'+
 		'<ul>'+
-		'		<li><a data-tab="info" class="ui-btn-active" id="info_tab">Information</a></li>'+
-		'		<!--li><a data-tab="images">Impressionen</a></li-->'+
-		'		<li id="anfahrt"><a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">Anfahrt</a></li>'+
+		'		<li><a data-tab="info" class="ui-btn-active" id="info_tab">'+_l[Lang][0]+'</a></li>'+
+		'		<!--li><a data-tab="images">'+_l[Lang][5]+'</a></li-->'+
+		'		<li id="anfahrt"><a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">'+_l[Lang][23]+'</a></li>'+
 		'	</ul>'+
-		'</div>'+
+		'</div><br /><br />'+
 		'<!--div data-role="collapsible-set"-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
-		'		<div class="header_text">Kontakt</div>'+
+		'		<div class="header_text">'+_l[Lang][1]+'</div>'+
 		'		<p><b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.country + '<br/><br/>' +
 			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/>Fax. ' + item.fax + '<br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a><br /><br /></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
-		'		<div class="header_text">Ausstattung</div>'+
+		'		<div class="header_text">'+_l[Lang][3]+'</div>'+
 		'		<p>'+equipment_tmp+'<br /><a href="#legende-page" data-icon="home">Legende</a><br /><br /></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-note"-->'+
-		'		<div class="header_text">Anmerkung</div>'+
+		'		<div class="header_text">'+_l[Lang][4]+'</div>'+
 		'		<p>'+item.description[Lang]+'<br /><br /></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-price"-->'+
-		'		<div class="header_text">Preise</div>'+
+		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
 		'		<p>'+
 		'			<table>'+
-		'				<tr><td>Erwachsene:</td><td>' + item.adult_price + 	'&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
-		'				<tr><td>Kinder:</td><td>' + item.kids_price + 			'&nbsp;&euro;'+ (item.kids_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.kids_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.kids_info + '</td></tr>'+
-		'				<tr><td>Auto:</td><td>' + item.car_price + 			'&nbsp;&euro;'+ (item.car_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.car_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.car_info + '</td></tr>'+
-		'				<tr><td>Wohnanhänger:</td><td>' + item.camper_price + 	'&nbsp;&euro;'+ (item.camper_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.camper_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.camper_info + '</td></tr>'+
-		'				<tr><td>Wohnmobil:</td><td>' + item.caravan_price + 	'&nbsp;&euro;'+ (item.caravan_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.caravan_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.caravan_info + '</td></tr>'+
-		'				<tr><td>großes Zelt:</td><td>' + item.marquee_price + 	'&nbsp;&euro;'+ (item.marquee_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.marquee_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.marquee_info + '</td></tr>'+
-		'				<tr><td>Zelt:</td><td>' + item.tent_price + 			'&nbsp;&euro;'+ (item.tent_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.tent_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.tent_info + '</td></tr>'+
-		'				<tr><td>Motorrad:</td><td>' + item.motorbike_price + 	'&nbsp;&euro;'+ (item.motorbike_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.motorbike_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.motorbike_info + '</td></tr>'+
-		'				<tr><td>Hunde:</td><td>' + item.dogs_price + 			'&nbsp;&euro;'+ (item.dogs_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.dogs_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.dogs_info + '</td></tr>'+
-		'				<tr><td>Strom:</td><td>' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][6]+':</td><td>' + item.adult_price + 	'&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][7]+':</td><td>' + item.kids_price + 			'&nbsp;&euro;'+ (item.kids_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.kids_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.kids_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][8]+':</td><td>' + item.car_price + 			'&nbsp;&euro;'+ (item.car_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.car_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.car_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][9]+':</td><td>' + item.camper_price + 	'&nbsp;&euro;'+ (item.camper_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.camper_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.camper_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][10]+':</td><td>' + item.caravan_price + 	'&nbsp;&euro;'+ (item.caravan_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.caravan_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.caravan_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][11]+':</td><td>' + item.marquee_price + 	'&nbsp;&euro;'+ (item.marquee_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.marquee_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.marquee_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][12]+':</td><td>' + item.tent_price + 			'&nbsp;&euro;'+ (item.tent_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.tent_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.tent_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][13]+':</td><td>' + item.motorbike_price + 	'&nbsp;&euro;'+ (item.motorbike_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.motorbike_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.motorbike_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][14]+':</td><td>' + item.dogs_price + 			'&nbsp;&euro;'+ (item.dogs_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.dogs_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.dogs_info + '</td></tr>'+
+		'				<tr><td>'+_l[Lang][15]+':</td><td>' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
 		'			</table><br /><br />'+
 		'		</p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
-		'		<div class="header_text">Impressionen</div>'+
+		'		<div class="header_text">'+_l[Lang][6]+'</div>'+
 		'		<p>'+impressions_tmp+'</p>'+
 		'	<!--/div-->'+
 		'<!--/div-->';
