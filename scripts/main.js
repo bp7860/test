@@ -174,7 +174,8 @@ function showItem(urlObj, options) {
 		// ausstattung
 		var equipment_tmp = '';
 		$.each(item.equipment, function (key, val) {
-			equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
+			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
+			equipment_tmp+='<img src="img/eq/' + val + '" /> ';
 		});
 
 		// bilder
