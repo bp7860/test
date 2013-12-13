@@ -18,7 +18,7 @@ function init() {
 }
 
 function onDeviceReady() {
-	if( localStorage.getItem("lang") == '' ) {
+	if( localStorage.getItem("lang") === null ) {
 		language = navigator.language.split("-"); 
 	    language_root = (language[0]);
 

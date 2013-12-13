@@ -4,7 +4,7 @@
 var Lang = 'de';
 var Lang_array = new Array( 'de', 'en', '', 'it' );
 
-if( localStorage.getItem("lang") == '' ) {
+if( localStorage.getItem("lang") === null ) {
 
 	language = navigator.language.split("-"); 
 	language_root = (language[0]);
