@@ -18,13 +18,21 @@ function init() {
 }
 
 function onDeviceReady() {
-	language = navigator.language.split("-"); 
-    language_root = (language[0]);
+	if( localStorage.getItem("lang") == '' ) {
+		language = navigator.language.split("-"); 
+	    language_root = (language[0]);
 
-    if( language_root == "en" )
-    	Lang = 1;
-    else if( language_root == "it" )
-    	Lang = 3;
+	    if( language_root == "en" )
+	    	Lang = 1;
+	    else if( language_root == "it" )
+	    	Lang = 3;
+
+	    localStorage.setItem( "lang", Lang );
+	}
+	else {
+		Lang = localStorage.getItem("lang");
+	}
+
 
     /*
 	navigator.notification.alert(

@@ -2,15 +2,22 @@
 <script type="text/javascript">
 
 var Lang = 'de';
+var Lang_array = new Array( 'de', 'en', '', 'it' );
 
-language = navigator.language.split("-"); 
-language_root = (language[0]);
+if( localStorage.getItem("lang") == '' ) {
 
-if( language_root == "en" )
-    	Lang = 'en';
-    else if( language_root == "it" )
-    	Lang = 'it';
+	language = navigator.language.split("-"); 
+	language_root = (language[0]);
 
-window.location = "index_"+Lang+".html";
+	if( language_root == "en" )
+	    	Lang = 'en';
+	    else if( language_root == "it" )
+	    	Lang = 'it';
+
+	window.location = "index_"+Lang+".html";
+}
+else {
+	window.location = "index_"+Lang_array[localStorage.getItem("lang")]+".html";
+}
 
 </script>
