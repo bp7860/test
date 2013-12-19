@@ -26,6 +26,8 @@ function onDeviceReady() {
 	    	Lang = 1;
 	    else if( language_root == "it" )
 	    	Lang = 3;
+	    else if( language_root == "nl" )
+	    	Lang = 6;
 
 	    localStorage.setItem( "lang", Lang );
 	}
