@@ -195,7 +195,7 @@ function showItem(urlObj, options) {
 		var equipment_tmp = '';
 		$.each(item.equipment, function (key, val) {
 			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
-			equipment_tmp+='<img src="img/eq/' + val + '" /> '+legende[Lang][val-1]+'<br>';
+			equipment_tmp+='<img src="img/eq/' + val + '" /> ' + legende[Lang][key] + '<br />';
 		});
 
 		// bilder
