@@ -221,7 +221,7 @@ function showItem(urlObj, options) {
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
 		'		<div class="header_text">'+_l[Lang][2]+'</div>'+
-		'		<p>'+equipment_tmp+'<br /><a href="#legende-page" data-icon="home">Legende</a><br /><br /></p>'+
+		'		<p>'+equipment_tmp+'<br /><br /></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-note"-->'+
 		'		<div class="header_text">'+_l[Lang][3]+'</div>'+
