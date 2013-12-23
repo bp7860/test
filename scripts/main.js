@@ -267,7 +267,7 @@ function showItem(urlObj, options) {
 		'		</p>'+
 		'	<!--/div-->'+
 		'		<div class="header_text">'+_l[Lang][24]+'</div>'+
-		'		<p>'+area[Lang][area_list.indexOf(region_name)]+'</p>'+
+		'		<p>'+area[Lang][region_id]+'</p>'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
 		'		<p>'+impressions_tmp+'</p>'+
