@@ -257,7 +257,7 @@ function showItem(urlObj, options) {
 		'			</table><br /><br />'+
 		'		</p>'+
 		'	<!--/div-->'+
-		'		<div class="header_text">'+_l[Lang][24]+'</div>'+
+		'		<div class="header_text">'+_l[Lang][23]+'</div>'+
 		'		<p>'+area[Lang][0]+'</p>'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
