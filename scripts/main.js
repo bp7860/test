@@ -25,6 +25,15 @@ var legende = new Array(
 		new Array("Terreno erboso o terroso", "Poco ombreggiato dagli alberi", "Ben ombreggiato dagli alberi", "Presa elettrica per caravan con indicazione del voltaggio", "Capacit&agrave; (caravan e tende)", "Docce", "Bombole gas", "Scarico per WC chimico", "Asciugacapelli", "Campo giochi", "Servizi sanitari riscaldabili", "Presa corrente per rasoio", "Lavello stoviglie", "Lavatoio biancheria", "Posto illuminato a richiesta", "Vendita alimentari", "Bar", "Ristorante", "Lavatoi separati uomini/donne", "Distributore benzina vicino", "Centrifuga", "Pista di pattinaggio", "Stadio di pattinaggio artistico", "WC con acqua", "Acquaio per piedi", "Deposito sci", "Spiaggia sul lago", "Senza barriere architettoniche", "Sala per bambini/giovani", "Biblioteca", "Skilift", "Pista di fondo", "Bocce", "Sala fi tness", "Bungalows o appartamenti", "Piscina per bambini", "Affi to roulottes", "Minigolf", "Discoteca", "Pista dei birilli", "Ping pong", "Tennis", "Equitazione", "Sauna", "Bagno turco", "Sala TV", "Solarium", "Whirlpool", "Lavatrice", "Possibilit&agrave; di bagnarsi (per bambini) in acque aperte", "Piscina", "Piscina coperta", "Noleggio barche a remi o di altro tipo", "Altitudine", "Area tot.", "Cabine sanitarie in affi tto", "Stazione svuotamento serbatoi acque di scarico di roulottes", "Stazione svuotamento serbatoi acque di scarico e fecali", "Allacciamenti gas", "Sat", "Allacciamenti acqua di scarico e acqua pulita", "Snack bar o chiosco", "Gestione ecologica", "Internet", "Fermata mezzi pubblici nelle immediate vicinanze", "Cabine individuali", "Campeggio con ottima valutazione ADAC")
 	);
 
+var area_list = new Array(
+		"Bozen und Umgebung",
+		"Der Süden Südtirols",
+		"Dolomiten/Pustertal",
+		"Eisacktal – Wipptal",
+		"Meranerland",
+		"Vinschgau"
+	);
+
 var area = new Array(
 		new Array( 
 			"Bozen (265 m), die Landeshauptstadt von Südtirol, ist eine Stadt mit zwei Gesichtern; unitalienisch herb für die Leute aus dem Süden und mediterran für den, der aus dem Norden kommt. In unmittelbarer Reichweite umgeben die Stadt verschiedene Höhenzüge: der Ritten mit seinen Erdpyramiden und schmucken Gasthäusern, Jenesien am Tschöggelberg und der Kohlererberg (älteste Seilbahn der Welt), als nahe Ausflugsziele. Nahe ist auch das originelle Sarntal, bekannt nicht nur für seine Trachten, sondern auch für die Federkielstickereien. In Bozen fand auch der Mann aus dem Eis \"Ötzi\" im Archäologiemuseum seine letzte Ruhestätte.",
@@ -258,7 +267,7 @@ function showItem(urlObj, options) {
 		'		</p>'+
 		'	<!--/div-->'+
 		'		<div class="header_text">'+_l[Lang][24]+'</div>'+
-		'		<p>'+area[Lang][0]+'</p>'+
+		'		<p>'+area[Lang][area_list.indexOf(region_name)]+'</p>'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
 		'		<p>'+impressions_tmp+'</p>'+
