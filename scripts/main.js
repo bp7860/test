@@ -239,15 +239,8 @@ function showItem(urlObj, options) {
 		'<!--div data-role="collapsible-set"-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<div class="header_text">'+_l[Lang][1]+'</div>'+
-		'		<p>'+
-		'			<div class="ui-grid-a">'+
-		'			    <div class="ui-block-a"><img style="float:left;" src="data:image/jpg;base64,' + item.image + '" /></div>' +
-		'			    <div class="ui-block-b">'+
-		'					<b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.city + '<br/><br/><br/>' +
-		'					Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/><br/>Fax. ' + item.fax + '<br/><br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a><br /><br />'+
-		'			    </div>' +
-		'			</div>' +
-		'		</p>'+
+		'		<p><img src="data:image/jpg;base64,' + item.image + '" /><br /><b>' + item.name + '</b><br/>' + item.address + '<br/>' + item.zip + '<br/>' + item.city + '<br/><br/><br/>' +
+			'Tel. <a href="tel:' + item.phone + '">' + item.phone + '</a><br/><br/>Fax. ' + item.fax + '<br/><br/>e-Mail <a href="mailto:' + item.email + '">' + item.email + '</a><br/><br/><a href="http://' + item.www + '" target="_blank">' + item.www + '</a><br /><br /></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
 		'		<div class="header_text">'+_l[Lang][2]+'</div>'+
