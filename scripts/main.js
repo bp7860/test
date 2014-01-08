@@ -216,6 +216,7 @@ function showItem(urlObj, options) {
 
 		// ausstattung
 		var equipment_tmp = '';
+		var equipment_msg = '';
 		$.each(item.equipment, function (key, val) {
 			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
 			grid = '';
@@ -225,9 +226,7 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'">'+
-				'<a href="#popupBasic_'+ val +'" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Basic Popup</a>'+
-			'</div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="#popupBasic_'+ val +'" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Basic Popup</a></div>';
 			equipment_msg+='<div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div>';
 		});
 
@@ -255,6 +254,7 @@ function showItem(urlObj, options) {
 		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
 		'		<div class="header_text">'+_l[Lang][2]+'</div>'+
 		'		<p><div class="ui-grid-b">'+equipment_tmp+'</div></p>'+
+		equipment_msg +
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-note"-->'+
 		'		<div class="header_text">'+_l[Lang][3]+'</div>'+
