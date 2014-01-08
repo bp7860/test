@@ -218,7 +218,14 @@ function showItem(urlObj, options) {
 		var equipment_tmp = '';
 		$.each(item.equipment, function (key, val) {
 			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
-			equipment_tmp+='<img src="img/eq/' + val + '.gif" /> ' + legende[Lang][(val-1)] + '<br />';
+			grid = '';
+			if( key%3 == 0 )
+				grid = 'a';
+			else if( key%3 == 1 )
+				grid = 'b';
+			else if( key%3 == 2 )
+				grid = 'c';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><img src="img/eq/' + val + '.gif" /> ' + legende[Lang][(val-1)] + '</div>';
 		});
 
 		// bilder
@@ -244,7 +251,7 @@ function showItem(urlObj, options) {
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
 		'		<div class="header_text">'+_l[Lang][2]+'</div>'+
-		'		<p>'+equipment_tmp+'<br /><br /></p>'+
+		'		<p><div class="ui-grid-b">'+equipment_tmp+'</div></p>'+
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-note"-->'+
 		'		<div class="header_text">'+_l[Lang][3]+'</div>'+
