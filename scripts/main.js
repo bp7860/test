@@ -223,8 +223,8 @@ function showItem(urlObj, options) {
 				grid = 'a';
 			else if( key%2 == 1 )
 				grid = 'b';
-			else if( key%3 == 2 )
-				grid = 'c';
+			//else if( key%3 == 2 )
+			//	grid = 'c';
 			equipment_tmp+='<div class="ui-block-'+grid+'"><img src="img/eq/' + val + '.gif" /> ' + legende[Lang][(val-1)] + '</div>';
 		});
 
