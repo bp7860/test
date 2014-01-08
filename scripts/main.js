@@ -227,7 +227,7 @@ function showItem(urlObj, options) {
 				grid = 'c';
 			equipment_tmp+='<div class="ui-block-'+grid+'">'+
 				'<a href="#popupInfo_'+ val +'" data-rel="popup" data-transition="pop">adsf</a>'+
-				'<div data-role="popup" id="popupInfo_'+ val +'" class="ui-content" data-theme="a" style="max-width:350px;">'+
+				'<div data-role="popup" id="popupInfo_'+ val +'">'+
 				'	<p>' + legende[Lang][(val-1)] + '</p>'+
 				'</div>'+
 				''+
