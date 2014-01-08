@@ -226,7 +226,7 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:$(\'#popupBasic_'+ val +'\').popup(\'open\');">Basic Popup</a><div data-role="popup" id="popupBasic_'+ val +'"><p>asdfasdfasdf' + legende[Lang][(val-1)] + '</p></div></div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:$(\'#popupBasic_'+ val +'\').popup(\'open\');">Basic Popup</a><div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '<a href="" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a></p></div></div>';
 			equipment_msg+='';
 		});
 
