@@ -225,7 +225,13 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'"><img src="img/eq/' + val + '.gif" /></div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'">'+
+				'<a href="#popupInfo_'+ val +'" data-rel="popup" data-transition="pop" class="my-tooltip-btn ui-btn ui-alt-icon ui-nodisc-icon ui-btn-inline ui-icon-info ui-btn-icon-notext"><img src="img/eq/' + val + '.gif" /></a>'+
+				'<div data-role="popup" id="popupInfo_'+ val +'" class="ui-content" data-theme="a" style="max-width:350px;">'+
+				'	<p>' + legende[Lang][(val-1)] + '</p>'+
+				'</div>'+
+				''+
+			'</div>';
 		});
 
 		// bilder
