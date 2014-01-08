@@ -226,12 +226,9 @@ function showItem(urlObj, options) {
 			else if( key%3 == 2 )
 				grid = 'c';
 			equipment_tmp+='<div class="ui-block-'+grid+'">'+
-				'<a href="#popupInfo_'+ val +'" data-rel="popup" data-transition="pop">adsf</a>'+
-				'<div data-role="popup" id="popupInfo_'+ val +'">'+
-				'	<p>' + legende[Lang][(val-1)] + '</p>'+
-				'</div>'+
-				''+
+				'<a href="#popupBasic_'+ val +'" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop">Basic Popup</a>'+
 			'</div>';
+			equipment_msg+='<div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div>';
 		});
 
 		// bilder
