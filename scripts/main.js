@@ -88,13 +88,13 @@ function alertDismissed() {
 }
 
 
-function eq_popup( id ) {
+function eq_popup( val ) {
 	//$('#popupBasic_'+ id).show();
 	navigator.notification.alert(
-	    'You are the winner!',  // message
+	    val,  // message
 	    alertDismissed,         // callback
-	    'Game Over',            // title
-	    'Done'                  // buttonName
+	    'Info',            // title
+	    'OK'                  // buttonName
 	);
 
 }
@@ -242,7 +242,7 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+val+'\')">Basic Popup</a><div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div></div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val-1)]+'\')">Basic Popup</a><div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div></div>';
 			equipment_msg+='';
 		});
 
