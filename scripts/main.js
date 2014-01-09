@@ -297,7 +297,7 @@ function showItem(urlObj, options) {
 		'		<p>'+area[Lang][(item.region_id-1)]+'</p>'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
-		'		<p>'+impressions_tmp+'</p>'+
+		'		<p>'+impressions_tmp+'<img width="100%" src="data:image/jpg;base64,' + item.gmap_img + '" /></p>'+
 		'	<!--/div-->'+
 		'<!--/div-->';
 		$content.empty().append(inhalt).trigger( "create" );
