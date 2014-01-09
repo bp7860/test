@@ -242,7 +242,7 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val-1)]+'\')"><img src="data:image/jpg;base64,' + val + '" /></a></div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val-1)]+'\')"><img src="img/eq/' + val + '.gif" /></a></div>';
 			equipment_msg+='';
 		});
 
