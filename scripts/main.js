@@ -85,7 +85,7 @@ function onDeviceReady() {
 
 function eq_popup( id ) {
 	$('#popupBasic_'+ id).popup('open');
-	window.setTimeout("$('#popupBasic_"+id+"').popup('close')", 1000);
+	window.setTimeout("$('#popupBasic_"+id+"').hide()", 1000);
 	return true;
 }
 
