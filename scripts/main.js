@@ -83,10 +83,20 @@ function onDeviceReady() {
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
 }
 
+function alertDismissed() {
+    // do something
+}
+
+
 function eq_popup( id ) {
-	$('#popupBasic_'+ id).show();
-	window.setTimeout("$('#popupBasic_"+id+"').hide()", 1000);
-	return true;
+	//$('#popupBasic_'+ id).show();
+	navigator.notification.alert(
+	    'You are the winner!',  // message
+	    alertDismissed,         // callback
+	    'Game Over',            // title
+	    'Done'                  // buttonName
+	);
+
 }
 
 function updateData(){
