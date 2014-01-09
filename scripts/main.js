@@ -83,6 +83,12 @@ function onDeviceReady() {
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
 }
 
+function eq_popup( id ) {
+	$('#popupBasic_'+ id).popup('open');
+	window.setTimeout("$('#popupBasic_"+id+"').popup('close')", 1000);
+	return true;
+}
+
 function updateData(){
 	console.log('updateData');
 	$.ajax({
@@ -226,7 +232,7 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:$(\'#popupBasic_'+ val +'\').popup(\'open\');window.setTimeout(\"$(\'#popupBasic_'+ val +'\').popup(\'close\')\", 1000);">Basic Popup</a><div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '<a href="" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a></p></div></div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+val+'\')">Basic Popup</a><div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '<a href="" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a></p></div></div>';
 			equipment_msg+='';
 		});
 
