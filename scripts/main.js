@@ -234,7 +234,7 @@ function showItem(urlObj, options) {
 		var equipment_tmp = '';
 		var equipment_msg = '';
 		$.each(item.equipment, function (key, val) {
-			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';
+			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';<div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div>
 			grid = '';
 			if( key%3 == 0 )
 				grid = 'a';
@@ -242,7 +242,7 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val-1)]+'\')">Basic Popup</a><div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div></div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val-1)]+'\')"><img src="data:image/jpg;base64,' + val + '" /></a></div>';
 			equipment_msg+='';
 		});
 
