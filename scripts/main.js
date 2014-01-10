@@ -99,6 +99,17 @@ function eq_popup( val ) {
 
 }
 
+function toggle() {
+	if( $('#details_content_normal').is(":visible") ) {
+		$('#details_content_normal').hide();
+		$('#details_content_gmap').show();
+	}
+	else {
+		$('#details_content_normal').show();
+		$('#details_content_gmap').hide();
+	}
+}
+
 function updateData(){
 	console.log('updateData');
 	$.ajax({
@@ -257,10 +268,11 @@ function showItem(urlObj, options) {
 		'<div data-role="navbar">'+
 		'<ul>'+
 		'		<li><a data-tab="info" class="ui-btn-active" id="info_tab">'+_l[Lang][0]+'</a></li>'+
-		'		<!--li><a data-tab="images">'+_l[Lang][5]+'</a></li-->'+
+		'		<li><a href="javascript:toggle();">'+_l[Lang][23]+'</a></li>'+
 		'		<li id="anfahrt"><a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">'+_l[Lang][23]+'</a></li>'+
 		'	</ul>'+
 		'</div><br /><br />'+
+		'<div id="details_content_normal">'+
 		'<!--div data-role="collapsible-set"-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<div class="header_text">'+_l[Lang][1]+'</div>'+
@@ -297,9 +309,13 @@ function showItem(urlObj, options) {
 		'		<p>'+area[Lang][(item.region_id-1)]+'</p>'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
 		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
-		'		<p>'+impressions_tmp+'<img width="100%" src="data:image/png;base64,' + item.gmap_img + '" /></p>'+
+		'		<p>'+impressions_tmp+'</p>'+
 		'	<!--/div-->'+
-		'<!--/div-->';
+		'<!--/div-->'+
+		'</div>'+
+		'<div id="details_content_gmap" style="display:none">'+
+		'<img width="100%" src="data:image/png;base64,' + item.gmap_img + '" />'+
+		'</div>';
 		$content.empty().append(inhalt).trigger( "create" );
 
 		options.dataUrl = urlObj.href;
