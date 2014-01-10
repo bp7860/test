@@ -267,7 +267,7 @@ function showItem(urlObj, options) {
 		var inhalt = '<h2>'+item.name+'</h2>'+
 		'<div data-role="navbar">'+
 		'<ul>'+
-		'		<li><a data-tab="info" class="ui-btn-active" id="info_tab">'+_l[Lang][0]+'</a></li>'+
+		'		<li><a href="javascript:toggle();">'+_l[Lang][0]+'</a></li>'+
 		'		<li><a href="javascript:toggle();">'+_l[Lang][23]+'</a></li>'+
 		'		<li id="anfahrt"><a href="https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">'+_l[Lang][23]+'</a></li>'+
 		'	</ul>'+
