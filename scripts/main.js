@@ -268,7 +268,7 @@ function showItem(urlObj, options) {
 		'<div data-role="navbar">'+
 		'<ul>'+
 		'		<li><a href="javascript:(window.navigator.onLine ? return true : toggle();">'+_l[Lang][0]+'</a></li>'+
-		'		<li id="anfahrt"><a href="javascirpt:(window.navigator.onLine ? return \'https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17\' : toggle();" rel="external" target="_blank">'+_l[Lang][23]+'</a></li>'+
+		'		<li id="anfahrt"><a href="javascirpt:(window.navigator.onLine ? return location.href =\'https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17\' : toggle();" rel="external" target="_blank">'+_l[Lang][23]+'</a></li>'+
 		'	</ul>'+
 		'</div><br /><br />'+
 		'<div id="details_content_normal">'+
