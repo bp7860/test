@@ -253,7 +253,7 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val-1)]+' / ' + val[0] +'\')"><img src="img/eq/' + val[0] + '.gif" /></a></div>';
+			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val[0]-1)] + ( val[1] != "" ? ' / '+val[1] : '') +'\')"><img src="img/eq/' + val[0] + '.gif" /></a></div>';
 		});
 
 		// bilder
