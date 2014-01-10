@@ -254,7 +254,6 @@ function showItem(urlObj, options) {
 			else if( key%3 == 2 )
 				grid = 'c';
 			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val-1)]+'\')"><img src="img/eq/' + val + '.gif" /></a></div>';
-			equipment_msg+='';
 		});
 
 		// bilder
@@ -267,8 +266,8 @@ function showItem(urlObj, options) {
 		var inhalt = '<h2>'+item.name+'</h2>'+
 		'<div data-role="navbar">'+
 		'<ul>'+
-		'		<li><a href="javascript:(window.navigator.onLine ? return true : toggle();">'+_l[Lang][0]+'</a></li>'+
-		'		<li id="anfahrt"><a href="javascirpt:(window.navigator.onLine ? return location.href =\'https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17\' : toggle();" rel="external" target="_blank">'+_l[Lang][23]+'</a></li>'+
+		( window.navigator.onLine ? '<li><a>'+_l[Lang][0]+'</a></li>' : '<li><a href="javascript:toggle();">'+_l[Lang][0]+'</a></li>' )+
+		( window.navigator.onLine ? '<li id="anfahrt"><a https://maps.google.at/maps?q=' + item.lat + ',' + item.lng + '(' + item.name.split(' ').join('+') + ')&num=1&z=17" rel="external" target="_blank">'+_l[Lang][23]+'</a></li>' : '<li><a href="javascript:toggle();">'+_l[Lang][23]+'</a></li>')+
 		'	</ul>'+
 		'</div><br /><br />'+
 		'<div id="details_content_normal">'+
@@ -281,7 +280,6 @@ function showItem(urlObj, options) {
 		'	<!--div data-role="collapsible" data-mini="true" id="col-equipment"-->'+
 		'		<div class="header_text">'+_l[Lang][2]+'</div>'+
 		'		<p><div class="ui-grid-b">'+equipment_tmp+'</div></p>' +
-		equipment_msg +
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-note"-->'+
 		'		<div class="header_text">'+_l[Lang][3]+'</div>'+
