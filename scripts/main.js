@@ -131,6 +131,8 @@ function updateData(){
 
 	// !! Assumes filePath is a valid path on the device
 
+	$.mobile.showPageLoadingMsg();
+
 	var fileTransfer = new FileTransfer();
 	var uri = encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1");
 
@@ -146,6 +148,7 @@ function updateData(){
 	        console.log("upload error code" + error.code);
 	    }
 	);
+	$.mobile.hidePageLoadingMsg();
 }
 
 function _onSuccessRF(value) {
