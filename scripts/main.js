@@ -136,10 +136,10 @@ function updateData(){
 
 	var fileTransfer = new FileTransfer();
 	var uri = encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1");
-
+	var downloadPath = fileSystem.root.fullPath + '/json.txt';
 	fileTransfer.download(
 	    uri,
-	    fileSystem.root.fullPath + '/json.txt',
+	    downloadPath,
 	    function(entry) {
 	        console.log("download complete: " + entry.fullPath);
 	    },
