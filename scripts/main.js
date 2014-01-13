@@ -80,6 +80,7 @@ function onDeviceReady() {
             'Done'                  // buttonName
         );
        */
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
 	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
 }
 
@@ -138,7 +139,7 @@ function updateData(){
 
 	fileTransfer.download(
 	    uri,
-	    '/json.txt',
+	    fileSystem.root.fullPath + '/json.txt',
 	    function(entry) {
 	        console.log("download complete: " + entry.fullPath);
 	    },
