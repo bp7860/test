@@ -112,6 +112,7 @@ function toggle() {
 
 function updateData(){
 	console.log('updateData');
+	/*
 	$.ajax({
 		dataType: "json",
 		url: "http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1",
@@ -126,6 +127,27 @@ function updateData(){
 			console.log('ajax error: '+error);
 		}
 	});
+	*/
+
+	// !! Assumes filePath is a valid path on the device
+
+	var fileTransfer = new FileTransfer();
+	var uri = encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1");
+
+	fileTransfer.download(
+	    uri,
+	    filePath,
+	    function(entry) {
+	        console.log("download complete: " + entry.fullPath);
+	        fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
+			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(entry.response), _onSuccessW, _onError );
+	    },
+	    function(error) {
+	        console.log("download error source " + error.source);
+	        console.log("download error target " + error.target);
+	        console.log("upload error code" + error.code);
+	    }
+	);
 }
 
 function _onSuccessRF(value) {
