@@ -136,11 +136,9 @@ function updateData(){
 
 	fileTransfer.download(
 	    uri,
-	    filePath,
+	    'json.txt',
 	    function(entry) {
 	        console.log("download complete: " + entry.fullPath);
-	        fileSystemHelper.deleteFile('json.txt', _onSuccessD, _onError);
-			fileSystemHelper.writeLine( 'json.txt', JSON.stringify(entry.response), _onSuccessW, _onError );
 	    },
 	    function(error) {
 	        console.log("download error source " + error.source);
