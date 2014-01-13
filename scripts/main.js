@@ -138,7 +138,7 @@ function updateData(){
 
 	fileTransfer.download(
 	    uri,
-	    'json.txt',
+	    '/json.txt',
 	    function(entry) {
 	        console.log("download complete: " + entry.fullPath);
 	    },
