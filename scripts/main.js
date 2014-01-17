@@ -137,7 +137,7 @@ function updateData(){
 	App = new downloadApp(),
 	App.run(encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"), "test.txt", "test");
 
-	$.mobile.hidePageLoadingMsg();
+	
 }
 
 function _onSuccessRF(value) {
@@ -464,13 +464,15 @@ downloadApp.prototype = {
 			uri,
 			filePath,
 			function(entry) {
-				console.log("transfer done");
+				$.mobile.hidePageLoadingMsg();
+				alert('Done');
 			},
 			function(error) {
                 document.getElementById("result").innerHTML = "An error has occurred: Code = " + error.code;
 				console.log("download error source " + error.source);
 				console.log("download error target " + error.target);
 				console.log("upload error code" + error.code);
+				alert('Error. Please try again later');
 			}
 		);
 		console.log("transfer end");
