@@ -133,11 +133,11 @@ function updateData(){
 	// !! Assumes filePath is a valid path on the device
 
 	$.mobile.showPageLoadingMsg();
-	
+
 	App = new downloadApp(),
 	fileName = "json.txt",
 	uri = encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"),
-	folderName = "";
+	folderName = "test";
     
 	App.run(uri, fileName, folderName);
 
