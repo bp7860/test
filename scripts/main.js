@@ -468,7 +468,7 @@ downloadApp.prototype = {
 			filePath,
 			function(entry) {
 				$.mobile.hidePageLoadingMsg();
-				//alert('Done');
+				alert(entry.fullPath);
 			},
 			function(error) {
                 document.getElementById("result").innerHTML = "An error has occurred: Code = " + error.code;
