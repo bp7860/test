@@ -81,7 +81,7 @@ function onDeviceReady() {
         );
        */
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
-	fileSystemHelper.readTextFromFile( 'campingsuedtirol\/json.txt', _onSuccessRF, _onErrorRF );
+	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
 }
 
 function alertDismissed() {
@@ -135,7 +135,7 @@ function updateData(){
 	$.mobile.showPageLoadingMsg();
 
 	App = new downloadApp(),
-	App.run(encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"), "json.txt", "campingsuedtirol");
+	App.run(encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"), "json.txt");
 
 	
 }
@@ -184,7 +184,7 @@ function _onError(error) {
 }
 
 function showList() {
-	fileSystemHelper.readTextFromFile( 'campingsuedtirol\/json.txt', _onSuccessR, _onError );
+	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
 }
 
 // Listen for any attempts to call changePage().
@@ -421,6 +421,8 @@ downloadApp.prototype = {
 				console.log("gotFS");
 				if (device.platform === "Android") {
 					console.log("android");
+					that.transferFile(uri, fileName);
+					/*
 					that.getFolder(fileSystem, folderName, function(folder) {
 						filePath = folder.fullPath + "\/" + fileName;
 						that.transferFile(uri, filePath);
@@ -428,6 +430,7 @@ downloadApp.prototype = {
 					}, function() {
 						console.log("failed to get folder");
 					});
+*/
 				}
 				else {
 					console.log("no android");
