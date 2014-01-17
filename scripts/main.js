@@ -135,11 +135,7 @@ function updateData(){
 	$.mobile.showPageLoadingMsg();
 
 	App = new downloadApp(),
-	fileName = "json.txt",
-	uri = encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"),
-	folderName = "test";
-    
-	App.run(uri, fileName, folderName);
+	App.run(encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"), "test.txt", "test");
 
 	$.mobile.hidePageLoadingMsg();
 }
@@ -420,32 +416,30 @@ downloadApp.prototype = {
 		var that = this,
 		filePath = "";
         
-		document.getElementById("download").addEventListener("click", function() {
-			that.getFilesystem(
-				function(fileSystem) {
-					console.log("gotFS");
-                    
-					if (device.platform === "Android") {
-						console.log("android");
-						that.getFolder(fileSystem, folderName, function(folder) {
-							filePath = folder.fullPath + "\/" + fileName;
-							that.transferFile(uri, filePath);
-							console.log("got filesystem");
-						}, function() {
-							console.log("failed to get folder");
-						});
-					}
-					else {
-						console.log("no android");
-						filePath = fileSystem.root.fullPath + "\/" + fileName;
-						that.transferFile(uri, filePath)
-					}
-				},
-				function() {
-					console.log("failed to get filesystem");
+		that.getFilesystem(
+			function(fileSystem) {
+				console.log("gotFS");
+				if (device.platform === "Android") {
+					console.log("android");
+					that.getFolder(fileSystem, folderName, function(folder) {
+						filePath = folder.fullPath + "\/" + fileName;
+						that.transferFile(uri, filePath);
+						console.log("got filesystem");
+					}, function() {
+						console.log("failed to get folder");
+					});
 				}
-			);
-		});
+				else {
+					console.log("no android");
+					filePath = fileSystem.root.fullPath + "\/" + fileName;
+					that.transferFile(uri, filePath)
+				}
+			},
+			function() {
+				console.log("failed to get filesystem");
+			}
+		);
+
 	},
     
 	getFilesystem:function (success, fail) {
@@ -470,9 +464,7 @@ downloadApp.prototype = {
 			uri,
 			filePath,
 			function(entry) {
-				var image = document.getElementById("downloadedImage");
-				image.src = entry.fullPath;
-				document.getElementById("result").innerHTML = "File saved to: " + entry.fullPath;
+				console.log("transfer done");
 			},
 			function(error) {
                 document.getElementById("result").innerHTML = "An error has occurred: Code = " + error.code;
