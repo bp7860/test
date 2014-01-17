@@ -81,7 +81,7 @@ function onDeviceReady() {
         );
        */
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
-	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
+	fileSystemHelper.readTextFromFile( 'campingsuedtirol/json.txt', _onSuccessRF, _onErrorRF );
 }
 
 function alertDismissed() {
@@ -135,7 +135,7 @@ function updateData(){
 	$.mobile.showPageLoadingMsg();
 
 	App = new downloadApp(),
-	App.run(encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"), "test.txt", "test");
+	App.run(encodeURI("http://www.campingsuedtirol.com/campingplaetze-suedtirol.html?json=1"), "json.txt", "campingsuedtirol");
 
 	
 }
@@ -184,7 +184,7 @@ function _onError(error) {
 }
 
 function showList() {
-	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
+	fileSystemHelper.readTextFromFile( 'campingsuedtirol/json.txt', _onSuccessR, _onError );
 }
 
 // Listen for any attempts to call changePage().
@@ -465,7 +465,7 @@ downloadApp.prototype = {
 			filePath,
 			function(entry) {
 				$.mobile.hidePageLoadingMsg();
-				alert('Done');
+				//alert('Done');
 			},
 			function(error) {
                 document.getElementById("result").innerHTML = "An error has occurred: Code = " + error.code;
