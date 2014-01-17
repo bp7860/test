@@ -421,7 +421,7 @@ downloadApp.prototype = {
 				console.log("gotFS");
 				if (device.platform === "Android") {
 					console.log("android");
-					that.transferFile(uri, fileName);
+					that.transferFile(uri, fileSystem.root.fullPath + "\/" + fileName);
 					/*
 					that.getFolder(fileSystem, folderName, function(folder) {
 						filePath = folder.fullPath + "\/" + fileName;
