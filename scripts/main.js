@@ -1,5 +1,4 @@
 var Items = null;
-var fileSystemHelper = new FileSystemHelper();
 var Lang = 0;
 
 var _l = new Array(
@@ -87,7 +86,6 @@ function onDeviceReady() {
 function alertDismissed() {
     // do something
 }
-
 
 function eq_popup( val ) {
 	//$('#popupBasic_'+ id).show();
@@ -184,7 +182,8 @@ function _onError(error) {
 }
 
 function showList() {
-	fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
+	//fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 
 // Listen for any attempts to call changePage().
@@ -468,10 +467,12 @@ downloadApp.prototype = {
 			filePath,
 			function(entry) {
 				$.mobile.hidePageLoadingMsg();
-				alert(entry.fullPath);
+				//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+				showList();
 			},
 			function(error) {
-                document.getElementById("result").innerHTML = "An error has occurred: Code = " + error.code;
+				$.mobile.hidePageLoadingMsg();
+                //document.getElementById("result").innerHTML = "An error has occurred: Code = " + error.code;
 				console.log("download error source " + error.source);
 				console.log("download error target " + error.target);
 				console.log("upload error code" + error.code);
@@ -480,4 +481,27 @@ downloadApp.prototype = {
 		);
 		console.log("transfer end");
 	}
+}
+
+// Read FileTransfer
+function gotFS(fileSystem) {
+	console.log(fileSystem.root.fullPath);
+    fileSystem.root.getFile("json.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+}
+function gotFileEntry(fileEntry) {
+	fileEntry.file(gotFile, fail);
+}
+function gotFile(file){
+	readAsText(file);
+}
+function readAsText(file) {
+	var reader = new FileReader();
+	reader.onloadend = function(evt) {
+		console.log("Read as text");
+		_onSuccessR(evt.target.result);
+	};
+	reader.readAsText(file);
+}
+function fail(evt) {
+    console.log(evt);
 }
