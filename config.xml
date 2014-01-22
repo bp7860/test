@@ -9,7 +9,7 @@
     <name>Camping Südtirol</name>
 
     <description>
-        Die Campingplätze Südtirols2
+        Die Campingplätze Südtirols
     </description>
 
     <author href="http://web-crossing.com" email="info@web-crossing.com">
@@ -48,6 +48,7 @@
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 
     <gap:platform name="android" />
+    <gap:platform name="ios" />
 
     <!-- Plugins can also be added here. -->
     <feature name="http://api.phonegap.com/1.0/file"/>
