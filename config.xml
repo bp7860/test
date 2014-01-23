@@ -3,13 +3,15 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.web-crossing.app"
+        id        = "com.campingsuedtirol.app"
         version   = "1.0.0">
 
     <name>Camping Südtirol</name>
 
     <description>
-        Die Campingplätze Südtirols
+        Der perfekte Urlaubsbegleiter für alle Camping-Freunde. 
+        Entdecken und erkunden Sie alle Camping-Plätze in Südtirol. Übersichtlich präsentiert, mit allen wichtigen Informationen: Kontaktdaten, Ausstattung, Bildergalerie, Routenplaner und Preise. 
+        Zusätzlich finden Sie in der App auch praktische Zusatzinformationen über Wetter und Verkehr.  
     </description>
 
     <author href="http://web-crossing.com" email="info@web-crossing.com">
