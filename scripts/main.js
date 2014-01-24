@@ -487,10 +487,10 @@ downloadApp.prototype = {
 // Read FileTransfer
 function gotFS(fileSystem) {
 	console.log(fileSystem.root.fullPath);
-    fileSystem.root.getFile("json.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    fileSystem.root.getFile("json.txt", {create: false, exclusive: false}, gotFileEntry, _onErrorRF);
 }
 function gotFileEntry(fileEntry) {
-	fileEntry.file(gotFile, _onErrorRF);
+	fileEntry.file(gotFile, fail);
 }
 function gotFile(file){
 	readAsText(file);
@@ -500,10 +500,6 @@ function readAsText(file) {
 	reader.onloadend = function(evt) {
 		console.log("Read as text");
 		alert(evt.target.result);
-		if( evt.target.result != "" )
-			_onSuccessR(evt.target.result);
-		else
-			updateData();
 	};
 	reader.readAsText(file);
 }
