@@ -490,7 +490,7 @@ function gotFS(fileSystem) {
     fileSystem.root.getFile("json.txt", {create: true, exclusive: false}, gotFileEntry, fail);
 }
 function gotFileEntry(fileEntry) {
-	fileEntry.file(gotFile, fail);
+	fileEntry.file(gotFile, _onErrorRF);
 }
 function gotFile(file){
 	readAsText(file);
