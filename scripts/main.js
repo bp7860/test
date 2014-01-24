@@ -487,7 +487,7 @@ downloadApp.prototype = {
 // Read FileTransfer
 function gotFS(fileSystem) {
 	console.log(fileSystem.root.fullPath);
-    fileSystem.root.getFile("json.txt", {create: false, exclusive: false}, gotFileEntry, fail);
+    fileSystem.root.getFile("json.txt", {create: false, exclusive: false}, gotFileEntry, _onErrorRF);
 }
 function gotFileEntry(fileEntry) {
 	fileEntry.file(gotFile, fail);
