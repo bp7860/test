@@ -499,7 +499,11 @@ function readAsText(file) {
 	var reader = new FileReader();
 	reader.onloadend = function(evt) {
 		console.log("Read as text");
-		_onSuccessR(evt.target.result);
+		alert(evt.target.result);
+		if( evt.target.result != "" )
+			_onSuccessR(evt.target.result);
+		else
+			updateData();
 	};
 	reader.readAsText(file);
 }
