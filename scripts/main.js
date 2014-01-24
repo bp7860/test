@@ -184,7 +184,7 @@ function _onError(error) {
 
 function showList() {
 	//fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessR, _onError );
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, _onErrorRF);
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 
 // Listen for any attempts to call changePage().
@@ -487,7 +487,7 @@ downloadApp.prototype = {
 // Read FileTransfer
 function gotFS(fileSystem) {
 	console.log(fileSystem.root.fullPath);
-    fileSystem.root.getFile("json.txt", {create: false, exclusive: false}, gotFileEntry, _onErrorRF);
+    fileSystem.root.getFile("json.txt", {create: false, exclusive: false}, gotFileEntry, fail);
 }
 function gotFileEntry(fileEntry) {
 	fileEntry.file(gotFile, fail);
@@ -499,10 +499,10 @@ function readAsText(file) {
 	var reader = new FileReader();
 	reader.onloadend = function(evt) {
 		console.log("Read as text");
-		alert(evt.target.result);
+		_onSuccessR(evt.target.result);
 	};
 	reader.readAsText(file);
 }
 function fail(evt) {
-    console.log(evt);
+    alert(evt);
 }
