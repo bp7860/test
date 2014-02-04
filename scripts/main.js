@@ -156,7 +156,7 @@ function _onErrorRF(value) {
 
 }
 function onConfirm(buttonIndex) {
-    buttonIndex == 1 ? showList() : false;
+    buttonIndex == 1 ? updateData() : false;
 }
 
 
