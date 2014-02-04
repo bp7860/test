@@ -151,10 +151,8 @@ function _onErrorRF(value) {
 	         onConfirm            // callback to invoke with index of button pressed
 	    );
 	}
-	else {
-		alert(device.platform);
+	else
 		updateData();
-	}
 
 }
 function onConfirm(buttonIndex) {
