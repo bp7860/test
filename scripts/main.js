@@ -152,6 +152,7 @@ function _onErrorRF(value) {
 	    );
 	}
 	else {
+		alert(device.platform);
 		updateData();
 	}
 
