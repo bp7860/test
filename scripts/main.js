@@ -148,16 +148,17 @@ function _onErrorRF(value) {
 	//if( device.platform == "iPhone" ) {
 	navigator.notification.confirm(
         'Need to update Data', // message
-         confirm_update // callback to invoke with index of button pressed
+         onConfirm            // callback to invoke with index of button pressed
     );
 	//}
 	//else
 	//	showList();
 
 }
- function confirm_update(index) {
- 	index==0 ? updateData(); : false;
- }  
+function onConfirm(buttonIndex) {
+        alert('You selected button ' + buttonIndex);
+}
+
 
 
 function _onSuccessW(value) {
