@@ -156,7 +156,7 @@ function _onErrorRF(value) {
 
 }
 function onConfirm(buttonIndex) {
-        alert('You selected button ' + buttonIndex);
+    buttonIndex == 1 ? showList() : false;
 }
 
 
