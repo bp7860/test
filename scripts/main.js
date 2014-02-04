@@ -146,13 +146,14 @@ function _onSuccessRF(value) {
 
 function _onErrorRF(value) {
 	if( device.platform == "iPhone" ) {
-	navigator.notification.confirm(
-        'Data update required', // message
-         onConfirm            // callback to invoke with index of button pressed
-    );
+		navigator.notification.confirm(
+	        'Data update required', // message
+	         onConfirm            // callback to invoke with index of button pressed
+	    );
 	}
-	else
+	else {
 		updateData();
+	}
 
 }
 function onConfirm(buttonIndex) {
