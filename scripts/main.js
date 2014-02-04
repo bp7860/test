@@ -145,7 +145,6 @@ function _onSuccessRF(value) {
 }
 
 function _onErrorRF(value) {
-	alert(device.platform);
 	if( device.platform == "iPhone" ) {
 	navigator.notification.confirm(
         'Data update required', // message
@@ -153,7 +152,7 @@ function _onErrorRF(value) {
     );
 	}
 	else
-		showList();
+		updateData();
 
 }
 function onConfirm(buttonIndex) {
