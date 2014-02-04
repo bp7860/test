@@ -145,14 +145,15 @@ function _onSuccessRF(value) {
 }
 
 function _onErrorRF(value) {
-	//if( device.platform == "iPhone" ) {
+	alert(device.platform);
+	if( device.platform == "iPhone" ) {
 	navigator.notification.confirm(
         'Need to update Data', // message
          onConfirm            // callback to invoke with index of button pressed
     );
-	//}
-	//else
-	//	showList();
+	}
+	else
+		showList();
 
 }
 function onConfirm(buttonIndex) {
