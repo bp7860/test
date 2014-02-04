@@ -70,14 +70,6 @@ function onDeviceReady() {
 		Lang = localStorage.getItem("lang");
 	}
 
-	//if( device.platform == "iPhone" ) {
-		navigator.notification.confirm(
-	        'Need to update Data', // message
-	         showList            // callback to invoke with index of button pressed
-	    );
-	//}
-	//else
-	//	showList();
 
 
     /*
@@ -90,7 +82,7 @@ function onDeviceReady() {
        */
     //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
 	//fileSystemHelper.readTextFromFile( 'json.txt', _onSuccessRF, _onErrorRF );
-	
+	showList();
 }
 
 function alertDismissed() {
@@ -153,7 +145,15 @@ function _onSuccessRF(value) {
 }
 
 function _onErrorRF(value) {
-	updateData();
+	//if( device.platform == "iPhone" ) {
+	navigator.notification.confirm(
+        'Need to update Data', // message
+         updateData            // callback to invoke with index of button pressed
+    );
+	//}
+	//else
+	//	showList();
+
 }
 
 
