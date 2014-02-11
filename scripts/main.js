@@ -145,14 +145,15 @@ function _onSuccessRF(value) {
 }
 
 function _onErrorRF(value) {
-	if( device.platform == "iPhone" || device.platform == "iOS" ) {
+	
+	/*if( device.platform == "iPhone" || device.platform == "iOS" ) {
 		navigator.notification.confirm(
 	        'Data update required', // message
 	         onConfirm            // callback to invoke with index of button pressed
 	    );
 	}
-	else
-		updateData();
+	else*/
+	updateData();
 
 }
 function onConfirm(buttonIndex) {
