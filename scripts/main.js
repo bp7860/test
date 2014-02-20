@@ -75,18 +75,18 @@ function onDeviceReady() {
 
 	/* Translate */
 	//if( Lang != "de" ) {
-		$('.lng_camping').each(function() {				$(this).innerHTML(_l[Lang][27]); alert(_l[Lang][27]);	});
-		$('.lng_campingsuedtirol').each(function() {	$(this).innerHTML(_l[Lang][26]);	});
-		$('.lng_home').each(function() {				$(this).innerHTML(_l[Lang][16]);	});
-		$('.lng_service').each(function() {				$(this).innerHTML(_l[Lang][17]);	});
-		$('.lng_details').each(function() {				$(this).innerHTML(_l[Lang][18]);	});
-		$('.lng_back').each(function() {				$(this).innerHTML(_l[Lang][18]);	});
-		$('.lng_impressum').each(function() {			$(this).innerHTML(_l[Lang][5]);		});
-		$('.lng_partner').each(function() {				$(this).innerHTML(_l[Lang][20]);	});
-		$('.lng_moreservices').each(function() {		$(this).innerHTML(_l[Lang][21]);	});
-		$('.lng_wetter').each(function() {				$(this).innerHTML(_l[Lang][28]);	});
-		$('.lng_verkehr').each(function() {				$(this).innerHTML(_l[Lang][25]);	});
-		$('.lng_film').each(function() {				$(this).innerHTML(_l[Lang][29]);	});
+		$('#lng_camping').innerHTML(_l[Lang][27]);
+		$('#lng_campingsuedtirol').innerHTML(_l[Lang][26]);
+		$('#lng_home').innerHTML(_l[Lang][16]);
+		$('#lng_service').innerHTML(_l[Lang][17]);
+		$('#lng_details').innerHTML(_l[Lang][18]);
+		$('#lng_back').innerHTML(_l[Lang][18]);
+		$('#lng_impressum').innerHTML(_l[Lang][5]);
+		$('#lng_partner').innerHTML(_l[Lang][20]);
+		$('#lng_moreservices').innerHTML(_l[Lang][21]);
+		$('#lng_wetter').innerHTML(_l[Lang][28]);
+		$('#lng_verkehr').innerHTML(_l[Lang][25]);
+		$('#lng_film').innerHTML(_l[Lang][29]);
 	//}
 
 
