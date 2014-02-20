@@ -1,28 +1,6 @@
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript">
 
-var Lang = 'de';
-var Lang_array = new Array( 'de', 'en', '', 'it', '', '', 'nl' );
-
-if( !localStorage.lang ) {
-
-	language = navigator.language.split("-"); 
-	language_root = language[0];
-
-	if( language_root == "en" )
-		Lang = 'en';
-	else if( language_root == "it" )
-		Lang = 'it';
-	else if( language_root == "nl" )
-		Lang = 'nl';
-
-	location.href = "index_"+Lang+".html";
-
-	localStorage.lang = Lang;
-}
-else {
-	alert("already set");
-	location.href = "index_"+Lang_array[localStorage.lang]+".html";
-}
+location.href = "index_de.html";
 
 </script>
