@@ -29,7 +29,8 @@ if( !localStorage.lang ) {
 		Lang = 'it';
 	else if( language_root == "nl" )
 		Lang = 'nl';
-	window.navigate("index_"+Lang+".html");
+	
+	self.location="index_"+Lang+".html";
 }
 else {
 	window.location = "index_"+Lang_array[localStorage.lang]+".html";
