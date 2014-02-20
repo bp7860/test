@@ -18,7 +18,7 @@ if( !localStorage.lang ) {
 
 	alert("index_"+Lang+".html");
 
-	window.location = "index_"+Lang+".html";
+	window.location.replace("index_"+Lang+".html");
 }
 else {
 	window.location = "index_"+Lang_array[localStorage.lang]+".html";
