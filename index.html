@@ -16,18 +16,13 @@ if( !localStorage.lang ) {
 	else if( language_root == "nl" )
 		Lang = 'nl';
 
-	alert(Lang);
-
-	window.location = "index_"+Lang+".html";
+	location.href = "index_"+Lang+".html";
 
 	localStorage.lang = Lang;
 }
 else {
 	alert("already set");
-	window.location = "index_"+Lang_array[localStorage.lang]+".html";
+	location.href = "index_"+Lang_array[localStorage.lang]+".html";
 }
-
-
-
 
 </script>
