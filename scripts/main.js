@@ -75,8 +75,18 @@ function onDeviceReady() {
 
 	/* Translate */
 	//if( Lang != "de" ) {
-		$('#lng_camping').html(_l[Lang][27]);
-		$('#lng_campingsuedtirol').html(_l[Lang][26]);
+		$('.lng_camping').each(function() {$(this).innerHTML(_l[Lang][27]);});
+		$('.lng_campingsuedtirol').each(function() {$(this).innerHTML(_l[Lang][26]);});
+		$('.lng_home').each(function() {$(this).innerHTML(_l[Lang][16]);});
+		$('.lng_service').each(function() {$(this).innerHTML(_l[Lang][17]);});
+		$('.lng_details').each(function() {$(this).innerHTML(_l[Lang][18]);});
+		$('.lng_back').each(function() {$(this).innerHTML(_l[Lang][18]);});
+		$('.lng_impressum').each(function() {$(this).innerHTML(_l[Lang][5]);});
+		$('.lng_partner').each(function() {$(this).innerHTML(_l[Lang][20]);});
+		$('.lng_moreservices').each(function() {$(this).innerHTML(_l[Lang][21]);});
+		$('.lng_wetter').each(function() {$(this).innerHTML(_l[Lang][28]);});
+		$('.lng_verkehr').each(function() {$(this).innerHTML(_l[Lang][25]);});
+		$('.lng_film').each(function() {$(this).innerHTML(_l[Lang][29]);});
 	//}
 
 
