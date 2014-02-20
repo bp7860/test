@@ -84,9 +84,6 @@ function onDeviceReady() {
 		$('#lng_impressum').innerHTML(_l[Lang][5]);
 		$('#lng_partner').innerHTML(_l[Lang][20]);
 		$('#lng_moreservices').innerHTML(_l[Lang][21]);
-		$('#lng_wetter').innerHTML(_l[Lang][28]);
-		$('#lng_verkehr').innerHTML(_l[Lang][25]);
-		$('#lng_film').innerHTML(_l[Lang][29]);
 	//}
 
 
