@@ -3,17 +3,17 @@ var Lang = 0;
 
 var _l = new Array(
 		new Array( "Information", "Kontakt", "Ausstattung", "Info", "Preise", "Impressionen", "Erwachsene", "Kinder", "Auto", "Wohnanhänger", "Wohnmobil", "großes Zelt", "Zelt",
-					"Motorrad", "Hunde", "Strom", "Home", "Service", "Details", "Impressum", "Partner", "Weitere Services", "Update", "Anfahrt", "Region", "Verkehr", "Camping Südtirol", "Campingplatz", "Wetter" ),
+					"Motorrad", "Hunde", "Strom", "Home", "Service", "Details", "Impressum", "Partner", "Weitere Services", "Update", "Anfahrt", "Region", "Verkehr", "Camping Südtirol", "Campingplatz", "Wetter", "Film" ),
 
 		new Array( "Information", "Contact", "Equipment", "Description", "Prices", "Impressions", "Adults", "Kids", "Car", "Caravan", "Camper", "Marquee", "Tent",
-					"Motorbike", "Dog", "Electricity", "Home", "Service", "Details", "Imprint", "Partners", "More Services", "Update", "Map", "Region", "Traffic", "Camping South Tyrol", "campsite", "weather" ),
+					"Motorbike", "Dog", "Electricity", "Home", "Service", "Details", "Imprint", "Partners", "More Services", "Update", "Map", "Region", "Traffic", "Camping South Tyrol", "campsite", "weather", "Movie" ),
 		new Array(),
 		new Array( "Informazioni", "Contatto", "Attrezzatura", "Annotazione", "Prezzi", "Impressioni", "Adulti", "Bambini", "Macchina", "Caravan", "Camper", "Grande tenda", "Tenda",
-					"Moto", "Cani", "Corrente", "Home", "Servizio", "Dettagli", "Informazioni legali", "Partner", "altri servizi", "Aggiornamento", "Arrivo", "Regione", "traffico", "Camping Alto Adige", "campeggio", "tempo" ),
+					"Moto", "Cani", "Corrente", "Home", "Servizio", "Dettagli", "Informazioni legali", "Partner", "altri servizi", "Aggiornamento", "Arrivo", "Regione", "traffico", "Camping Alto Adige", "campeggio", "meteo", "film" ),
 		new Array(),
 		new Array(),
 		new Array( "Informatie", "Contact", "Uitrusting", "Opmerking", "Prijzen", "Impressies", "Volwassenen", "Kinderen", "Auto", "Caravan", "Camper", "Grote tent", "Tent",
-					"Motor", "Honden", "Stroom", "Home", "Service", "Details", "Impressum", "Partner", "Andere services", "Update", "Route", "Regio", "Verkeer", "Camping Südtirol", "Campingplaatsen", "Weer" )
+					"Motor", "Honden", "Stroom", "Home", "Service", "Details", "Impressum", "Partner", "Andere services", "Update", "Route", "Regio", "Verkeer", "Camping Südtirol", "Campingplaatsen", "Weer", "film" )
 	);
 var legende = new Array(
 		new Array("Gras oder Erdboden", "Wenig Schatten durch B&auml;ume", "Guter Schatten durch B&auml;ume", "Stromanschlu&szlig; f&uuml;r Caravans mit Voltangabe", "Einheiten (Caravans und Zelte)", "Duschen", "Gasversorgung", "Ausgu&szlig; f&uuml;r Chemikaltoiletten", "Trockenhaube", "Kinderspielplatz", "Beheizbare Sanit&auml;ranlagen", "Stromanschl&uuml;sse f&uuml;r Rassierapparat", "Geschirrsp&uuml;lbecken", "W&auml;schewaschbecken", "Platzbeleuchtung vorhanden", "Lebensmittel", "Imbiss", "Gastst&auml;tte", "Waschr&auml;ume nach Geschlechtern getrennt", "Tankstelle bei Camping", "Trockner", "Eislaufplatz", "Kunsteislaufplatz", "Toiletten mit Wassersp&uuml;lung", "Fu&szlig;waschbecken", "Skieinstellraum", "Seestrand", "Acc&egrave;s handicap&eacute;s", "Kinder-/Jugendzimmer", "Bibliothek", "Skilift", "Langlaufloipe", "Boccia", "Fitne&szlig;raum", "Bungalows oder Appartments", "Planschbecken", "Mietcaravan", "Minigolf", "Diskothek", "Kegelbahn", "Tischtennis", "Tennis", "Reitm&ouml;glichkeit", "Sauna", "Dampfbad", "Fernsehraum", "Solarium", "Whirlpool", "Waschmaschine", "Badegelegenheit auch f&uuml;r Kinder im offenen Gew&auml;sser", "Schwimmbecken", "Hallenbad", "Verleih von Ruderbooten der sonstigen Booten", "H&ouml;he &uuml;ber dem Meer", "Gesamtfl&auml;che", "Sanit&auml;rkabinen, die gemietet werden k&ouml;nnen", "Enteehrungsstation f&uuml;r Wohnmobil-Abwassertanks", "Entleehrung f&uuml;r Abwasser- und F&auml;kaltanks", "Gasanschl&uuml;sse", "Satelitenanlage", "Abwasser-/Frischwasseranschl&uuml;sse", "Imbisstube oder Imbissstand", "Umweltorientierte Betriebsf&uuml;hrung", "Internet", "&Ouml;ffentliche Verkehrsmittel in der N&auml;he", "Einzelwaschkabinen", "Campinplatz mit herausragendem Ergebnis bei der ADAC-Inspektion"),
@@ -75,10 +75,18 @@ function onDeviceReady() {
 
 	/* Translate */
 	//if( Lang != "de" ) {
-		$('#lng_camping').html(_l[Lang][27]);
-		$('#lng_campingsuedtirol').html(_l[Lang][26]);
-		$('#lng_home').html(_l[Lang][16]);
-		$('#lng_service').html(_l[Lang][17]);
+		$('.lng_camping').innerHTML(_l[Lang][27]);
+		$('.lng_campingsuedtirol').innerHTML(_l[Lang][26]);
+		$('.lng_home').innerHTML(_l[Lang][16]);
+		$('.lng_service').innerHTML(_l[Lang][17]);
+		$('.lng_details').innerHTML(_l[Lang][18]);
+		$('.lng_back').innerHTML(_l[Lang][18]);
+		$('.lng_impressum').innerHTML(_l[Lang][5]);
+		$('.lng_partner').innerHTML(_l[Lang][20]);
+		$('.lng_moreservices').innerHTML(_l[Lang][21]);
+		$('.lng_wetter').innerHTML(_l[Lang][28]);
+		$('.lng_verkehr').innerHTML(_l[Lang][25]);
+		$('.lng_film').innerHTML(_l[Lang][29]);
 	//}
 
 
