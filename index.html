@@ -1,10 +1,33 @@
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript">
 
-language = navigator.language.split("-"); 
-	language_root = (language[0]);
+var Lang = 'de';
+var Lang_array = new Array( 'de', 'en', '', 'it', '', '', 'nl' );
 
-	console.log(language_root);
-	alert(language_root);
+if( !localStorage.lang ) {
+
+	language = navigator.language.split("-"); 
+	language_root = language[0];
+
+	if( language_root == "en" )
+		Lang = 'en';
+	else if( language_root == "it" )
+		Lang = 'it';
+	else if( language_root == "nl" )
+		Lang = 'nl';
+
+	alert(Lang);
+
+	window.location = "index_"+Lang+".html";
+
+	localStorage.lang = Lang;
+}
+else {
+	alert("already set");
+	window.location = "index_"+Lang_array[localStorage.lang]+".html";
+}
+
+
+
 
 </script>
