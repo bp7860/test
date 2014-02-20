@@ -1,5 +1,4 @@
 var Items = null;
-var Lang = 0;
 
 
 var legende = new Array(

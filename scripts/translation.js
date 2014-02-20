@@ -5,14 +5,14 @@ var _l = new Array(
 		"Motorrad", "Hunde", "Strom", "Home", "Service", "Details", "Impressum", "Partner", "Weitere Services", "Update", "Anfahrt", "Region", "Verkehr", "Camping Südtirol", "Campingplatz", "Wetter", "Film" ),
 
 	new Array( "Information", "Contact", "Equipment", "Description", "Prices", "Impressions", "Adults", "Kids", "Car", "Caravan", "Camper", "Marquee", "Tent",
-		"Motorbike", "Dog", "Electricity", "Home", "Service", "Details", "Imprint", "Partners", "More Services", "Update", "Map", "Region", "Traffic", "Camping South Tyrol", "campsite", "weather", "Movie" ),
+		"Motorbike", "Dog", "Electricity", "Home", "Service", "Details", "Imprint", "Partners", "More Services", "Update", "Map", "Region", "Traffic", "Camping South Tyrol", "Campsite", "Weather", "Movie" ),
 	new Array(),
 	new Array( "Informazioni", "Contatto", "Attrezzatura", "Annotazione", "Prezzi", "Impressioni", "Adulti", "Bambini", "Macchina", "Caravan", "Camper", "Grande tenda", "Tenda",
-		"Moto", "Cani", "Corrente", "Home", "Servizio", "Dettagli", "Informazioni legali", "Partner", "altri servizi", "Aggiornamento", "Arrivo", "Regione", "traffico", "Camping Alto Adige", "campeggio", "meteo", "film" ),
+		"Moto", "Cani", "Corrente", "Home", "Servizio", "Dettagli", "Informazioni legali", "Partner", "altri servizi", "Aggiornamento", "Arrivo", "Regione", "Traffico", "Camping Alto Adige", "Campeggio", "Meteo", "Film" ),
 	new Array(),
 	new Array(),
 	new Array( "Informatie", "Contact", "Uitrusting", "Opmerking", "Prijzen", "Impressies", "Volwassenen", "Kinderen", "Auto", "Caravan", "Camper", "Grote tent", "Tent",
-		"Motor", "Honden", "Stroom", "Home", "Service", "Details", "Impressum", "Partner", "Andere services", "Update", "Route", "Regio", "Verkeer", "Camping Südtirol", "Campingplaatsen", "Weer", "film" )
+		"Motor", "Honden", "Stroom", "Home", "Service", "Details", "Impressum", "Partner", "Andere services", "Update", "Route", "Regio", "Verkeer", "Camping Südtirol", "Campingplaatsen", "Weer", "Film" )
 	);
 
 if( localStorage.getItem("lang") === null ) {
