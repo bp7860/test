@@ -19,19 +19,19 @@
 
 	<div data-role="page" id="home" data-theme="b">
 		<div data-role="header">
-			<h2 class="lng_camping">Campingpl&auml;tze</h2>
+			<h2 id="lng_camping">Campingpl&auml;tze</h2>
 		</div>
 		<div data-role="content">
 			<div class="header"><img src="img/logo.png"></div>
-			<div class="header_text lng_campingsuedtirol">Campingpl&auml;tze S&uuml;dtirol</div>
+			<div class="header_text" id="lng_campingsuedtirol">Campingpl&auml;tze S&uuml;dtirol</div>
 			<ul data-role="listview" data-filter="false" id="campingplatzelist" data-theme="a" data-inset="true" data-filter-placeholder="Campingplätze Finden" data-autodividers="true">
 			</ul>
 		</div>
 		<footer data-role="footer" data-position="fixed" data-theme="b">
 			<nav data-role="navbar" data-iconpos="left">
 				<ul>
-					<li><a href="#home" data-icon="home" class="lng_home">Home</a></li>
-					<li><a href="#services-page" data-icon="info" class="lng_service">Service</a></li>
+					<li><a href="#home" data-icon="home" id="lng_home">Home</a></li>
+					<li><a href="#services-page" data-icon="info" id="lng_service">Service</a></li>
 				</ul>
 			</nav>
 		</footer>
@@ -42,8 +42,8 @@
 
 	<div data-role="page" id="campingplaetzedetails-page" data-theme="b">
 		<div data-role="header">
-			<h1 class="lng_details">Details</h1>
-			<a href="#home" data-icon="home" class="ui-btn-right lng_home" rel="external" data-iconpos="notext" style="background: #848274;">Home</a>
+			<h1 id="lng_details">Details</h1>
+			<a href="#home" data-icon="home" class="ui-btn-right" rel="external" data-iconpos="notext" style="background: #848274;" id="lng_home">Home</a>
 		</div>
 		<div data-role="content">
 			
@@ -51,8 +51,8 @@
 		<footer data-role="footer" data-position="fixed" data-theme="b">
 			<nav data-role="navbar" data-iconpos="left">
 				<ul>
-					<li><a href="#home" data-icon="home" class="lng_home">Home</a></li>
-					<li><a href="#services-page" data-icon="info" class="lng_service">Service</a></li>
+					<li><a href="#home" data-icon="home" id="lng_home">Home</a></li>
+					<li><a href="#services-page" data-icon="info" id="lng_service">Service</a></li>
 				</ul>
 			</nav>
 		</footer>
@@ -64,13 +64,13 @@
 
 	<div data-role="page" id="services-page" data-theme="b">
 		<div data-role="header">
-			<h2 class="lng_service">Service</h2>
+			<h2 id="lng_service">Service</h2>
 			<a href="#home" data-icon="back" class="ui-btn-right" rel="external" data-iconpos="notext" style="background: #848274;">Back</a>
 		</div>
 		<div data-role="content">
 			<div data-role="collapsible-set" >
 				<div data-role="collapsible" data-expanded-icon="info">
-					<h2 class="lng_impressum">Impressum</h2>
+					<h2 id="lng_impressum">Impressum</h2>
 					<p>
 						<h3>VCS Vereinigung der Campingplatzbetreiber Südtirols</h3>
 						MwSt.Nr und Steuernr. / Cod. Fisc. + Part. IVA : 01701300210<br />
@@ -80,7 +80,7 @@
 					</p>
 				</div>
 				<div data-role="collapsible" data-expanded-icon="info">
-					<h2 class="lng_partner">Partner</h2>
+					<h2 id="lng_partner">Partner</h2>
 					<p>
 						<ul data-role="listview">
 							<li data-mini="true"><a rel="external" href="http://www.derfreistaat.de/" target="_blank">www.derfreistaat.de</a></li>
@@ -89,13 +89,13 @@
 					</p>
 				</div>
 				<div data-role="collapsible" data-expanded-icon="info">
-					<h2 class="lng_moreservices">Weitere Services</h2>
+					<h2 id="lng_moreservices">Weitere Services</h2>
 					<p>
 						<ul data-role="listview">
 							<li data-mini="true"><a rel="external" href="http://www.sentres.com/de/suedtirol" target="_blank">Sentres S&uuml;dtirol</a></li>
-							<li data-mini="true"><a rel="external" href="http://www.provinz.bz.it/wetter/" target="_blank" class="lng_wetter">Wetter</a></li>
-							<li data-mini="true"><a rel="external" href="http://www.provinz.bz.it/vmz/report/index_d.asp" target="_blank" class="lng_verkehr">Verkehr</a></li>
-							<li data-mini="true"><a rel="external" href="http://www.youtube.com/watch?v=g5V3mJEE6bw" target="_blank" class="lng_film">Film</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.provinz.bz.it/wetter/" target="_blank" id="lng_wetter">Wetter</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.provinz.bz.it/vmz/report/index_d.asp" target="_blank" id="lng_verkehr">Verkehr</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.youtube.com/watch?v=g5V3mJEE6bw" target="_blank" id="lng_film">Film</a></li>
 						</ul>
 					</p>
 				</div>
@@ -114,8 +114,8 @@
 		<footer data-role="footer" data-position="fixed" data-theme="b">
 			<nav data-role="navbar" data-iconpos="left">
 				<ul>
-					<li><a href="#home" data-icon="home" class="lng_home">Home</a></li>
-					<li><a href="#services-page" class="ui-btn-active ui-state-persist lng_service" data-icon="info">Service</a></li>
+					<li><a href="#home" data-icon="home" id="lng_home">Home</a></li>
+					<li><a href="#services-page" data-icon="info" id="lng_service">Service</a></li>
 				</ul>
 			</nav>
 		</footer>
