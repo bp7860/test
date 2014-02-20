@@ -10,33 +10,121 @@
 	<link href="styles/main.css" rel="stylesheet" type="text/css" />
 
 	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	
+
 </head>
-<body>
+<body onload="init();" >
 
-<script type="text/javascript">
+	<!-- ////////////// Campingplaetze Liste /////////////////////////////////////////////////////////////////// -->
 
-var Lang = 'de';
-var Lang_array = new Array( 'de', 'en', '', 'it', '', '', 'nl' );
+	<div data-role="page" id="home" data-theme="b">
+		<div data-role="header">
+			<h2 id="lng_camping">Campingpl&auml;tze</h2>
+		</div>
+		<div data-role="content">
+			<div class="header"><img src="img/logo.png"></div>
+			<div id="lng_campingsuedtirol" class="header_text">Campingpl&auml;tze S&uuml;dtirol</div>
+			<ul data-role="listview" data-filter="false" id="campingplatzelist" data-theme="a" data-inset="true" data-filter-placeholder="Campingplätze Finden" data-autodividers="true">
+			</ul>
+		</div>
+		<footer data-role="footer" data-position="fixed" data-theme="b">
+			<nav data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#home" data-icon="home" id="lng_home">Home</a></li>
+					<li><a href="#services-page" data-icon="info" id="lng_service">Service</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</div>
 
-if( !localStorage.lang ) {
 
-	language = navigator.language.split("-"); 
-	language_root = language[0];
+	<!-- ////////////// Details /////////////////////////////////////////////////////////////////// -->
 
-	if( language_root == "en" )
-		Lang = 'en';
-	else if( language_root == "it" )
-		Lang = 'it';
-	else if( language_root == "nl" )
-		Lang = 'nl';
+	<div data-role="page" id="campingplaetzedetails-page" data-theme="b">
+		<div data-role="header">
+			<h1>Details</h1>
+			<a href="#home" data-icon="home" class="ui-btn-right" rel="external" data-iconpos="notext" style="background: #848274;">Home</a>
+		</div>
+		<div data-role="content">
+			
+		</div>
+		<footer data-role="footer" data-position="fixed" data-theme="b">
+			<nav data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#services-page" data-icon="info">Service</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</div>
 
-	top.location="index_"+Lang+".html";
-}
-else {
-	window.location = "index_"+Lang_array[localStorage.lang]+".html";
-}
 
-</script>
+	<!-- ////////////// Services /////////////////////////////////////////////////////////////////// -->
+
+
+	<div data-role="page" id="services-page" data-theme="b">
+		<div data-role="header">
+			<h2>Service</h2>
+			<a href="#home" data-icon="back" class="ui-btn-right" rel="external" data-iconpos="notext" style="background: #848274;">Back</a>
+		</div>
+		<div data-role="content">
+			<div data-role="collapsible-set" >
+				<div data-role="collapsible" data-expanded-icon="info">
+					<h2>Impressum</h2>
+					<p>
+						<h3>VCS Vereinigung der Campingplatzbetreiber Südtirols</h3>
+						MwSt.Nr und Steuernr. / Cod. Fisc. + Part. IVA : 01701300210<br />
+						info@campingsuedtirol.com<br />
+						I-39100 Bozen/Bolzano<br />
+						Moritzinger Weg 83/Via S. Maurizio 83
+					</p>
+				</div>
+				<div data-role="collapsible" data-expanded-icon="info">
+					<h2>Partner</h2>
+					<p>
+						<ul data-role="listview">
+							<li data-mini="true"><a rel="external" href="http://www.derfreistaat.de/" target="_blank">www.derfreistaat.de</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.glueck-freizeitmarkt.de/" target="_blank">www.glueck-freizeitmarkt.de</a></li>
+						</ul>
+					</p>
+				</div>
+				<div data-role="collapsible" data-expanded-icon="info">
+					<h2>Weitere Services</h2>
+					<p>
+						<ul data-role="listview">
+							<li data-mini="true"><a rel="external" href="http://www.sentres.com/de/suedtirol" target="_blank">Sentres S&uuml;dtirol</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.provinz.bz.it/wetter/" target="_blank">Wetter</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.provinz.bz.it/vmz/report/index_d.asp" target="_blank">Verkehr</a></li>
+							<li data-mini="true"><a rel="external" href="http://www.youtube.com/watch?v=g5V3mJEE6bw" target="_blank">Film</a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+			<input id="update" type="button" value="Update" data-icon="refresh" style="width: 100%;text-align:left" />
+			<div data-role="navbar">
+			    <ul>
+			        <li><a href="javascript:localStorage.setItem( 'lang', 0 );window.location='index.html';">DE</a></li>
+			        <li><a href="javascript:localStorage.setItem( 'lang', 1 );window.location='index.html';">EN</a></li>
+			        <li><a href="javascript:localStorage.setItem( 'lang', 3 );window.location='index.html';">IT</a></li>
+			        <li><a href="javascript:localStorage.setItem( 'lang', 6 );window.location='index.html';">NL</a></li>
+			    </ul>
+			</div>
+		</div>
+
+		<footer data-role="footer" data-position="fixed" data-theme="b">
+			<nav data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#home" data-icon="home">Home</a></li>
+					<li><a href="#services-page" class="ui-btn-active ui-state-persist" data-icon="info">Service</a></li>
+				</ul>
+			</nav>
+		</footer>
+	</div>
+	
+	<script type="text/javascript" charset="utf-8" src="scripts/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/jquery.mobile-1.3.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/fileHelper.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/main.js"></script>
 
 </body>
 </html>
