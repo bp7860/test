@@ -77,13 +77,6 @@ function onDeviceReady() {
 	//if( Lang != "de" ) {
 		$('#lng_camping').innerHTML(_l[Lang][27]);
 		$('#lng_campingsuedtirol').innerHTML(_l[Lang][26]);
-		$('#lng_home').innerHTML(_l[Lang][16]);
-		$('#lng_service').innerHTML(_l[Lang][17]);
-		$('#lng_details').innerHTML(_l[Lang][18]);
-		$('#lng_back').innerHTML(_l[Lang][18]);
-		$('#lng_impressum').innerHTML(_l[Lang][5]);
-		$('#lng_partner').innerHTML(_l[Lang][20]);
-		$('#lng_moreservices').innerHTML(_l[Lang][21]);
 	//}
 
 
