@@ -1,6 +1,27 @@
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript">
 
-window.location.href = "index_de.html";
+var Lang = 'de';
+var Lang_array = new Array( 'de', 'en', '', 'it', '', '', 'nl' );
+
+if( !localStorage.lang ) {
+
+	language = navigator.language.split("-"); 
+	language_root = language[0];
+
+	if( language_root == "en" )
+		Lang = 'en';
+	else if( language_root == "it" )
+		Lang = 'it';
+	else if( language_root == "nl" )
+		Lang = 'nl';
+
+	alert("index_"+Lang+".html");
+
+	window.location = "index_"+Lang+".html";
+}
+else {
+	window.location = "index_"+Lang_array[localStorage.lang]+".html";
+}
 
 </script>
