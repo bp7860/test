@@ -247,6 +247,8 @@ function showItem(urlObj, options) {
 		var equipment_msg = '';
 		$.each(item.equipment, function (key, val) {
 			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';<div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div>
+			console.log(val);
+			console.log('<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val[0]-1)] + val[1] +'\')"><img src="img/eq/' + val[0] + '.gif" /></a></div>');
 			grid = '';
 			if( key%3 == 0 )
 				grid = 'a';
