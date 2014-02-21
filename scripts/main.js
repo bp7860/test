@@ -247,7 +247,6 @@ function showItem(urlObj, options) {
 		var equipment_msg = '';
 		$.each(item.equipment, function (key, val) {
 			//equipment_tmp+='<img src="data:image/jpg;base64,' + val + '" /> ';<div data-role="popup" id="popupBasic_'+ val +'"><p>' + legende[Lang][(val-1)] + '</p></div>
-			
 			grid = '';
 			if( key%3 == 0 )
 				grid = 'a';
@@ -255,10 +254,9 @@ function showItem(urlObj, options) {
 				grid = 'b';
 			else if( key%3 == 2 )
 				grid = 'c';
-			console.log('<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val[0]-1)] + val[1] +'\')"><img src="img/eq/' + val[0] + '.gif" /></a></div>');
 			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val[0]-1)] + val[1] +'\')"><img src="img/eq/' + val[0] + '.gif" /></a></div>';
 		});
-		console.log('after equipment');
+		console.log(equipment_tmp);
 
 		// bilder
 		var impressions_tmp = '';
@@ -293,32 +291,7 @@ function showItem(urlObj, options) {
 		'	<!--/div-->'+
 		'	<!--div data-role="collapsible" data-mini="true" id="col-price"-->'+
 		'		<div class="header_text">'+_l[Lang][4]+'</div>'+
-		'		<p>'+
-		'			<table>'+
-		'				<tr><td><img src="img/adult.jpg" /></td><td align="right">' + item.adult_price + 	'&nbsp;&euro;'+ (item.adult_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.adult_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.adult_info + '</td></tr>'+
-		'				<tr><td><img src="img/kids.jpg" /></td><td align="right">' + item.kids_price + 			'&nbsp;&euro;'+ (item.kids_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.kids_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.kids_info + '</td></tr>'+
-		'				<tr><td><img src="img/car.jpg" /></td><td align="right">' + item.car_price + 			'&nbsp;&euro;'+ (item.car_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.car_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.car_info + '</td></tr>'+
-		'				<tr><td><img src="img/camper.jpg" /></td><td align="right">' + item.camper_price + 	'&nbsp;&euro;'+ (item.camper_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.camper_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.camper_info + '</td></tr>'+
-		'				<tr><td><img src="img/caravan.jpg" /></td><td align="right">' + item.caravan_price + 	'&nbsp;&euro;'+ (item.caravan_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.caravan_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.caravan_info + '</td></tr>'+
-		'				<tr><td><img src="img/marquee.jpg" /></td><td align="right">' + item.marquee_price + 	'&nbsp;&euro;'+ (item.marquee_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.marquee_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.marquee_info + '</td></tr>'+
-		'				<tr><td><img src="img/tent.jpg" /></td><td align="right">' + item.tent_price + 			'&nbsp;&euro;'+ (item.tent_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.tent_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.tent_info + '</td></tr>'+
-		'				<tr><td><img src="img/motorbike.jpg" /></td><td align="right">' + item.motorbike_price + 	'&nbsp;&euro;'+ (item.motorbike_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.motorbike_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.motorbike_info + '</td></tr>'+
-		'				<tr><td><img src="img/dog.jpg" /></td><td align="right">' + item.dogs_price + 			'&nbsp;&euro;'+ (item.dogs_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.dogs_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.dogs_info + '</td></tr>'+
-		'				<tr><td><img src="img/electricity.jpg" /></td><td align="right">' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
-		'			</table><br /><br />'+
-		'		</p>'+
-		'	<!--/div-->'+
-		'		<div class="header_text">'+_l[Lang][24]+'</div>'+
-		'		<p>'+area[Lang][(item.region_id-1)]+'</p>'+
-		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
-		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
-		'		<p>'+impressions_tmp+'</p>'+
-		'	<!--/div-->'+
-		'<!--/div-->'+
-		'</div>'+
-		'<div id="details_content_gmap" style="display:none">'+
-		'<img width="100%" src="data:image/png;base64,' + item.gmap_img + '" />'+
-		'</div>';
+		'		<p>';
 
 		console.log('after fill');
 
