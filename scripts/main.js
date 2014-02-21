@@ -232,7 +232,7 @@ function showItem(urlObj, options) {
 	if (item) {
 
 		// Get the page we are going to dump our content into.
-		var $page = $(pageSelector);
+		$page = $(pageSelector);
 
 		// Get the header for the page.
 		$header = $page.children(":jqmData(role=header)");
