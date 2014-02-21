@@ -219,6 +219,8 @@ $('#update').bind( "click", function(event, ui) {
 
 function showItem(urlObj, options) {
 
+	console.log('showitem');
+
 	
 
 	var itemID = urlObj.hash.replace(/.*id=/, "");
