@@ -32,21 +32,16 @@ else {
 	Lang = localStorage.getItem("lang");
 }
 
-/* Translate */
-if( Lang != 0 ) {
-	$('#lng_camping').html(_l[Lang][27]);
-	$('#lng_campingsuedtirol').html(_l[Lang][26]);
-	$('#lng_home').html(_l[Lang][16]);
-	$('#lng_service').html(_l[Lang][17]);
-	$('#lng_details').html(_l[Lang][18]);
-	$('#lng_back').html(_l[Lang][18]);
-	$('#lng_impressum').html(_l[Lang][5]);
-	$('#lng_partner').html(_l[Lang][20]);
-	$('#lng_moreservices').html(_l[Lang][21]);
-	$('#lng_wetter').html(_l[Lang][28]);
-	$('#lng_verkehr').html(_l[Lang][25]);
-	$('#lng_film').html(_l[Lang][29]);
-}
+
+var legende = new Array(
+		new Array("Gras oder Erdboden", "Wenig Schatten durch B&auml;ume", "Guter Schatten durch B&auml;ume", "Stromanschlu&szlig; f&uuml;r Caravans mit Voltangabe", "Einheiten (Caravans und Zelte)", "Duschen", "Gasversorgung", "Ausgu&szlig; f&uuml;r Chemikaltoiletten", "Trockenhaube", "Kinderspielplatz", "Beheizbare Sanit&auml;ranlagen", "Stromanschl&uuml;sse f&uuml;r Rassierapparat", "Geschirrsp&uuml;lbecken", "W&auml;schewaschbecken", "Platzbeleuchtung vorhanden", "Lebensmittel", "Imbiss", "Gastst&auml;tte", "Waschr&auml;ume nach Geschlechtern getrennt", "Tankstelle bei Camping", "Trockner", "Eislaufplatz", "Kunsteislaufplatz", "Toiletten mit Wassersp&uuml;lung", "Fu&szlig;waschbecken", "Skieinstellraum", "Seestrand", "Acc&egrave;s handicap&eacute;s", "Kinder-/Jugendzimmer", "Bibliothek", "Skilift", "Langlaufloipe", "Boccia", "Fitne&szlig;raum", "Bungalows oder Appartments", "Planschbecken", "Mietcaravan", "Minigolf", "Diskothek", "Kegelbahn", "Tischtennis", "Tennis", "Reitm&ouml;glichkeit", "Sauna", "Dampfbad", "Fernsehraum", "Solarium", "Whirlpool", "Waschmaschine", "Badegelegenheit auch f&uuml;r Kinder im offenen Gew&auml;sser", "Schwimmbecken", "Hallenbad", "Verleih von Ruderbooten der sonstigen Booten", "H&ouml;he &uuml;ber dem Meer", "Gesamtfl&auml;che", "Sanit&auml;rkabinen, die gemietet werden k&ouml;nnen", "Enteehrungsstation f&uuml;r Wohnmobil-Abwassertanks", "Entleehrung f&uuml;r Abwasser- und F&auml;kaltanks", "Gasanschl&uuml;sse", "Satelitenanlage", "Abwasser-/Frischwasseranschl&uuml;sse", "Imbisstube oder Imbissstand", "Umweltorientierte Betriebsf&uuml;hrung", "Internet", "&Ouml;ffentliche Verkehrsmittel in der N&auml;he", "Einzelwaschkabinen", "Campinplatz mit herausragendem Ergebnis bei der ADAC-Inspektion"),
+		new Array("Grassy or bare ground", "A little shade from trees", "Well shaded by trees", "Elecricity with voltage indicatin for caravans", "No. of units (caravans and tent)", "Showers", "Gas connection", "Chemical cleset disposal point", "Electic Hairdryer", "Children Childr", "Sanitary block can be heated", "Electric razor points", "Washing-up facilities", "Laundry facilities", "Site can be iluminated", "Food-shop", "Snack bar", "Restaurant", "Seperate washrooms for men and women", "Petrol station near site", "Linen dryer", "Ice-skating rink", "Ice-skating rink", "Flush toilets", "Footsbaths", "Ski shed", "Beach on the lake", "Suitable for the handicapped", "Children Chi", "Library", "Lift facilities", "Cross-country ski track", "Boule", "Fitness room", "Bungalows or appartmnets", "Padding pool", "Rent-a-caravan", "Minigolf", "Discotheque", "Skittle allry", "Table-tennis", "Tennis", "Horseriding", "Sauna", "Steam bath", "TV room", "Solarium", "Whirlpool", "Washing machine", "Bathing (also for children) in open waters", "Swimming pool", "Indoor swimming pool", "Rowing and/or other boats for hire", "Altidude", "total area", "Sanitary cubicles available for rent", "Emptying facility for caravan and camper van sewage tanks", "Emptying facility for sewage and toilet tanks", "Gas connections", "Sat", "Sewage and drinking water connections", "Snack Bar", "Environmentally friendly operation", "Internet", "Public transport near", "Individual wash cabines", "Campsite was awarded excellency after ADAC inspection"),
+		new Array(),
+		new Array("Terreno erboso o terroso", "Poco ombreggiato dagli alberi", "Ben ombreggiato dagli alberi", "Presa elettrica per caravan con indicazione del voltaggio", "Capacit&agrave; (caravan e tende)", "Docce", "Bombole gas", "Scarico per WC chimico", "Asciugacapelli", "Campo giochi", "Servizi sanitari riscaldabili", "Presa corrente per rasoio", "Lavello stoviglie", "Lavatoio biancheria", "Posto illuminato a richiesta", "Vendita alimentari", "Bar", "Ristorante", "Lavatoi separati uomini/donne", "Distributore benzina vicino", "Centrifuga", "Pista di pattinaggio", "Stadio di pattinaggio artistico", "WC con acqua", "Acquaio per piedi", "Deposito sci", "Spiaggia sul lago", "Senza barriere architettoniche", "Sala per bambini/giovani", "Biblioteca", "Skilift", "Pista di fondo", "Bocce", "Sala fi tness", "Bungalows o appartamenti", "Piscina per bambini", "Affi to roulottes", "Minigolf", "Discoteca", "Pista dei birilli", "Ping pong", "Tennis", "Equitazione", "Sauna", "Bagno turco", "Sala TV", "Solarium", "Whirlpool", "Lavatrice", "Possibilit&agrave; di bagnarsi (per bambini) in acque aperte", "Piscina", "Piscina coperta", "Noleggio barche a remi o di altro tipo", "Altitudine", "Area tot.", "Cabine sanitarie in affi tto", "Stazione svuotamento serbatoi acque di scarico di roulottes", "Stazione svuotamento serbatoi acque di scarico e fecali", "Allacciamenti gas", "Sat", "Allacciamenti acqua di scarico e acqua pulita", "Snack bar o chiosco", "Gestione ecologica", "Internet", "Fermata mezzi pubblici nelle immediate vicinanze", "Cabine individuali", "Campeggio con ottima valutazione ADAC"),
+		new Array(),
+		new Array(),
+		new Array("Gras of harde grond", "Weinig schaduw van bomen", "Veel schaduw van bomen", "Stroomaansluiting met indicatie van voltage voor caravans", "Eenheden (caravans en tenten)", "Douches", "Gas verzorging", "Stortplaats chemische toiletten", "Haardroger", "Kinderspeelplaats", "Verwarmde sanitaire voorzieningen", "Stroomaansluiting voor elektrisch scheerapparaat", "Afwasgelegenheid", "Handwasgelegenheid", "Staanplaatsen kunnen worden verlicht", "Levensmiddelen", "Bar", "Restaurant", "Gescheiden wasgelegenheden", "Tankstation bij de camping", "Droger", "IJsbaan", "Kunstijsbaan", "Toiletten met waterspoeling", "Voetenwasbak", "Bergruimte voor ski&rsquo;s", "Strand aan het meer", "Toegankelijk voor gehandicapten", "Kinderkamerr", "Bibliotheek", "Skilift", "Langlaufl oipe", "Jeu de boules", "Fitnessruimte", "Bungalows of appartementen", "Kinderbad", "Caravan verhuur", "Minigolf", "Discotheek", "Kegelbaan", "Tafeltennis", "Tennis", "Paardrijden", "Sauna", "Turks bad", "TV kamer", "Solarium", "Whirlpool", "Wasserette", "Zwemgelegenheid in open water (voor kinderen)", "Zwembad", "Overdekt zwembad", "Verhuur van roeiboten of andere boten", "Hoogte", "Oppervlakte", "Verhuur van sanitaire cabines", "Mogelijkheid om afvoerwatertanks van campers en caravans te legen", "Emptying facility for sewage and toilet tanks", "Gasaansluiting", "Sat", "Afvoer- en drinkwater aansluitingen", "Snack bar", "Milieuvriendelijke bedrijfsvoering", "Internet", "Openbaar vervoer vlakbij", "Individuele wascabines", "Campingplaats met zeer goede ADAC waardering")
+	);
 
 
 var area = new Array(
@@ -90,3 +85,21 @@ var area = new Array(
 		"Niet alleen \"Ötzi\", een meer dan 5000 jaar oude gletschermummie, die in Similaun hoog boven het Schnalsdal werd gevonden, maar ook de Yaks (Himalaya runderen) van de wereldbekende extreembergbeklimmer Reinhold Messner zijn enkele van de bijzonderheden die te vinden zijn in Vinschgau, een ontmoetingspunt van verschillende talen en kulturen. Bovendien vindt men hier een interessante wisselwerking tussen een warm, zuidelijk klimaat in het laaggelegen Vinschgau en een wereld van het hoge alpengebergte (met enkele toppen boven de drieduizend meter zoals de Ortler)."
 	)
 );
+
+
+
+/* Translate */
+if( Lang != 0 ) {
+	$('#lng_camping').html(_l[Lang][27]);
+	$('#lng_campingsuedtirol').html(_l[Lang][26]);
+	$('#lng_home').html(_l[Lang][16]);
+	$('#lng_service').html(_l[Lang][17]);
+	$('#lng_details').html(_l[Lang][18]);
+	$('#lng_back').html(_l[Lang][18]);
+	$('#lng_impressum').html(_l[Lang][5]);
+	$('#lng_partner').html(_l[Lang][20]);
+	$('#lng_moreservices').html(_l[Lang][21]);
+	$('#lng_wetter').html(_l[Lang][28]);
+	$('#lng_verkehr').html(_l[Lang][25]);
+	$('#lng_film').html(_l[Lang][29]);
+}
