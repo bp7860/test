@@ -20,17 +20,6 @@ var area_list = new Array(
 		"Vinschgau"
 	);
 
-var area = new Array(
-		new Array( 
-			"Bozen (265 m), die Landeshauptstadt von Südtirol, ist eine Stadt mit zwei Gesichtern; unitalienisch herb für die Leute aus dem Süden und mediterran für den, der aus dem Norden kommt. In unmittelbarer Reichweite umgeben die Stadt verschiedene Höhenzüge: der Ritten mit seinen Erdpyramiden und schmucken Gasthäusern, Jenesien am Tschöggelberg und der Kohlererberg (älteste Seilbahn der Welt), als nahe Ausflugsziele. Nahe ist auch das originelle Sarntal, bekannt nicht nur für seine Trachten, sondern auch für die Federkielstickereien. In Bozen fand auch der Mann aus dem Eis \"Ötzi\" im Archäologiemuseum seine letzte Ruhestätte.",
-			"Hier werden alle wichtigen Angelegenheiten bei einem \"Glasl guten Wein\" ausgemacht. Die Sonne erweckt eine reiche Vielfalt in dieser üppigen Obst- und Weinlandschaft, denn große zusammenhängende Obstanbauflächen und eine seit Jahrhunderten gepflegte Weinkultur bestimmen das Bild dieses Landstriches. Direkt an der Weinstraße liegt der Kalterer See, der als Ursprungsort des weltbekannten Weines gilt. Nicht nur bei den Weinbauern, sondern auch in den herrschaftlichen Ansitzen kann man sich verwöhnen lassen.",
-			"Südöstlich von Etsch- und Eisacktal erhebt sich das \"Land der Berge\", wie die Dolomiten mit ihrer reichen vielfältigen Naturlandschaft im Volksmund genannt werden. Dolomiten: aus den Urmeeren entstanden - traumhafte Märchenarchitektur - bizarre Wände; beschrieben, abgebildet und besungen; erfahrbar, erkletterbar und belebt. Nirgendwo sonst gibt es so viele Naturparks. Viele Sagen, Bräuche und Traditionen sprechen ihre eigene Sprache, aber alle erzählen von der faszinierenden Welt der \"bleichen Berge\".",
-			"",
-			"Man befindet sich an der traditionellen Nord-Süd-Verbindung Südtiols und nicht nur der Handel, sondern auch die drei wichtigsten Ortschaften, wie das Fuggerstädtchen Sterzing, die ehemalige Bischofstadt Brixen und Klausen, einst berühmtes Künstlerdomizil, profitieren von dieser Lage. Aber abseits der historischen Transitstrecke zwischen Bozen und Brenner, bestimmen alte Einzelhöfe, Streusiedlungen und Weiler das Bild der urigen kleinen Seitentäler.",
-			"Die Obst- und Reblandschaft, die subtropische Pflanzenwelt, die Promenaden und Waalwege und allen voran, das Stammschloß des Grafen von Tirol, haben schon seit eh und je Gäste in das Burgrafenamt gelockt. Den Erholungsbedürftigen bietet das Gebiet Gelegenheit, um Ruhe zu finden: in den kleinen Seitentälern, wie im Ultental mit seinen sonnenbraunen hölzernen Bauernhöfen, im Passeiertal, das einen alpinen Kleinkosmos mit hohen Paßstraßen aufzuweisen hat, Täler, die ihren vom bäuerlichen Leben geformten Charakter bewahrt haben.",
-			"Nicht nur der \"Ötzi\", eine über 5000 Jahre alte Gletschermumie, am Similaun hoch über dem Schnalstal gefunden, sondern auch die Yaks (Himalaya-Rinder) des weltbekannten Extrembergsteigers Reinhold Messner sind einige der Kuriositäten, die im Vinschgau als Begegnungsort verschiedener Sprachen und Kulturen schlummern. Außerdem gibt es ein interessantes Wechselspiel zwischen einem warmen, südländischen Klima im unteren Vinschgau und einer hochalpinen Gebirgswelt (mit einigen Dreitausendern, wie dem Ortler) im oberen Teil."
-		)
-	);
 
 
 
@@ -240,8 +229,6 @@ function showItem(urlObj, options) {
 		// Get the content area element for the page.
 		$content = $page.children(":jqmData(role=content)");
 
-		console.log('content');
-
 		// ausstattung
 		var equipment_tmp = '';
 		var equipment_msg = '';
@@ -263,8 +250,6 @@ function showItem(urlObj, options) {
 			//li ='<div class="ui-block-'+(key%2==0?'a':'b')+'"><a href="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'"><img src="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'" /></a></div>';
 			impressions_tmp+= '<img width="100%" src="data:image/jpg;base64,' + val + '" /><br />';
 		});
-
-		console.log('fill inhalt');
 
 		var inhalt = '<h2>'+item.name+'</h2>'+
 		'<div data-role="navbar">'+
@@ -303,13 +288,20 @@ function showItem(urlObj, options) {
 		'				<tr><td><img src="img/dog.jpg" /></td><td align="right">' + item.dogs_price + 			'&nbsp;&euro;'+ (item.dogs_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.dogs_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.dogs_info + '</td></tr>'+
 		'				<tr><td><img src="img/electricity.jpg" /></td><td align="right">' + item.electricity_price + 	'&nbsp;&euro;'+ (item.electricity_price_to != "0.00" ? '&nbsp;-&nbsp;'+item.electricity_price_to+'&nbsp;&euro;' : '') +'</td><td>' + item.electricity_info + '</td></tr>'+
 		'			</table><br /><br />'+
-		'		</p>';
-
-		console.log('after fill');
-
+		'		</p>'+
+		'	<!--/div-->'+
+		'		<div class="header_text">'+_l[Lang][24]+'</div>'+
+		'		<p>'+area[Lang][(item.region_id-1)]+'</p>'+
+		'	<!--div data-role="collapsible" data-mini="true" id="col-kontakt"-->'+
+		'		<div class="header_text">'+_l[Lang][5]+'</div>'+
+		'		<p>'+impressions_tmp+'</p>'+
+		'	<!--/div-->'+
+		'<!--/div-->'+
+		'</div>'+
+		'<div id="details_content_gmap" style="display:none">'+
+		'<img width="100%" src="data:image/png;base64,' + item.gmap_img + '" />'+
+		'</div>';
 		$content.empty().append(inhalt).trigger( "create" );
-
-		console.log('after trigger');
 
 		options.dataUrl = urlObj.href;
 		//$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
