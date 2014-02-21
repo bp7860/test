@@ -240,6 +240,8 @@ function showItem(urlObj, options) {
 		// Get the content area element for the page.
 		$content = $page.children(":jqmData(role=content)");
 
+		console.log('content');
+
 		// ausstattung
 		var equipment_tmp = '';
 		var equipment_msg = '';
@@ -254,6 +256,7 @@ function showItem(urlObj, options) {
 				grid = 'c';
 			equipment_tmp+='<div class="ui-block-'+grid+'"><a href="javascript:eq_popup(\''+legende[Lang][(val[0]-1)] + val[1] +'\')"><img src="img/eq/' + val[0] + '.gif" /></a></div>';
 		});
+		console.log('after equipment');
 
 		// bilder
 		var impressions_tmp = '';
@@ -261,6 +264,8 @@ function showItem(urlObj, options) {
 			//li ='<div class="ui-block-'+(key%2==0?'a':'b')+'"><a href="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'"><img src="http://www.campingsuedtirol.com/uploads/tx_wccamping/'+val+'" /></a></div>';
 			impressions_tmp+= '<img width="100%" src="data:image/jpg;base64,' + val + '" /><br />';
 		});
+
+		console.log('fill inhalt');
 
 		var inhalt = '<h2>'+item.name+'</h2>'+
 		'<div data-role="navbar">'+
@@ -312,7 +317,12 @@ function showItem(urlObj, options) {
 		'<div id="details_content_gmap" style="display:none">'+
 		'<img width="100%" src="data:image/png;base64,' + item.gmap_img + '" />'+
 		'</div>';
+
+		console.log('after fill');
+
 		$content.empty().append(inhalt).trigger( "create" );
+
+		console.log('after trigger');
 
 		options.dataUrl = urlObj.href;
 		//$('#campingplaetzedetails-page').find('[data-role="content"]').trigger('create');
