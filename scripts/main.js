@@ -2,20 +2,6 @@ var Items = null;
 
 
 
-
-var area_list = new Array(
-		"Bozen und Umgebung",
-		"Der Süden Südtirols",
-		"Dolomiten/Pustertal",
-		"Eisacktal – Wipptal",
-		"Meranerland",
-		"Vinschgau"
-	);
-
-
-
-
-
 function init() {
 	document.addEventListener("deviceready", onDeviceReady, true);
 }
@@ -126,7 +112,7 @@ function _onSuccessR(value) {
 	Items = jQuery.parseJSON(value);
 	$('#campingplatzelist').empty();
 	$.each(Items, function (i, item) {
-		$('#campingplatzelist').append('<li region_name="'+item.region_name+'"><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
+		$('#campingplatzelist').append('<li region_name="'+area_list[Lang][item.region_id]+'"><a href="#campingplaetzedetails-page?id=' + i + '"><img src="data:image/jpg;base64,' + item.image + '" /><h1>' + item.name + '</h1><p>' + item.address + '</p></a></li>');
 	});
 	$.mobile.showPageLoadingMsg();
 	$( "#campingplatzelist" ).listview({

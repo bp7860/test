@@ -86,6 +86,44 @@ var area = new Array(
 	)
 );
 
+var area_list = new Array(
+	new Array(
+		"Bozen und Umgebung",
+		"Der Süden Südtirols",
+		"Dolomiten/Pustertal",
+		"Eisacktal/Wipptal",
+		"Meranerland",
+		"Vinschgau"
+	),
+	new Array(
+		"Bozen and surroundings",
+		"The South of South Tyrol",
+		"The Dolomites",
+		"Eisacktal – Wipptal",
+		"Meran and surroundings",
+		"Vinschgau"
+	),
+	new Array(),
+	new Array(
+		"Bolzano e dintorni",
+		"Il Sud del Sud Tirolo",
+		"Dolomiti",
+		"Val d´Isarco/Wipptal",
+		"La zona di Merano",
+		"Val Venosta"
+	),
+	new Array(),
+	new Array(),
+	new Array(
+		"Bolzano en omgeving",
+		"Het zuiden van Zuid-Tirol",
+		"Dolomieten",
+		"Eisacktal/Wipptal",
+		"De streek van Merano",
+		"Vinschgau"
+	),
+);
+
 
 
 /* Translate */
